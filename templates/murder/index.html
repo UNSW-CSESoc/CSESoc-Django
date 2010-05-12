@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Game Details{% endblock %}
+
+{% block content %}
+<h1>{{ game.name }}</h1>
+<ul>
+   <li><a href="{% url csesoc.murder.views.scoreboard game=game.slug %}">Scoreboard</a></li>
+   <li><a href="{% url csesoc.murder.views.newkills game=game.slug %}">Kill History</a></li>
+   <li><a href="{% url csesoc.murder.views.myvictim game=game.slug %}">My Victim</a></li>
+</ul>
+{% endblock %}
+

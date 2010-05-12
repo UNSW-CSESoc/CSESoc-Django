@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+   <h1>CSESoc Camp - Leader Application Form</h1>
+   <ul>
+      <!--li>CSE Camp will be held at Broken Bay Sports and Recreation Centre from 27th March – 29th March.</li>
+      <li>Camp Leaders must pay for their own tickets.</li>
+      <li>All candidates must be able to attend a <strong>compulsory</strong> training session on Friday 20 March @ 3-5pm.</li>
+      <li>Applications close Monday 16 March and successful candidates will be contacted soon thereafter.</li>
+      <li><strong>Camp Leaders will be selected purely on the merit of their applications. Applications that are not taken seriously will be disregarded. Any relationship you may have with a member of the CSESoc Executive will have no effect on your application.</strong></li-->
+      <li>There will be a CSE Camp at the end of Week 3.   Location : <a href="http://www.outbreak.com.au">Wombaroo</a></li>
+      <li>Camp Leaders must pay for their own tickets.</li>
+      <li>All candidates must be able to attend a <strong>compulsory</strong> training session (Date and Location TBA).</li>
+      <li>Applications close Saturday of O-Week and successful candidates will be contacted soon thereafter.</li>
+      <li><strong>Camp Leaders will be selected purely on the merit of their applications. Applications that are not taken seriously will be disregarded. Any relationship you may have with a member of the CSESoc Executive will have no effect on your application.</strong></li>
+      <li><strong>Preference will be given to candidates who signed up early</strong></li>
+   </ul>
+
+   <form action="/apply/" method="post">
+      <table>
+         {{ form.as_table }}
+      </table>
+      <p><input type="submit" value="Submit" /></p>
+   </form>
+{% endblock %}
+

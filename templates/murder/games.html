@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Game Listing{% endblock %}
+
+{% block content %}
+<h1>List of Murder Games</h1>
+   <ul>
+   {% for game in games %}
+   <li><a href="{% url csesoc.murder.views.index game=game.slug %}">{{ game.name }}</a></li>
+   {% endfor %}
+   </ul>
+{% endblock %}
+
+

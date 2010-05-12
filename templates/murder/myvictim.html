@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}My Victim{% endblock %}
+
+{% block content %}
+
+<h1>Hello {{user.username}}</h1>
+<p>Your current victim is {{victim.username}}</p>
+<p><img src="{{ MEDIA_URL }}{{victim.photo}}" alt="{{victim.username}}" width="800px" /></p>
+<form action="{% url csesoc.murder.views.myvictim game=gameslug %}" method="POST">
+<p>Enter {{victim.username}}'s password to kill:</p>
+{{ form.as_p }}
+<input type="submit" name="submit" value="submit" />
+{% if flash %}
+<p style="color:#ff0000">{{ flash }}</p>
+{% endif %}
+</form>
+
+{% endblock %}
+
+

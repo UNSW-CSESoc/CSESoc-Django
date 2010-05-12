@@ -1,0 +1,14 @@
+<h2>{{ object.name }}</h2>
+{{ object.description|safe }}
+<p>
+When: <strong>{{ object.time }}</strong><br />
+Where: <strong>{{ object.location|safe }}</strong><br />
+{% if object.registration_required %}
+Registration: Email <strong>{{ object.registration_email }}</strong> to register<br />
+{% endif %}
+{% if object.volunteers_required %}
+Volunteers: Email <strong>{{ object.volunteers_email }}</strong> to volunteer<br />
+{% endif %}
+</p>
+<p><small>Posted by {{ object.author }} on {{ object.pub_date }}</small></p>
+

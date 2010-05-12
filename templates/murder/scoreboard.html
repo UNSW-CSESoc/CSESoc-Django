@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Game Scoreboard{% endblock %}
+
+{% block content %}
+<h1>{{ game.name }} - Scoreboard</h1>
+<table>
+   <tr>
+      <th>Killer</th><th>Kills</th>
+   </tr>
+   {% for killer, kills in counts %}
+   <tr>
+      <td style="width: 100px;">{{ killer }}</td><td>{{ kills }}</td>
+   </tr>
+   {% endfor %}
+   <tr>
+      <td style="border-top: solid 1px black;"><strong>Total</strong></td>
+      <td style="border-top: solid 1px black;">{{ total }}</td>
+   </tr>
+</table>
+{% endblock %}
+
+
+

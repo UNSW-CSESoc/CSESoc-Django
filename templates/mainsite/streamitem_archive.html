@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+   <h1>Updates</h1>
+   {% for stream_item in latest %}
+      <div class="update">
+         {{ stream_item.get_rendered_html }}
+         <hr />
+      </div>
+   {% endfor %}
+{% endblock %}
+

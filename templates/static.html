@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ object.title }}</h1>
+{{ object.text|safe }}
+<hr />
+<small>Page created by {{ object.creator }} on {{ object.creation_date }}. Last updated by {{ object.updater }} on {{ object.update_date }}</small>
+{% endblock %}
+

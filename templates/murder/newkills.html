@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Game Scoreboard{% endblock %}
+
+{% block content %}
+<h1>{{ game.name }} - Recent Kills</h1>
+<ul>
+   {% for kill in kills %}
+   <li>{{ kill.expandquip }} - {{ kill.datetime|date:"D M j, H:i" }}</li>
+   {% endfor %}
+</ul>
+{% endblock %}
+
+
+

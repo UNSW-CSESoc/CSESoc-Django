@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+   <h1>{{ month|date:"F, Y" }}</h1>
+   <ul>
+   {% for object in object_list %}
+    <div class="update">
+       {{ object.get_rendered_html }}
+    <hr />
+    </div>
+   {% endfor %}
+   </ul>
+{% endblock %}
+

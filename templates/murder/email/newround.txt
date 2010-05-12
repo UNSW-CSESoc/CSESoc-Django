@@ -1,0 +1,17 @@
+Dear {{ rp.player.username }},
+
+You are playing in Murder@CSE, {{ rp.round.game.name }}. The current round '{{ rp.round.name  }}', runs from: 
+{{ rp.round.start|date:"D d M Y H:i" }} to {{ rp.round.end|date:"D d M Y H:i" }}. 
+
+Your password for this round is:
+{{ rp.password.text }}
+
+IMPORTANT: Remember the password '{{ rp.password.text }}' because, in the event that you are assassinated, you will need to give this password to your assassin. Should you not give the password on the spot then you run the risk of being killed by the Sysadmin Ninjas.
+
+Use your CSE username and password to login at http://csesoc.unsw.edu.au/murder to see your victim.
+
+For more information, rules, etc. see http://www.csesoc.unsw.edu.au/csemurder/
+
+Good hunting!
+
+Murder@CSE

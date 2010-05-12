@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block headextra %}
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js'></script>
+
+<script type='text/javascript'>
+  $(document).ready(function() {
+    $("#id_gender").change(loadShirtSize).each(loadShirtSize);
+  });
+
+  function loadShirtSize() {
+    options = "";
+    update = true;
+    if($(this).val() == 'M') {
+      options += "<option value=\"S\">Small</option>";
+      options += "<option value=\"M\">Medium</option>";
+      options += "<option value=\"L\">Large</option>";
+      options += "<option value=\"XL\">Extra Large</option>";
+      options += "<option value=\"XXL\">XXL</option>";
+    } else if($(this).val() == 'F') {
+      options += "<option value=\"6\">6</option>";
+      options += "<option value=\"8\">8</option>";
+      options += "<option value=\"10\">10</option>";
+      options += "<option value=\"12\">12</option>";
+      options += "<option value=\"14\">14</option>";
+      options += "<option value=\"16\">16</option>";
+    } else {
+      update = false;
+    }
+
+    if (update) {
+      selected = $("#id_shirt_size").val();
+      $("#id_shirt_size").html(options);
+      $("#id_shirt_size").val(selected);
+    }
+  }
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>CSESoc Camp - Application Form</h1>
+<br>
+<li>There will be a CSE Camp at the end of Week 3 (19th March - 21st March).  Location <a href="http://www.outbreak.com.au">Wombaroo</a></li>
+<li> More details will be available closer to camp!</li>
+<br>
+<br>
+   <form action="/signup/" method="post">
+      <table>
+         {{ form.as_table }}
+      </table>
+      <p><input type="submit" value="Submit" /></p>
+   </form>
+{% endblock %}
+

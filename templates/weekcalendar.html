@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load csesoc_template_extras %}
+{% block content %}
+   <h1>O-Week Slots</h1>
+   <p>To volunteer, go to the <a href="/oweek/signup">sign up page</a></p>
+   {% for slot, availabilities in slots %}
+   <p>{{ slot }}</p>
+   <ul>
+      {% for availability in availabilities %}
+      <li>{{ availability|showlevel }} - {{ availability.person }}</li>
+      {% endfor %}
+   </ul>
+   {% endfor %}
+{% endblock %}
+
