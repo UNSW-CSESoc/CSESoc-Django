@@ -4,6 +4,7 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 from csesoc import mainsite
 from csesoc import campleaders
+from csesoc import settings
 from csesoc.campleaders.views import apply
 from csesoc.campattendees.views import signup
 from csesoc.suggestions.views import suggest
@@ -35,6 +36,7 @@ beta_dict = {
 
 urlpatterns = patterns(
       '',
+      (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
       # admin site
       #(r'^admin/(.*)', admin.site.root),
       (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
