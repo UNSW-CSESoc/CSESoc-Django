@@ -1,0 +1,3 @@
+# Don't add the images, just takes up space and they are there regardless.
+*.jpg
+*.png
