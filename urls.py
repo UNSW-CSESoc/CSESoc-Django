@@ -36,10 +36,11 @@ beta_dict = {
 
 urlpatterns = patterns(
       '',
-      (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
       # admin site
       #(r'^admin/(.*)', admin.site.root),
       (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
+      # Statics path
+      (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
       # login redirect
       (r'accounts/login/$', 'csesoc.auth.backends.cse_login',),
       # (r'accounts/login/$', 'django.contrib.auth.views.login'),
