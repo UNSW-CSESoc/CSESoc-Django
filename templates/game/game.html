@@ -1,4 +1,11 @@
+<title>CSESoc - {{ object.title }}</title>
 <h1>{{ object.title }}</h1>
 {{ object.text|safe }}
+{{ user.username }}
 <hr />
+
+<form method="POST" action="">
+   Answer: <input type="text" name="answer"></input>
+   <input type="submit" name="submit" value="Submit" />
+</form>
 

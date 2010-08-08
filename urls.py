@@ -5,6 +5,7 @@ from django.contrib import admin
 from csesoc import mainsite
 from csesoc import campleaders
 from csesoc import settings
+from csesoc.game.views import game_static
 from csesoc.campleaders.views import apply
 from csesoc.campattendees.views import signup
 from csesoc.suggestions.views import suggest
@@ -58,6 +59,9 @@ urlpatterns = patterns(
 
       # urls for murder
       (r'^murder/', include('csesoc.murder.urls')),
+
+      # url for the game
+      (r'^game/(?P<path>.*)/$', game_static),
 )
 urlpatterns += patterns(
       'django.views.generic.date_based',
