@@ -48,7 +48,7 @@ class PlayerProgress(models.Model):
    solved_time = models.DateTimeField(blank=True,null=True)
    def __unicode__(self):
       if self.solved_time == None:
-         return unicode(self.player) + " reached " + unicode(self.puzzle) + " at " + unicode(reached_time)
+         return unicode(self.player) + " reached " + unicode(self.puzzle) + " at " + unicode(self.reached_time)
       else:
-         return unicode(self.player) + " solved " + unicode(self.puzzle) + " at " + unicode(solved_time)
+         return unicode(self.player) + " solved " + unicode(self.puzzle) + " at " + unicode(self.solved_time)
 

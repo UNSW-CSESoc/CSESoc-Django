@@ -4,8 +4,9 @@
 {{ user.username }}
 <hr />
 
+{% if showanswer %}
 <form method="POST" action="">
    Answer: <input type="text" name="answer"></input>
    <input type="submit" name="submit" value="Submit" />
 </form>
-
+{% endif %}
