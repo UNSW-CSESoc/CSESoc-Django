@@ -1,0 +1,11 @@
+Scores
+
+<table>
+{% for user in scores %}
+<tr>
+   <td>{{ user.player__username }}</td>
+   <td>{{ user.puzzle__points__sum }}</td>
+</tr>
+{% endfor %}
+</table>
+
