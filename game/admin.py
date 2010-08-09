@@ -17,8 +17,11 @@ class PlayerAdmin(admin.ModelAdmin):
 class GameAdmin(admin.ModelAdmin):
    model = Game
 
+class AttemptAdmin(admin.ModelAdmin):
+   model = PlayerAttempt
 
 admin.site.register(Puzzle, PuzzleAdmin)
 admin.site.register(Game, GameAdmin)
 admin.site.register(Player, PlayerAdmin)
+admin.site.register(PlayerAttempt, AttemptAdmin)
 

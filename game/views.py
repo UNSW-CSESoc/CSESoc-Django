@@ -44,6 +44,14 @@ def reached_puzzle(puzzle, username):
    # automatically creates it if required
    progress = get_progress(puzzle, username)
 
+def made_attempt(puzzle, username, value):
+   progress = get_progress(puzzle, username)
+
+   attempt = PlayerAttempt()
+   attempt.progress = progress
+   attempt.attempt_time = datetime.datetime.now()
+   attempt.attempt = value
+   attempt.save()
 
 def game_scores(request, year):
    if year == "":
@@ -61,6 +69,7 @@ def game_static(request, path):
    if request.method == "POST":
       p = get_object_or_404(Puzzle, slug=path.replace('/','_'))
       answer = request.POST['answer']
+      made_attempt(p, request.user.username, answer)
       if answer == p.answer and p.next_puzzle != None:
          # we can go to the next puzzle!
          next = p.next_puzzle

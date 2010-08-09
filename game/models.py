@@ -52,3 +52,11 @@ class PlayerProgress(models.Model):
       else:
          return unicode(self.player) + " solved " + unicode(self.puzzle) + " at " + unicode(self.solved_time)
 
+class PlayerAttempt(models.Model):
+   progress = models.ForeignKey(PlayerProgress)
+   attempt_time = models.DateTimeField()
+   attempt = models.CharField(max_length=1024)
+
+   def __unicode__(self):
+      return unicode(self.progress.player) + " at " + unicode(self.progress.puzzle) + " guessed " + self.attempt
+
