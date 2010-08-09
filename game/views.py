@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from csesoc.game.models import *
 from csesoc import settings
 import datetime
+from django.db.models import Sum
 
 # presently using generic views for everything. add custom views here as needed
 
@@ -44,6 +45,17 @@ def reached_puzzle(puzzle, username):
    progress = get_progress(puzzle, username)
 
 
+def game_scores(request, year):
+   if year == "":
+      year = datetime.datetime.now().year
+   else:
+      year = int(year)
+
+   # the magical line that calculates the scores
+   scores = PlayerProgress.objects.filter(game__year__startswith=2010).values('player__username').annotate(Sum('puzzle__points')).order_by('-puzzle__points__sum')
+   return render_to_response('scores.html', {'scores': scores})
+
+
 @login_required
 def game_static(request, path):
    if request.method == "POST":
@@ -55,7 +67,7 @@ def game_static(request, path):
 
          solved_puzzle(p, request.user.username)
 
-         return HttpResponseRedirect('../' + next.slug)
+         return HttpResponseRedirect(next.slug)
 
    p = get_object_or_404(Puzzle, slug=path.replace('/','_'))
    reached_puzzle(p, request.user.username)
