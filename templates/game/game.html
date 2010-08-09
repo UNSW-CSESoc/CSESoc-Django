@@ -1,9 +1,7 @@
 <title>CSESoc - {{ object.title }}</title>
 <h1>{{ object.title }}</h1>
 {{ object.text|safe }}
-{{ user.username }}
 <hr />
-
 {% if showanswer %}
 <form method="POST" action="">
    Answer: <input type="text" name="answer"></input>
