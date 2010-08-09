@@ -52,7 +52,7 @@ def game_scores(request, year):
       year = int(year)
 
    # the magical line that calculates the scores
-   scores = PlayerProgress.objects.filter(game__year__startswith=2010).values('player__username').annotate(Sum('puzzle__points')).order_by('-puzzle__points__sum')
+   scores = PlayerProgress.objects.filter(game__year__startswith=2010).filter(solved_time__isnull=False).values('player__username').annotate(Sum('puzzle__points')).order_by('-puzzle__points__sum')
    return render_to_response('scores.html', {'scores': scores})
 
 
