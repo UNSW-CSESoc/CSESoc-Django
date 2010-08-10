@@ -5,6 +5,7 @@ from django.contrib import admin
 from csesoc import mainsite
 from csesoc import campleaders
 from csesoc import settings
+from csesoc.game.views import game_static, game_scores
 from csesoc.campleaders.views import apply
 from csesoc.campattendees.views import signup
 from csesoc.suggestions.views import suggest
@@ -36,10 +37,11 @@ beta_dict = {
 
 urlpatterns = patterns(
       '',
-      (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
       # admin site
       #(r'^admin/(.*)', admin.site.root),
       (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
+      # Statics path
+      (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
       # login redirect
       (r'accounts/login/$', 'csesoc.auth.backends.cse_login',),
       # (r'accounts/login/$', 'django.contrib.auth.views.login'),
@@ -57,6 +59,10 @@ urlpatterns = patterns(
 
       # urls for murder
       (r'^murder/', include('csesoc.murder.urls')),
+
+      # url for the game
+      (r'^game/scores/(?P<year>[0-9]*)$', game_scores),
+      (r'^game/(?P<path>.*)$', game_static),
 )
 urlpatterns += patterns(
       'django.views.generic.date_based',

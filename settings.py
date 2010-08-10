@@ -94,6 +94,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_PATH, 'templates'),
     os.path.join(PROJECT_PATH, 'templates/murder'),
+    os.path.join(PROJECT_PATH, 'templates/game'),
 )
 
 INSTALLED_APPS = (
@@ -108,6 +109,7 @@ INSTALLED_APPS = (
     'csesoc.scheduler',
     'csesoc.sponsors',
     'csesoc.murder',
+    'csesoc.game',
 )
 
 AUTHENTICATION_BACKENDS = (
