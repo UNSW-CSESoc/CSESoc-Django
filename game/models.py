@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.template.loader import render_to_string
 from datetime import datetime
+from django.db.models import Sum
 
 class Game(models.Model):
    name = models.CharField(max_length=200)
@@ -40,6 +41,12 @@ class Player(models.Model):
    def __unicode__(self):
       return self.username
 
+   def upto(self):
+      return PlayerProgress.objects.filter(player = self).filter(solved_time__isnull=True)[0].puzzle
+   def score(self):
+      return  PlayerProgress.objects.filter(player = self).filter(solved_time__isnull=False).aggregate(Sum('puzzle__points'))['puzzle__points__sum']
+
+
 class PlayerProgress(models.Model):
    game = models.ForeignKey(Game)
    player = models.ForeignKey(Player)
@@ -58,5 +65,5 @@ class PlayerAttempt(models.Model):
    attempt = models.CharField(max_length=1024)
 
    def __unicode__(self):
-      return unicode(self.progress.player) + " at " + unicode(self.progress.puzzle) + " guessed " + self.attempt
+      return unicode(self.progress.player) + " at " + unicode(self.progress.puzzle) + " guessed " + self.attempt[0:50]
 
