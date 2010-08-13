@@ -37,8 +37,9 @@ def get_progress(puzzle, username):
 
 def solved_puzzle(puzzle, username):
    progress = get_progress(puzzle, username)
-   progress.solved_time = datetime.datetime.now()
-   progress.save()
+   if progress.solved_time == None:
+      progress.solved_time = datetime.datetime.now()
+      progress.save()
 
 def reached_puzzle(puzzle, username):
    # automatically creates it if required
