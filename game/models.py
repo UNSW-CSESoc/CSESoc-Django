@@ -42,7 +42,11 @@ class Player(models.Model):
       return self.username
 
    def upto(self):
-      return PlayerProgress.objects.filter(player = self).filter(solved_time__isnull=True)[0].puzzle
+      unsolved = PlayerProgress.objects.filter(player = self).filter(solved_time__isnull=True)
+      if len(unsolved) > 0:
+         return unsolved[0].puzzle
+      else:
+         return ""
    def score(self):
       return  PlayerProgress.objects.filter(player = self).filter(solved_time__isnull=False).aggregate(Sum('puzzle__points'))['puzzle__points__sum']
 
