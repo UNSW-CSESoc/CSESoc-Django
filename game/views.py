@@ -71,7 +71,7 @@ def game_static(request, path):
       p = get_object_or_404(Puzzle, slug=path.replace('/','_'))
       answer = request.POST['answer']
       made_attempt(p, request.user.username, answer)
-      if answer == p.answer and p.next_puzzle != None:
+      if answer.lower() == p.answer.lower() and p.next_puzzle != None:
          # we can go to the next puzzle!
          next = p.next_puzzle
 
