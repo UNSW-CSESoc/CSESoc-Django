@@ -7,6 +7,7 @@ from django.contrib.contenttypes import generic
 from django.template.loader import render_to_string
 from datetime import datetime
 from django.db.models import Sum
+from django.shortcuts import get_object_or_404 
 
 class Game(models.Model):
    name = models.CharField(max_length=200)
@@ -46,9 +47,15 @@ class Player(models.Model):
       if len(unsolved) > 0:
          return unsolved[0].puzzle
       else:
-         return ""
+         print "SUP"
+         first_puzzle = get_object_or_404(Puzzle, slug="start")
+         return first_puzzle
+
    def score(self):
-      return  PlayerProgress.objects.filter(player = self).filter(solved_time__isnull=False).aggregate(Sum('puzzle__points'))['puzzle__points__sum']
+      sum = PlayerProgress.objects.filter(player = self).filter(solved_time__isnull=False).aggregate(Sum('puzzle__points'))['puzzle__points__sum']
+      if sum == None:
+         sum = 0
+      return sum
 
 
 class PlayerProgress(models.Model):
