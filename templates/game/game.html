@@ -2,10 +2,13 @@
 <head>
 <title>CSESoc - {{ object.title }}</title>
 <link href="static/default.css" media="screen" rel="stylesheet" type="text/css" /> 
+<link href="static/game/default.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <h1>{{ object.title }}</h1>
+<div id='content'>
 {{ object.text|safe }}
+</div>
 <hr />
 {% if showanswer %}
 <form method="POST" action="">

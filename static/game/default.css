@@ -1,0 +1,5 @@
+html {height:0%; margin:0px;} 
+body {background-color: #fff;}
+h1 {margin:20px; text-align:center;}
+div#content, form {margin:20px; font-size:13px;}
+form {padding-bottom:20px;}
