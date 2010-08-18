@@ -54,6 +54,8 @@ def made_attempt(puzzle, username, value):
    attempt.attempt = value
    attempt.save()
 
+#TODO: check that the user is logged in and player.isAdmin()
+# requires the player.isAdmin() function to be written first
 def game_scores(request, year):
    if year == "":
       year = datetime.datetime.now().year
@@ -87,4 +89,14 @@ def game_static(request, path):
 
    p = get_object_or_404(Puzzle, slug=path.replace('/','_'))
    reached_puzzle(p, request.user.username)
-   return render_to_response('game.html', { 'object' : p, 'user': request.user, 'showanswer' : (p.next_puzzle != None) }, context_instance=RequestContext(request) )
+   
+   player = get_player(request.user.username)
+   player_rank = player.rank()
+   rank = "You are "
+   if player_rank[1]:
+      rank += "tied"
+   else:
+      rank += "ranked"
+   rank += " #"+str(player_rank[0])
+
+   return render_to_response('game.html', { 'object' : p, 'user': request.user, 'showanswer' : (p.next_puzzle != None), 'rank' : rank }, context_instance=RequestContext(request) )

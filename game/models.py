@@ -57,6 +57,27 @@ class Player(models.Model):
          sum = 0
       return sum
 
+   # needs a better implementation, this is SLOW
+   # scores should be saved in DB
+   def rank(self):
+       players = Player.objects.iterator()
+       i = 1
+       tied = 0
+       scores = []
+       for p in players:
+          if p.score() > self.score():
+            if p.score() not in scores:
+                scores.append(p.score())
+                #i += 1 # having it here will rank 1, 2, 3
+            else:
+                i += 1 # having it here will rank 1, 15, 30
+          elif p.score() == self.score():
+            tied = 1
+       return (i, tied)
+
+   #Write this please, Prashant!
+   #def isAdmin(self):
+
 
 class PlayerProgress(models.Model):
    game = models.ForeignKey(Game)
