@@ -5,7 +5,7 @@ from django.contrib import admin
 from csesoc import mainsite
 from csesoc import campleaders
 from csesoc import settings
-from csesoc.game.views import game_static, game_scores
+from csesoc.game.views import game_static, game_scores, game_static_latest
 from csesoc.campleaders.views import apply
 from csesoc.campattendees.views import signup
 from csesoc.suggestions.views import suggest
@@ -62,6 +62,7 @@ urlpatterns = patterns(
 
       # url for the game
       (r'^game/scores/(?P<year>[0-9]*)$', game_scores),
+      (r'^game/?$', game_static_latest),
       (r'^game/(?P<path>.*)$', game_static),
 )
 urlpatterns += patterns(
