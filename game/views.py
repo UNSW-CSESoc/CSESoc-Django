@@ -37,8 +37,9 @@ def get_progress(puzzle, username):
 
 def solved_puzzle(puzzle, username):
    progress = get_progress(puzzle, username)
-   progress.solved_time = datetime.datetime.now()
-   progress.save()
+   if progress.solved_time == None:
+      progress.solved_time = datetime.datetime.now()
+      progress.save()
 
 def reached_puzzle(puzzle, username):
    # automatically creates it if required
@@ -70,7 +71,7 @@ def game_static(request, path):
       p = get_object_or_404(Puzzle, slug=path.replace('/','_'))
       answer = request.POST['answer']
       made_attempt(p, request.user.username, answer)
-      if answer == p.answer and p.next_puzzle != None:
+      if answer.lower() == p.answer.lower() and p.next_puzzle != None:
          # we can go to the next puzzle!
          next = p.next_puzzle
 
