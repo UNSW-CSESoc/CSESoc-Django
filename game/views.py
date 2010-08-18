@@ -64,6 +64,12 @@ def game_scores(request, year):
    scores = PlayerProgress.objects.filter(game__year__startswith=2010).filter(solved_time__isnull=False).values('player__username').annotate(Sum('puzzle__points')).order_by('-puzzle__points__sum')
    return render_to_response('scores.html', {'scores': scores})
 
+@login_required
+def game_static_latest(request):
+    p = get_player(request.user.username)
+    last_puzzle = p.upto()
+    return HttpResponseRedirect(last_puzzle.slug) 
+
 
 @login_required
 def game_static(request, path):
