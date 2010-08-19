@@ -57,8 +57,6 @@ class Player(models.Model):
          sum = 0
       return sum
 
-   # needs a better implementation, this is SLOW
-   # scores should be saved in DB
    def rank(self):
        player_scores = PlayerProgress.objects.filter(game__year__startswith=2010).filter(solved_time__isnull=False).values('player__username').annotate(Sum('puzzle__points')).order_by('-puzzle__points__sum')
 

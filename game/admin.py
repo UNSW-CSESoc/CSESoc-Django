@@ -11,9 +11,7 @@ class PlayerProgressInline(admin.StackedInline):
    extra = 2
 
 class PlayerAdmin(admin.ModelAdmin):
-   # you can add 'rank' to this list, but it will
-   # slow the admin page down a LOT
-   list_display = ['username', 'score', 'upto']
+   list_display = ['username', 'score', 'upto', 'rank']
    search_fields = ['username']
    inlines = (PlayerProgressInline,)
    model = Player
