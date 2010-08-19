@@ -60,20 +60,27 @@ class Player(models.Model):
    # needs a better implementation, this is SLOW
    # scores should be saved in DB
    def rank(self):
-       players = Player.objects.iterator()
-       i = 1
-       tied = 0
+       player_scores = PlayerProgress.objects.filter(game__year__startswith=2010).filter(solved_time__isnull=False).values('player__username').annotate(Sum('puzzle__points')).order_by('-puzzle__points__sum')
+
+       self_score = self.score()
+       tied   = 0
+       i      = 0
+       last_i = i
        scores = []
-       for p in players:
-          if p.score() > self.score():
-            if p.score() not in scores:
-                scores.append(p.score())
-                #i += 1 # having it here will rank 1, 2, 3
+
+       for player_score in player_scores:
+            user  = player_score['player__username']
+            score = player_score['puzzle__points__sum']
+            if score < self_score:
+                break
             else:
-                i += 1 # having it here will rank 1, 15, 30
-          elif p.score() == self.score():
-            tied = 1
-       return (i, tied)
+                i += 1
+                if score not in scores:
+                    scores.append(score)
+                    last_i = i
+                if score == self_score and user != self.username:
+                    tied = 1
+       return {'rank':last_i, 'tied':tied}
 
    #Write this please, Prashant!
    #def isAdmin(self):

@@ -56,6 +56,14 @@ def made_attempt(puzzle, username, value):
 
 #TODO: check that the user is logged in and player.isAdmin()
 # requires the player.isAdmin() function to be written first
+
+# returns "th", where "th" can be "st", "nd", "rd", or "th"
+def ordinal(n):
+    return dict([(x,'th') for x in range(10,20)]).get(n%100,{1:'st',2:'nd',3:'rd'}.get(n%10,'th'))
+
+def get_player_scores(request, year):
+   return PlayerProgress.objects.filter(game__year__startswith=2010).filter(solved_time__isnull=False).values('player__username').annotate(Sum('puzzle__points')).order_by('-puzzle__points__sum')
+
 def game_scores(request, year):
    if year == "":
       year = datetime.datetime.now().year
@@ -63,7 +71,7 @@ def game_scores(request, year):
       year = int(year)
 
    # the magical line that calculates the scores
-   scores = PlayerProgress.objects.filter(game__year__startswith=2010).filter(solved_time__isnull=False).values('player__username').annotate(Sum('puzzle__points')).order_by('-puzzle__points__sum')
+   scores = get_player_scores(request, year)
    return render_to_response('scores.html', {'scores': scores})
 
 @login_required
@@ -90,13 +98,13 @@ def game_static(request, path):
    p = get_object_or_404(Puzzle, slug=path.replace('/','_'))
    reached_puzzle(p, request.user.username)
    
-   player = get_player(request.user.username)
-   player_rank = player.rank()
+   # get the player's rank
+   player_rank = get_player(request.user.username).rank()
    rank = "You are "
-   if player_rank[1]:
-      rank += "tied"
+   if player_rank['tied']:
+      rank += "tied in"
    else:
       rank += "ranked"
-   rank += " #"+str(player_rank[0])
+   rank += " "+str(player_rank['rank'])+ordinal(player_rank['rank'])+" place!"
 
    return render_to_response('game.html', { 'object' : p, 'user': request.user, 'showanswer' : (p.next_puzzle != None), 'rank' : rank }, context_instance=RequestContext(request) )
