@@ -62,6 +62,7 @@ urlpatterns = patterns(
 
       # url for the game
       (r'^game/scores/(?P<year>[0-9]*)$', game_scores),
+      (r'^game/scores$', game_scores, {'year':''}),
       (r'^game/$', game_static_latest),
       (r'^game/(?P<path>.*)$', game_static),
 )
