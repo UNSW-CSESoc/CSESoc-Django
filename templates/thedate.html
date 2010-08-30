@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-
-<h1>{{ d }}</h1>
-
+<h1>{{ date|date:"g:i:s a T o\n l jS o\f F, Y" }}</h1>
+<a href="http://djangopony.com/"><img src="{{ MEDIA_URL }}djangopony.png" /></a>
 {% endblock %}
-
