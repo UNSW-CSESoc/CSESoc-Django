@@ -125,3 +125,19 @@ ul ul {
    padding-left: 20px;
    margin-left: 0px;
 }
+
+.pagenumbers {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+.pagenumbers li {
+    margin: 0 1em;
+    display: inline-block;
+}
+
+.pagenumbers .disabled {
+    color: #888a85;
+}

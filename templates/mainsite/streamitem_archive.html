@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
    <h1>Updates</h1>
-   {% for stream_item in latest %}
-      <div class="update">
-         {{ stream_item.get_rendered_html }}
-         <hr />
-      </div>
-   {% endfor %}
+      {% for stream_item in object_list %}
+         <div class="update">
+            {{ stream_item.get_rendered_html }}
+            <hr />
+         </div>
+      {% endfor %}
+   {% if is_paginated %}
+      <ul class="pagenumbers">
+         <li>{% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">&#xab;</a>{% else %}<strong class="disabled">&#xab;</strong>{% endif %}</li>
+      {% for page in paginator.page_range %}
+         <li>{% ifnotequal page page_obj.number %}<a href="?page={{ page }}">{{ page }}</a>{% else %}<strong>{{ page }}</strong>{% endifnotequal %}</li>
+      {% endfor %}
+         <li>{% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">&#xbb;</a>{% else %}<strong class="disabled">&#xbb;</strong>{% endif %}</li>
+      </ul>
+   {% endif %}
 {% endblock %}
-

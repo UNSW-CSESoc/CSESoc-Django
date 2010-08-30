@@ -69,7 +69,7 @@ SECRET_KEY = passwd_data.SETTINGS_SECRET_KEY
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+    # 'django.template.loaders.eggs.load_template_source',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -79,7 +79,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request', # we need this to provide the request variable to each template
     'csesoc.context_processors.sponsors_list',
     'csesoc.context_processors.media_url',
-    )
+)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -114,7 +114,10 @@ INSTALLED_APPS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-      'csesoc.auth.backends.CSEBackend',
-      # 'django.contrib.auth.backends.ModelBackend',
+    'csesoc.auth.backends.CSEBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
 )
+
+# maxiumum number of StreamItems per paginated index page
+STREAMITEMS_PER_PAGE = 5
 

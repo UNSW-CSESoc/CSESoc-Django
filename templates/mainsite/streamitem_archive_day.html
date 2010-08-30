@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-   <h1>{{ month|date:"F, Y" }}</h1>
+   <h1>{{ day|date:"l jS o\f F, Y" }}</h1>
    {% for object in object_list %}
     <div class="update">
        {{ object.get_rendered_html }}
