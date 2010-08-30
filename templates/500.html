@@ -1,0 +1,15 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>500 Internal Server Error - CSESoc</title>
+        <link href="static/default.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="static/icon.png" rel="icon" type="image/png" />
+    </head>
+    <body>
+        <div style="margin:3em 2em;">
+            <h1>Oh noes! The tubes are broken!</h1>
+            <p>Something went wrong, and we were unable to process your request at this time. The CSESoc Sysadmins have been alerted to this issue, and we're working to resolve it as quickly as possible. Please try again later. If you have time, please provide us with details as to what you were doing at <a href="{% filter urlencode %}mailto:csesoc.sysadmin@cse.unsw.edu.au?subject=CSESoc Website Error: 500 at {{ request.path }}{% endfilter %}">csesoc DOT sysadmin AT cse DOT unsw DOT edu DOT au</a>.</p>
+            <p>In the meantime, feel free to return to our <a href="/">home page</a>.</p>
+        </div>
+    </body>
+</html>
