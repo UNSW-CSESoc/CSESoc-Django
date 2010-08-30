@@ -2,8 +2,8 @@
 
 import os
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
-DEBUG = False
-# TEMPLATE_DEBUG = DEBUG
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Robert Massaioli', 'robertm@cse.unsw.edu.au'),
