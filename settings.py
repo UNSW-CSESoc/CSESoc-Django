@@ -2,8 +2,8 @@
 
 import os
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+DEBUG = False
+# TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Robert Massaioli', 'robertm@cse.unsw.edu.au'),
@@ -36,7 +36,7 @@ TIME_ZONE = 'Australia/Sydney'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-AU'
 
 SITE_ID = 1
 
@@ -73,9 +73,10 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request', # we need this to provide the request variable to each template
     'csesoc.context_processors.sponsors_list',
     'csesoc.context_processors.media_url',
     )
