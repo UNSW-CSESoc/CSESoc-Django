@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}Surprise! - CSESoc{% endblock %}
+
 {% block content %}
-<h1>{{ date|date:"g:i:s a T o\n l jS o\f F, Y" }}</h1>
-<a href="http://djangopony.com/"><img src="{{ MEDIA_URL }}djangopony.png" /></a>
+<h1>Right now it's...</h1>
+<h2>{{ date|date:"g:i:s a T o\n l jS o\f F, Y" }}</h2>
+<h3>The date/time was brought to you by...</h3>
+<a href="http://www.djangoproject.com/" rel="nofollow"><img src="{{ MEDIA_URL }}djangopony.png" /></a>
 {% endblock %}
