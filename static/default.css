@@ -128,14 +128,27 @@ ul ul {
 
 .pagenumbers {
     list-style: none;
-    margin: 0 auto;
+    margin: 0.5em auto;
     padding: 0;
     text-align: center;
 }
 
-.pagenumbers li {
-    margin: 0 1em;
+.pagenumbers li, .pagenumbers li>* {
     display: inline-block;
+}
+
+.pagenumbers li>* {
+    border: 1px transparent solid;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+}
+
+.pagenumbers a:hover, .pagenumbers a:active, .pagenumbers a:focus {
+    background-color: #ffffff;
+    border: 1px #cdcdcd solid;
+    text-decoration: none;
 }
 
 .pagenumbers .disabled {
