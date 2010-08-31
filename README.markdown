@@ -2,7 +2,9 @@ Overview
 ========
 
 This is the website of CSESoc (Computer Science and Engineering Society) of UNSW. This should be the first
-document that you read before before doing any work on the website.
+document that you read before before doing any work on the website. This is just the quick and dirty
+guide though. For a more complete and comprehensive guide you should visit the [CSESoc Sysadmin Wiki][1]
+and read up on how we do things.
 
 Requirements
 ------------
@@ -32,3 +34,6 @@ of it that do a few extra things. The differences are:
    back in.
  - All debug modes are turned on in this repository for ease of development. The real server turns all 
    debugging modes off.
+
+
+  [1]: http://wiki.csesoc.unsw.edu.au/Sysadmin
