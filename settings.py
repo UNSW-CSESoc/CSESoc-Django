@@ -6,7 +6,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Robert Massaioli', 'robertm@cse.unsw.edu.au'),
+    ('Sysadmin Head', 'csesoc.sysadmin.head@csesoc.unsw.edu.au'),
 )
 
 import passwd_data
