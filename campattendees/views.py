@@ -6,7 +6,6 @@ from csesoc import settings
 from django.template import RequestContext
 import datetime
 import urllib
-import MySQLdb
 from csesoc import passwd_data
 
 class ApplicationForm(ModelForm):
@@ -28,6 +27,7 @@ def signup(request):
          uname = request.COOKIES['cseauth']
          uname = urllib.unquote(uname)
          uname = uname.decode('iso-8859-1')
+         import MySQLdb
          db = MySQLdb.connect(db='cse_auth', user=passwd_data.DB_USERNAME, passwd=passwd_data.DB_PASSWORD)
          c = db.cursor()
          c.execute('select `user` from `users` where `cookie` = %s;', (uname,))
