@@ -8,13 +8,13 @@ from csesoc import passwd_data
 
 class CSEBackend(ModelBackend):
    def authenticate(self, token=None):
-        import MySQLdb
         import urllib
         from django.contrib.auth.models import User
         if passwd_data.ADMIN_NO_LOGIN == False:
             token = urllib.unquote(token)
             token = token.decode('iso-8859-1')
             # Check the token and return a User.
+            import MySQLdb
             db = MySQLdb.connect(db='cse_auth', user=passwd_data.DB_USERNAME, passwd=passwd_data.DB_PASSWORD)
             c = db.cursor()
             c.execute('select `user` from `users` where `cookie` = %s;', (token,))
