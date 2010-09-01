@@ -61,7 +61,7 @@ def check_solved(puzzle, username, answer):
 
       return True
    else:
-      return True
+      return False
 
 
 def reached_puzzle(puzzle, username):
