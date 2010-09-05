@@ -22,7 +22,7 @@ class NewsItem(models.Model):
    headline = models.CharField(max_length=200)
    text = models.TextField()
    pub_date = models.DateTimeField(default=datetime.now, help_text="News item will appear on homepage starting from date and time specified.")
-   author = models.ForeignKey(User)
+   #author = models.ForeignKey(User)
    def __unicode__(self):
       return self.headline
 
@@ -36,7 +36,7 @@ class Event(models.Model):
    volunteers_email = models.EmailField(blank=True, help_text="Address to email in order to volunteer")
    description = models.TextField(help_text="Description of the event, will appear on the front page.")
    pub_date = models.DateTimeField(default=datetime.now, help_text="Event will appear on homepage starting from date and time specified.")
-   author = models.ForeignKey(User)
+   #author = models.ForeignKey(User)
    def __unicode__(self):
       return self.name
 
@@ -46,7 +46,7 @@ class Beta(models.Model):
    pdf_url = models.URLField(verify_exists=True, help_text="Link to PDF of this issue of Beta", max_length=500)
    pub_date = models.DateTimeField(default=datetime.now, help_text="Beta will appear on homepage starting from date and time specified.")
 
-   author = models.ForeignKey(User)
+   #author = models.ForeignKey(User)
    def __unicode__(self):
       return self.title
 

@@ -1,9 +1,17 @@
-{% extends "base.html" %}
-{% block content %}
-<table>
-  {% for sponsor in sponsors %}
+{% extends 'basewcalendar.html' %}
+
+{% block titlecontent %} Hello, this is a sponsor page title. {% endblock %}
+
+{% block middlecontent %}
+
+{% for sponsor in allSponsors %}
     {{ sponsor.get_rendered_html }}
-  {% endfor %}
-</table>
+{% endfor %}
+
 {% endblock %}
 
+{% block rightcontent %}
+
+Hello, this is a sponsor page right.
+
+{% endblock %}

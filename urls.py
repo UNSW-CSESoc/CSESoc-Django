@@ -12,6 +12,8 @@ from csesoc.sponsors.views import sponsors
 from csesoc.mainsite.views import static
 from csesoc.mainsite.views import thedate
 from csesoc.scheduler.views import join, results
+from csesoc.posts.views import recentPosts
+
 admin.autodiscover()
 
 tumblog_dict = {
@@ -37,27 +39,19 @@ beta_dict = {
 urlpatterns = patterns(
       '',
       (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
-      # admin site
-      #(r'^admin/(.*)', admin.site.root),
+      # Admin site
       (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
-      # login redirect
-      (r'accounts/login/$', 'csesoc.auth.backends.cse_login',),
-      # (r'accounts/login/$', 'django.contrib.auth.views.login'),
-      # camp leader applications
-      (r'^apply/$', apply),
-      # camp attendee applications
-      (r'^signup/$', signup),
-      # suggestions form
-      (r'^suggestions/$', suggest),
-      # scheduler signup
-      (r'^oweek/signup/$', join),
-      (r'^oweek/slots/$', results),
-      # sponsors page
-      (r'^sponsors/$', sponsors),
+      # Login redirect
+      (r'accounts/login/$', 'csesoc.auth.backends.cse_login'),
 
-      # urls for murder
-      (r'^murder/', include('csesoc.murder.urls')),
+      #News || News -> Recent News
+      (r'^news/recent/$', recentPosts),
+      (r'^news/recent/p(?P<offset>\d+)/$', recentPosts),
+
+      # Sponsors
+      (r'^sponsors/$', sponsors),
 )
+
 urlpatterns += patterns(
       'django.views.generic.date_based',
       # all news sources
@@ -65,12 +59,6 @@ urlpatterns += patterns(
       (r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$',                                'archive_month', tumblog_dict),
       (r'^(?P<year>\d{4})/$',                                                    'archive_year',  tumblog_dict),
       (r'^$', 'archive_index', tumblog_dict, "home"),
-
-      # news
-      (r'^news/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',               'archive_day',   news_dict),
-      (r'^news/(?P<year>\d{4})/(?P<month>[a-z]{3})/$',                                'archive_month', news_dict),
-      (r'^news/(?P<year>\d{4})/$',                                                    'archive_year',  news_dict),
-      (r'^news/$', 'archive_index', news_dict, "home-news"),
 
       # events
       (r'^events/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',               'archive_day',   events_dict),

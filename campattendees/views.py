@@ -6,7 +6,6 @@ from csesoc import settings
 from django.template import RequestContext
 import datetime
 import urllib
-import MySQLdb
 from csesoc import passwd_data
 
 class ApplicationForm(ModelForm):
