@@ -1,4 +1,5 @@
 *~
+.*.swp
 *.pyc
 *.sqlite3
 photos
