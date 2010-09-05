@@ -56,7 +56,6 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH, 'static')
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = 'static/'
 
-
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
@@ -85,6 +84,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'csesoc.urls'
@@ -105,6 +105,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'csesoc.helpers',
+    'django.contrib.flatpages',
     'csesoc.mainsite',    
     'csesoc.campleaders',
     'csesoc.campattendees',
@@ -112,6 +113,7 @@ INSTALLED_APPS = (
     'csesoc.sponsors',
     'csesoc.murder',
     'csesoc.game',
+    'csesoc.posts',
 )
 
 AUTHENTICATION_BACKENDS = (

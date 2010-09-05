@@ -1,0 +1,124 @@
+body {
+    margin: 0px;
+}
+
+.master {
+    width: 1200px;
+    margin: auto;
+}
+
+.header {
+    height: 120px;
+    background-color: #4D4D4D
+}
+
+.dropdown {
+    height: 70px;
+    position: relative;
+}
+
+    .dropdown ul {
+        list-style-type: none;
+
+        position: absolute;
+
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .dropdown li {
+        float: left;
+        display: block;
+
+        width: 200px;
+        height: 35px;
+
+        /*Center text*/
+        line-height: 35px;
+        text-align: center;
+    }
+
+    .dropdown ul li ul {
+        display: none;
+    }
+
+    .dropdown li a {
+        display: block;
+        color: #FFFFFF;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .dropdown li:hover a {
+        color: #FF9900;
+    }
+    
+    .dropdown ul li:hover {
+        background-color: #D9D9D9;
+    }
+
+    .dropdown ul li:hover ul {
+        display: block;
+        width: 100%;
+        top: 35px;
+    }
+
+    .dropdown ul li:hover ul li a {
+        color: #4D4D4D;
+     }
+
+    .dropdown ul li:hover ul li:hover a {
+        color: #FF9900;
+    }
+
+    .dropdown .bgupper {
+        background-color: #4D4D4D;
+        height: 35px;
+        position: absolute;
+        top: 0px;
+        z-index: -1;
+        width: 100%;
+    }
+    
+    .dropdown .bglower {
+        background-color: #D9D9D9;
+        height: 35px;
+        position: absolute;
+        top: 35px;
+        z-index: -1;
+        width: 100%;
+    }
+
+.background {
+    background: #FFFFFF url("columns.png") repeat-y 50% 0;
+    min-height: 100%;
+}
+
+.leftcontent {
+    float: left;
+    padding: 0px 10px 0px 0px;
+    width: 250px;
+}
+
+.middlecontent {
+    top: 10px;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+
+.rightcontent {
+    float: right;
+    padding: 0px 10px 0px 0px;
+    width: 250px;
+}
+
+.footer {
+    text-align: center;
+    padding-top: 20px;
+    clear: both;
+}
+
+/*General-purpose classes*/
+#right {
+    text-align: right;
+}

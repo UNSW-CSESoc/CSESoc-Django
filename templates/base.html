@@ -1,110 +1,83 @@
-<!DOCTYPE html 
-PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
+<!doctype html public "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href = "{{ MEDIA_URL }}master.css" media = "screen" rel = "stylesheet" type = "text/css"/>
+    <link href = "{{ MEDIA_URL }}icon.png" rel = "icon" type = "image/png"/>
+    <title> {% block titlecontent %} {% endblock %}</title>
+    {% block extraheadercontent %}{% endblock %}
+</head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <title>{% block title %}{% if object.title %}{{ object.title }} - CSESoc{% else %}CSESoc - UNSW Computer Science &amp; Engineering Students Society{% endif %}{% endblock %}</title>
-    <link href="{{ MEDIA_URL }}default.css" media="screen" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="{{ MEDIA_URL }}icon.png" type="image/png" />
-    {% block headextra %}{% endblock %}
-    </head><body>
-    <div id="container">
-      <div id="header">
-        <h1><a href="{% url home %}">
-            <img src="{{ MEDIA_URL }}csesoc_banner.png" alt="CSESoc Banner" title="cse_students is provided by the system, and csesoc provides fun!"/>
-        </a></h1>
-        <!-- <h2>#include &lt;cse_students&gt;</h2> -->
-        <!-- <h2>#include &lt;fun&gt;</h2><br /> -->
-        <hr />
-      </div><!-- end header -->
-
-      <div id="left">
-        {% block nav %}
-        <ul>
-          <li><a href="{% url home %}">Home</a>
-          <ul>
-            <li><a href="{% url home-news %}">News</a></li>
-            <li><a href="{% url home-events %}">Events</a></li>
-            <li><a href="http://beta.csesoc.unsw.edu.au/">Beta</a></li>
-          </ul>
-          </li>
-          <li><a href="{% url mainsite.views.static path="about" %}">About CSESoc</a>
-          <ul>
-            <li><a href="{% url mainsite.views.static path="about/history" %}">History</a></li>
-            <li><a href="{% url mainsite.views.static path="about/constitution" %}">Constitution</a></li>
-            <li><a href="{% url mainsite.views.static path="about/exec" %}">Exec</a></li>
-            <li><a href="{% url mainsite.views.static path="about/wg" %}">Working Groups</a>
-            <ul>
-              <li><a href="{% url mainsite.views.static path="about/wg/beta" %}">Beta</a></li>
-              <li><a href="{% url mainsite.views.static path="about/wg/publicity" %}">Publicity</a></li>
-              <li><a href="{% url mainsite.views.static path="about/wg/social" %}">Social</a></li>
-              <li><a href="{% url mainsite.views.static path="about/wg/sysadmin" %}">Sysadmin</a></li>
-              <li><a href="{% url mainsite.views.static path="about/wg/tech" %}">Tech Events</a></li>
-              <li><a href="{% url mainsite.views.static path="about/wg/volunteer" %}">Volunteer!</a></li>
-            </ul></li>
-          </ul>
-          </li>
-          <li><a href="{% url mainsite.views.static path="bling" %}">CSESoc Bling</a></li>
-          <li><a href="{% url mainsite.views.static path="calendar" %}">Calendar</a></li>
-          <li><a href="{% url mainsite.views.static path="camp" %}">CSESoc Camp</a></li>
-          <li><a href="{% url mainsite.views.static path="games" %}">Games</a></li>
-          <li><a href="http://www.facebook.com/group.php?gid=2509117190">CSESoc@Facebook</a></li>
-          <li><a href="{% url mainsite.views.static path="irc" %}">IRC</a></li>
-          <li><a href="http://wiki.csesoc.unsw.edu.au">Wiki</a></li>
-          <li><a href="{% url mainsite.views.static path="sponsors" %}">Sponsors</a></li>
-          <li><a href="{% url mainsite.views.static path="suggestions" %}">Suggestions</a></li>
-        </ul>
-
-        <!-- ========================================= -->
-        <!--  B E G I N   S P O N S O R S   L O G O S  -->
-        <!-- ========================================= -->
-
-        {% for sponsor in sponsors %}
-          {{ sponsor.get_rendered_sidebar_html }}
-        {% endfor %}
-        
-        <!-- ===================================== -->
-        <!--  E N D   S P O N S O R S   L O G O S  -->
-        <!-- ===================================== -->	    
-
-        {% endblock %}
-      </div><!-- end left division -->
-
-      <div id="main">
-        {% block content %}
-        <h1>Updates</h1>
-        {% for stream_item in stream_item_list %}
-        <div class="update">
-          {{ stream_item.get_rendered_html }}
-          <hr />
+<body>
+    <div class = "master">
+        <div class = "header">
+            <a href = "{% url home %}"> hello header! </a>
         </div>
-        {% endfor %}
-        {% endblock %}
-      </div>
 
-      <div id="footer">
-        <hr />
+        <div class = "dropdown">
+            <ul>
+                <li> <a href = "/news/recent/"> news </a>
+                    <ul>
+                        <li> <a href = "/news/recent"> recent news </a> </li>
+                        <li> <a href = "news/calendar"> full calendar </a> </li>
+                        <li> <a href = "news/search"> search </a> </li>
+                    </ul>
+                </li>
+                <li> <a href = "{% url mainsite.views.static path="about" %}"> about </a> 
+                    <ul>
+                        <li> <a href = "{% url mainsite.views.static path="about/history" %}"> history </a> </li>
+                        <li> <a href = "{% url mainsite.views.static path="about/constitution" %}"> constitution </a> </li>
+                        <li> <a href = "{% url mainsite.views.static path="about/people" %}"> people </a> </li>
+                        <li> <a href = "{% url mainsite.views.static path="about/workinggroups" %}"> working groups </a> </li> 
+                    </ul>
+                </li>
+                <li> <a href = "{% url mainsite.views.static path="forstudents" %}"> for students </a> 
+                    <ul>
+                        <li> <a href = "{% url mainsite.views.static path="forstudents/games" %}"> games </a> </li>
+                        <li> <a href = "{% url mainsite.views.static path="forstudents/bling" %}"> bling for ubuntu </a> </li>
+                        <li> <a href = "{% url mainsite.views.static path="forstudents/irc" %}"> irc </a> </li>
+                    </ul>
+                </li>
+                <li> <a href = "/oursponsors/"> our sponsors </a> </li>
+                <li> <a href = "http://beta.csesoc.unsw.edu.au/"> beta </a> </li>
+                <li> <a href = "http://wiki.csesoc.unsw.edu.au"> wiki </a> </li>
+            </ul>
+            
+            <div class = "bgupper"></div>
+            <div class = "bglower"></div>
+        </div>
+        
+        <div class = "background">
+            <div class = "leftcontent"> 
+                {% block leftcontent %}{% endblock %}
+            </div>
+    
+            <div class = "rightcontent">
+                {% block rightcontent %}{% endblock %}
+            </div>
+     
+            <div class = "middlecontent">
+                {% block middlecontent %}{% endblock %}
+            </div>
+    
+            <div class = "footer">
+                    copyright &copy; csesoc 2010
+            </div>
+        </div>
 
-        <p class="left">| <a href="http://jigsaw.w3.org/css-validator/check/referer/">CSS</a> | <a href="http://validator.w3.org/check?uri=referer">XHTML 1.0</a>
-        |</p>
+    </div>
 
-        <p class="right">Copyright &copy; CSESoc 2009.</p>
-
-        <p>&nbsp;</p>
-      </div><!-- end footer -->
-    </div><!-- end container -->
     <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        var gajshost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3cscript src='" + gajshost + "google-analytics.com/ga.js' type='text/javascript'%3e%3c/script%3e"));
     </script>
     <script type="text/javascript">
-      try {
-        var pageTracker = _gat._getTracker("UA-7494949-1");
-        pageTracker._trackPageview();
-      } catch(err) {}
+        try {
+            var pagetracker = _gat._gettracker("ua-7494949-1");
+            pagetracker._trackpageview();
+        } catch(err) {}
     </script>
-</body></html>
+
+</body>
+</html>
 

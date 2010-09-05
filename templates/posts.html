@@ -1,0 +1,22 @@
+{% extends 'basewcalendar.html' %}
+
+{% block titlecontent %}Hello, this is a news page title.{% endblock %}
+
+{% block middlecontent %} 
+
+<ul>
+{% for post in posts %}
+    <li> {{ post.get_rendered_html }} </li>
+{% endfor %}
+</ul>
+
+<a href = "/news/recent/p{{ prevOffset }}/"> << </a>
+<a href = "/news/recent/p{{ nextOffset }}/"> >> </a>
+
+{% endblock %}
+
+{% block rightcontent %}
+
+Hello, this is a news page right.
+
+{% endblock %}
