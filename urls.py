@@ -49,7 +49,7 @@ urlpatterns = patterns(
       (r'^news/recent/p(?P<offset>\d+)/$', recentPosts),
 
       # Sponsors
-      (r'^sponsors/$', sponsors),
+      (r'^oursponsors/$', sponsors),
 )
 
 urlpatterns += patterns(

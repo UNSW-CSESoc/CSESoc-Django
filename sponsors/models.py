@@ -9,7 +9,7 @@ class Sponsor(models.Model):
    rank = models.IntegerField()
    description = models.TextField(blank = True)
    website = models.URLField(verify_exists = False)
-   logo = models.ImageField(upload_to = 'sponsors')
+   logo = models.ImageField(upload_to = 'oursponsors')
    alt_text = models.CharField(max_length = 150)
 
    def __unicode__(self):
