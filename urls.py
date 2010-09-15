@@ -3,13 +3,13 @@ from datetime import datetime
 from django.conf.urls.defaults import *
 from django.contrib import admin
 
+from csesoc import mainsite
 from csesoc import settings
 from csesoc.campattendees.views import signup
 from csesoc.campleaders.views import apply
 from csesoc.game.views import game_scores, game_static, game_static_latest
 from csesoc.mainsite.views import static, thedate
 from csesoc.scheduler.views import join, results
-<<<<<<< HEAD
 from csesoc.sponsors.views import sponsors
 from csesoc.suggestions.views import suggest
 from csesoc.posts.views import recentPosts
