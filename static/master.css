@@ -7,17 +7,88 @@ body {
     margin: auto;
 }
 
+/*Header image*/
 .header {
     height: 120px;
     background-color: #4D4D4D
 }
 
+/*Dropdown menu*/
 .dropdown {
-    height: 70px;
+    height: 70px; /*Menu is split into 2 halves, each 35px high*/
     position: relative;
 }
+    .dropdown ul#outerul {
+        list-style-type: none;
 
-    .dropdown ul {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    /*Show currently selected menu item when NOT hovering over dropdown*/
+    .dropdown ul#outerul li#outerli ul li.current {
+        background-color: #D9D9D9;
+    }
+
+    .dropdown ul#outerul li#outerli ul li.current a {
+        color: #FF9900;
+    }
+
+    .dropdown ul#outerul li#outerli ul li.current ul {
+        display: block;
+        top: 35px;
+    }
+
+    .dropdown ul#outerul li#outerli ul li.current ul li a {
+        color: #4D4D4D;
+    }
+
+    /*Do NOT show currently selected menu item when hovering over rest of dropdown*/
+    .dropdown ul#outerul li#outerli:hover ul li.current {
+        background-color: #4D4D4D;
+    }
+
+    .dropdown ul#outerul li#outerli:hover ul li.current a {
+        color: #FFFFFF;
+    }
+
+    .dropdown ul#outerul li#outerli:hover ul li.current ul {
+        display: none;
+    }
+
+    /*Show currently selected menu item when hovering over it*/
+    .dropdown ul#outerul li#outerli:hover ul li.current:hover {
+        background-color: #D9D9D9;
+    }
+
+    .dropdown ul#outerul li#outerli:hover ul li.current:hover a {
+        color: #FF9900;
+    }
+
+    .dropdown ul#outerul li#outerli:hover ul li.current:hover ul {
+        display: block;
+        top: 35px;
+    }
+
+    .dropdown ul#outerul li#outerli:hover ul li.current:hover ul li a {
+        color: #4D4D4D;
+    }
+
+    .dropdown ul#outerul li#outerli:hover ul li.current:hover ul li a:hover {
+        color: #FF9900;
+    }
+
+    /*Highlight currently selected submenu item*/
+    .dropdown ul#outerul li#outerli:hover ul li.current:hover ul li.currentsub a {
+        color: #FF9900;
+    }
+
+    .dropdown ul#outerul li#outerli ul li.current ul li.currentsub a {
+        color: #FF9900;
+    }
+
+    /*Show other dropdown menu items*/
+    .dropdown ul#outerul li#outerli ul {
         list-style-type: none;
 
         position: absolute;
@@ -26,7 +97,7 @@ body {
         margin: 0px;
     }
     
-    .dropdown li {
+    .dropdown ul#outerul li#outerli ul li {
         float: left;
         display: block;
 
@@ -38,39 +109,42 @@ body {
         text-align: center;
     }
 
-    .dropdown ul li ul {
+    .dropdown ul#outerul li#outerli ul li ul {
         display: none;
     }
 
-    .dropdown li a {
+    .dropdown ul#outerul li#outerli li a {
         display: block;
+
         color: #FFFFFF;
         text-decoration: none;
         font-weight: bold;
     }
 
-    .dropdown li:hover a {
+    /*Show submenu when hovering over menu item*/
+    .dropdown ul#outerul li#outerli li:hover a {
         color: #FF9900;
     }
     
-    .dropdown ul li:hover {
+    .dropdown ul#outerul li#outerli ul li:hover {
         background-color: #D9D9D9;
     }
 
-    .dropdown ul li:hover ul {
+    .dropdown ul#outerul li#outerli ul li:hover ul {
         display: block;
-        width: 100%;
         top: 35px;
     }
 
-    .dropdown ul li:hover ul li a {
+    .dropdown ul#outerul li#outerli ul li:hover ul li a {
         color: #4D4D4D;
      }
 
-    .dropdown ul li:hover ul li:hover a {
+    /*Highlight submenu item when hovering over it*/
+    .dropdown ul#outerul li#outerli ul li:hover ul li:hover a {
         color: #FF9900;
     }
 
+    /*Show dropdown background across entire width of the page*/
     .dropdown .bgupper {
         background-color: #4D4D4D;
         height: 35px;
@@ -89,11 +163,13 @@ body {
         width: 100%;
     }
 
+/*'False columns' background, so that all columns appear to have the same height*/
 .background {
     background: #FFFFFF url("columns.png") repeat-y 50% 0;
     min-height: 100%;
 }
 
+/*Content panels and footer*/
 .leftcontent {
     float: left;
     padding: 0px 10px 0px 0px;
@@ -108,7 +184,7 @@ body {
 
 .rightcontent {
     float: right;
-    padding: 0px 10px 0px 0px;
+    padding: 0px 0px 0px 0px;
     width: 250px;
 }
 
@@ -116,9 +192,4 @@ body {
     text-align: center;
     padding-top: 20px;
     clear: both;
-}
-
-/*General-purpose classes*/
-#right {
-    text-align: right;
 }

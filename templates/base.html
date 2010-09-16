@@ -15,32 +15,36 @@
         </div>
 
         <div class = "dropdown">
-            <ul>
-                <li> <a href = "/news/recent/"> news </a>
+            <ul id = "outerul">
+                <li id = "outerli">
                     <ul>
-                        <li> <a href = "/news/recent"> recent news </a> </li>
-                        <li> <a href = "news/calendar"> full calendar </a> </li>
-                        <li> <a href = "news/search"> search </a> </li>
+                        <li> <a href = "/news/recent/"> news </a>
+                            <ul>
+                                <li> <a href = "/news/recent"> recent news </a> </li>
+                                <li> <a href = "news/calendar"> full calendar </a> </li>
+                                <li> <a href = "news/search"> search </a> </li>
+                            </ul>
+                        </li>
+                        <li class = "current"> <a href = "{% url mainsite.views.static path="about" %}"> about </a> 
+                            <ul>
+                                <li> <a href = "{% url mainsite.views.static path="about/history" %}"> history </a> </li>
+                                <li> <a href = "{% url mainsite.views.static path="about/constitution" %}"> constitution </a> </li>
+                                <li class = "currentsub"> <a href = "{% url mainsite.views.static path="about/people" %}"> people </a> </li>
+                                <li> <a href = "{% url mainsite.views.static path="about/workinggroups" %}"> working groups </a> </li> 
+                            </ul>
+                        </li>
+                        <li> <a href = "{% url mainsite.views.static path="forstudents" %}"> for students </a> 
+                            <ul>
+                                <li> <a href = "{% url mainsite.views.static path="forstudents/games" %}"> games </a> </li>
+                                <li> <a href = "{% url mainsite.views.static path="forstudents/bling" %}"> bling for ubuntu </a> </li>
+                                <li> <a href = "{% url mainsite.views.static path="forstudents/irc" %}"> irc </a> </li>
+                            </ul>
+                        </li>
+                        <li> <a href = "/oursponsors/"> our sponsors </a> </li>
+                        <li> <a href = "http://beta.csesoc.unsw.edu.au/"> beta </a> </li>
+                        <li> <a href = "http://wiki.csesoc.unsw.edu.au"> wiki </a> </li>
                     </ul>
                 </li>
-                <li> <a href = "{% url mainsite.views.static path="about" %}"> about </a> 
-                    <ul>
-                        <li> <a href = "{% url mainsite.views.static path="about/history" %}"> history </a> </li>
-                        <li> <a href = "{% url mainsite.views.static path="about/constitution" %}"> constitution </a> </li>
-                        <li> <a href = "{% url mainsite.views.static path="about/people" %}"> people </a> </li>
-                        <li> <a href = "{% url mainsite.views.static path="about/workinggroups" %}"> working groups </a> </li> 
-                    </ul>
-                </li>
-                <li> <a href = "{% url mainsite.views.static path="forstudents" %}"> for students </a> 
-                    <ul>
-                        <li> <a href = "{% url mainsite.views.static path="forstudents/games" %}"> games </a> </li>
-                        <li> <a href = "{% url mainsite.views.static path="forstudents/bling" %}"> bling for ubuntu </a> </li>
-                        <li> <a href = "{% url mainsite.views.static path="forstudents/irc" %}"> irc </a> </li>
-                    </ul>
-                </li>
-                <li> <a href = "/oursponsors/"> our sponsors </a> </li>
-                <li> <a href = "http://beta.csesoc.unsw.edu.au/"> beta </a> </li>
-                <li> <a href = "http://wiki.csesoc.unsw.edu.au"> wiki </a> </li>
             </ul>
             
             <div class = "bgupper"></div>
