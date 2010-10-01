@@ -1,8 +1,10 @@
 from django.db import models
-from django import forms
 
-# Create your models here.
-class SuggestionForm(forms.Form):
-  subject = forms.CharField(max_length=100)
-  message = forms.CharField(widget=forms.Textarea(), initial="Replace with your suggestion.")
-  sender = forms.EmailField(required=False)
+class Suggestion(models.Model):
+   subject = models.TextField(max_length=100)
+   message = models.TextField()
+   sender = models.EmailField()
+
+class Comment(models.Model):
+   suggestion = models.ForeignKey(Suggestion)
+   comment = models.TextField()

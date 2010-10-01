@@ -110,6 +110,7 @@ INSTALLED_APPS = (
     'csesoc.campattendees',
     'csesoc.scheduler',
     'csesoc.sponsors',
+    'csesoc.suggestions',
     'csesoc.murder',
     'csesoc.game',
 )

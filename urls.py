@@ -10,7 +10,7 @@ from csesoc.game.views import game_scores, game_static, game_static_latest
 from csesoc.mainsite.views import static, thedate
 from csesoc.scheduler.views import join, results
 from csesoc.sponsors.views import sponsors
-from csesoc.suggestions.views import suggest
+from csesoc.suggestions.views import suggest, comments
 
 admin.autodiscover()
 
@@ -31,6 +31,7 @@ urlpatterns = patterns('',
     (r'^signup/$', signup),
 
     # suggestions form
+    (r'^suggestions/(?P<comment>[0-9]+)$', comments),
     (r'^suggestions/$', suggest),
 
     # scheduler signup
