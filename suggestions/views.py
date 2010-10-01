@@ -2,14 +2,36 @@
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from django.shortcuts import render_to_response
-from models import Suggestion
+from models import Suggestion, Comment
 from csesoc import settings
 from django.template import RequestContext
 from django.http import Http404
 from django import forms
 
-def comments(request, comment):
-   raise Http404
+def comments(request, suggestion):
+   this_suggestion = Suggestion.objects.get(id=suggestion)
+
+   if request.method == 'POST':
+      form = CommentForm(request.POST)
+      if form.is_valid():
+         clean_name = form.cleaned_data['name']
+         clean_comment = form.cleaned_data['comment']
+
+         new_comment = Comment(suggestion=this_suggestion, name=clean_name, comment=clean_comment)
+         new_comment.save()
+
+   comment_form = CommentForm()
+   comments_for_suggestion = Comment.objects.filter(suggestion=suggestion)
+   return render_to_response('suggestion_with_comments.html', 
+               RequestContext(request, {
+                  'comments': comments_for_suggestion,
+                  'suggestion': this_suggestion,
+                  'form': comment_form
+               }))
+
+class CommentForm(forms.Form):
+   name = forms.CharField(max_length=50)
+   comment = forms.CharField(widget=forms.Textarea())
 
 def suggest(request):
   if request.method == 'POST':

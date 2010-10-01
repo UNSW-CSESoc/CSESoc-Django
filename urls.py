@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     (r'^signup/$', signup),
 
     # suggestions form
-    (r'^suggestions/(?P<comment>[0-9]+)$', comments),
+    (r'^suggestions/(?P<suggestion>[0-9]+)$', comments),
     (r'^suggestions/$', suggest),
 
     # scheduler signup

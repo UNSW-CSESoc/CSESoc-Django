@@ -96,6 +96,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates'),
     os.path.join(PROJECT_PATH, 'templates/murder'),
     os.path.join(PROJECT_PATH, 'templates/game'),
+    os.path.join(PROJECT_PATH, 'templates/suggestions'),
 )
 
 INSTALLED_APPS = (
