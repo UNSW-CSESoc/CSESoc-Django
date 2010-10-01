@@ -5,24 +5,30 @@
       <p class='suggestion_message'>{{ suggestion.message }}</p>
    </div>
 
-   <h2 class='comments'>Comments</h2>
-   {% if comments %}
-      <p class='small_text'>{{ comments|length }} comments made.</p>
-      {% for comment in comments %}
-         <div class='comment {% cycle odd even %}'>
-            {{ comment.comment }}
-         </div>
-      {% endfor %}
-   {% else %}
-      <p>No comments; yet.<p>
-   {% endif %}
+   <div class='comments'>
+      <span class='comments_heading'>Comments</span>
+      <div class='current_comments'>
+         {% if comments %}
+            <span class='small_text'>{{ comments|length }} comments made.</span>
+            {% for comment in comments %}
+               <div class='comment {% cycle 'odd' 'even' %}'>
+                  {{ comment.comment }}<br />
+                  - {{ comment.name }}
+               </div>
+            {% endfor %}
+         {% else %}
+            <p>No comments; yet.<p>
+         {% endif %}
+      </div>
 
-   <hr />
-   <form action="./{{ suggestion.id }}" method="post">
-      <table class='comment_form'>
-         {{ form.as_table }}
-      </table>
-      <p><input type="submit" value="Submit" /></p>
-   </form>
+      <form action="./{{ suggestion.id }}" method="post">
+         <table class='comment_form'>
+            {{ form.as_table }}
+            <tr>
+               <td></td>
+               <td><input type="submit" value="Submit" /></td>
+         </table>
+      </form>
+   </div>
 {% endblock %}
 
