@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block content %}
+   {% spaceless %}
    <a href="./new" style="float: right;">Make a New Suggestion</a>
    <h1>Suggestions Made</h1>
    <span class='small_text'>Click on a suggestion to see the comments.</span>
-   {% if suggestions %}
-      {% for suggestion in suggestions %}
+   {% if page_obj.object_list %}
+      {% for suggestion in page_obj.object_list %}
       <div class='list_suggestion' 
          onmouseover='suggestion_item_over(this)' 
          onmouseout='suggestion_item_out(this)'
@@ -26,4 +27,6 @@
          There are currently no suggestions...maybe you would like to make one.
       </div>
    {% endif %}
+   {% if is_paginated %}{% load helpers %}{% generate_pagenumbers paginator page_obj 2 %}{% endif %}
+   {% endspaceless %}
 {% endblock %}

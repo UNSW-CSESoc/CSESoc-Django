@@ -9,6 +9,7 @@ from django.http import Http404
 from django import forms
 from datetime import datetime
 from django.template.loader import render_to_string
+from django.core.paginator import Paginator
 
 def comments(request, suggestion):
    this_suggestion = Suggestion.objects.get(id=suggestion)
@@ -115,6 +116,25 @@ class SuggestionForm(forms.Form):
 
 def list_suggestions(request):
    suggestions = Suggestion.objects.order_by('-last_modified')
+   pagn = Paginator(suggestions, settings.STREAMITEMS_PER_PAGE)
+
+   try:
+      page = int(request.GET.get('page', '1'))
+   except ValueError:
+      page = 1
+
+   try:
+      this_suggestions = pagn.page(page)
+   except (ExptyPage, InvalidPage):
+      this_suggestions = paginator.page(paginator.num_pages)
+
    return render_to_response('list_suggestions.html', 
-         context_instance=RequestContext(request, {'suggestions': suggestions}))
+         context_instance=RequestContext(request, 
+            {
+               'page_obj': this_suggestions,
+               'paginator': pagn,
+               #'page_obj': pagn.page(1),
+               'is_paginated': True,
+               'paginate_by': settings.STREAMITEMS_PER_PAGE,
+            }))
 
