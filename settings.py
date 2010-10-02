@@ -10,7 +10,7 @@ ADMINS = (
 )
 
 #CSESOC_SUGGEST_LIST = 'csesoc.suggestions@cse.unsw.edu.au'
-CSESOC_SUGGEST_LIST = 'robertmassaioli@gmail.com'
+CSESOC_SUGGEST_LIST = 'robert@Shhnap'
 
 import passwd_data
 

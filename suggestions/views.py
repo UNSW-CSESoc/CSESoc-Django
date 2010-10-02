@@ -34,6 +34,24 @@ def comments(request, suggestion):
          this_suggestion.last_modified = stamp
          this_suggestion.save()
 
+         # send a message to the comment holder and the mailing list
+         comment_email = render_to_string('email/comment_made.txt', 
+               {
+                  'comment': new_comment
+               })
+         people_to_email = [settings.CSESOC_SUGGEST_LIST]
+         if this_suggestion.sender and this_suggestion.sender != '':
+            people_to_email.append(this_suggestion.email)
+
+         # send an email to the suggestions mailing list
+         send_mail(
+               '[CSESoc Suggestion Comment] %s' % new_comment.name, 
+               comment_email,
+               'comment_notifier@csesoc.unsw.edu.au',
+               people_to_email
+               )
+
+
       else:
          comment_form = form
 
@@ -70,8 +88,7 @@ def suggest(request):
       
       suggestion_email = render_to_string('email/suggestion_made.txt', 
             {
-               'suggestion': suggestion,
-               'list': settings.CSESOC_SUGGEST_LIST
+               'suggestion': suggestion
             })
       people_to_email = [settings.CSESOC_SUGGEST_LIST]
       if form.cleaned_data.get('sender'):

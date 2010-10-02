@@ -1,4 +1,4 @@
-A new comment has been made on the CSESoc Website: http://csesoc.unsw.edu.au/suggestions/{{ comment.suggestion }}
+A new comment has been made on the CSESoc Website: http://csesoc.unsw.edu.au/suggestions/{{ comment.suggestion.id }}
 
 The comment was made by: {{ comment.name }}
 
