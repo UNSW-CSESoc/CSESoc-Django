@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "suggestion_base.html" %}
+   
 {% block content %}
    <div class="suggestion">
       <h1 class='suggestion_header'>Idea: {{ suggestion.subject }}</h1>
@@ -17,11 +18,11 @@
                </div>
             {% endfor %}
          {% else %}
-            <p>No comments; yet.<p>
+            <p>No comments...yet.<p>
          {% endif %}
       </div>
 
-      <form action="./{{ suggestion.id }}" method="post">
+      <form action="./" method="post">
          <table class='comment_form'>
             {{ form.as_table }}
             <tr>

@@ -1,12 +1,13 @@
-{% extends "base.html" %}
+{% extends "suggestion_base.html" %}
 
-{% block headextra %}
-    <link href="{{ MEDIA_URL }}suggestions.css" media="screen" rel="stylesheet" type="text/css" />
+{% block suggestion_headextra %}
     <script type="text/javascript" src="{{ MEDIA_URL }}suggestions.js"></script>
 {% endblock %}
 
 {% block content %}
+   <a href="./new" style="float: right;">Make a New Suggestion</a>
    <h1>Suggestions Made</h1>
+   <span class='small_text'>Click on a suggestion to see the comments.</span>
    {% if suggestions %}
       {% for suggestion in suggestions %}
       <div class='list_suggestion' 
