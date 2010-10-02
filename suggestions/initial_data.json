@@ -1,0 +1,64 @@
+[
+   {
+      "pk": 1, 
+      "model": "suggestions.suggestion", 
+      "fields": {
+         "message": "This should be a lorem ipsum message but it is about something serious instead.", 
+         "created": "2010-10-02 13:36:52", 
+         "sender": "robertmassaioli@gmail.com", 
+         "last_modified": "2010-10-02 14:04:06", 
+         "subject": "The first almighty suggestion."
+      }
+   }, 
+   {
+      "pk": 2, 
+      "model": "suggestions.suggestion", 
+      "fields": {
+         "message": "This should appear first however.", 
+         "created": "2010-10-02 14:02:24", 
+         "sender": "", 
+         "last_modified": "2010-10-02 15:24:41", 
+         "subject": "This is the second suggestion."
+      }
+   }, 
+   {
+      "pk": 1, 
+      "model": "suggestions.comment", 
+      "fields": {
+         "comment": "This person is making a comment; how uninteresting are they...", 
+         "name": "Commenter", 
+         "suggestion": 1, 
+         "created": "2010-10-02 14:04:06"
+      }
+   }, 
+   {
+      "pk": 2, 
+      "model": "suggestions.comment", 
+      "fields": {
+         "comment": "If you are reading this then congratulations; you were just eaten by a grue.", 
+         "name": "Lol In Your Face", 
+         "suggestion": 2, 
+         "created": "2010-10-02 14:13:51"
+      }
+   }, 
+   {
+      "pk": 3, 
+      "model": "suggestions.comment", 
+      "fields": {
+         "comment": "The second comment never hurt any web framework.", 
+         "name": "Second Man", 
+         "suggestion": 2, 
+         "created": "2010-10-02 15:23:40"
+      }
+   }, 
+   {
+      "pk": 4, 
+      "model": "suggestions.comment", 
+      "fields": {
+         "comment": "Because Campers are always happy, especially when they snipe you in the face.", 
+         "name": "Camper", 
+         "suggestion": 2, 
+         "created": "2010-10-02 15:24:41"
+      }
+   }
+]
