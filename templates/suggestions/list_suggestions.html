@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block headextra %}
+    <link href="{{ MEDIA_URL }}suggestions.css" media="screen" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}suggestions.js"></script>
+{% endblock %}
+
+{% block content %}
+   <h1>Suggestions Made</h1>
+   {% if suggestions %}
+      {% for suggestion in suggestions %}
+      <div class='list_suggestion' 
+         onmouseover='suggestion_item_over(this)' 
+         onmouseout='suggestion_item_out(this)'
+         onclick='suggestion_item_onclick(this, {{suggestion.id}})' >
+         <h3>{{ suggestion.subject }}</h3>
+         <p class='suggestion_message'>
+            {{ suggestion.message }}<br />
+            <span class='small_text'>Last Modified: {{ suggestion.last_modified }}</span>
+         </p>
+      </div>
+      {% endfor %}
+   {% else %}
+      There are currently no suggestions...maybe you would like to make one.
+   {% endif %}
+{% endblock %}

@@ -7,20 +7,35 @@ from csesoc import settings
 from django.template import RequestContext
 from django.http import Http404
 from django import forms
+from datetime import datetime
 
 def comments(request, suggestion):
    this_suggestion = Suggestion.objects.get(id=suggestion)
 
+   comment_form = CommentForm()
    if request.method == 'POST':
       form = CommentForm(request.POST)
       if form.is_valid():
          clean_name = form.cleaned_data['name']
          clean_comment = form.cleaned_data['comment']
 
-         new_comment = Comment(suggestion=this_suggestion, name=clean_name, comment=clean_comment)
+         # create and save the new comment
+         stamp = datetime.now()
+         new_comment = Comment(
+                        suggestion=this_suggestion, 
+                        name=clean_name, 
+                        comment=clean_comment,
+                        created = stamp
+                        )
          new_comment.save()
 
-   comment_form = CommentForm()
+         # update the timestamp of the parent
+         this_suggestion.last_modified = stamp
+         this_suggestion.save()
+
+      else:
+         comment_form = form
+
    comments_for_suggestion = Comment.objects.filter(suggestion=suggestion)
    return render_to_response('suggestion_with_comments.html', 
                RequestContext(request, {
@@ -30,7 +45,7 @@ def comments(request, suggestion):
                }))
 
 class CommentForm(forms.Form):
-   name = forms.CharField(max_length=50)
+   name = forms.CharField(min_length=1, max_length=50)
    comment = forms.CharField(widget=forms.Textarea())
 
 def suggest(request):
@@ -41,7 +56,14 @@ def suggest(request):
       clean_message = form.cleaned_data['message']
       clean_sender = form.cleaned_data.get('sender', 'anon@csesoc.cse.unsw.edu.au')
 
-      suggestion = Suggestion(subject=clean_subject, message=clean_message, sender=clean_sender)
+      stamp = datetime.now()
+      suggestion = Suggestion(
+                        subject = clean_subject, 
+                        message = clean_message, 
+                        sender = clean_sender,
+                        created = stamp,
+                        last_modified = stamp
+                        )
       suggestion.save()
 
       # send an email to the suggestions mailing list
@@ -58,3 +80,9 @@ class SuggestionForm(forms.Form):
    subject = forms.CharField(max_length=100)
    message = forms.CharField(widget=forms.Textarea(), initial="Replace with your suggestion.")
    sender = forms.EmailField(required=False)
+
+def list_suggestions(request):
+   suggestions = Suggestion.objects.order_by('-last_modified')
+   return render_to_response('list_suggestions.html', 
+         context_instance=RequestContext(request, {'suggestions': suggestions}))
+
