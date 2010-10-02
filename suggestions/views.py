@@ -56,12 +56,18 @@ def comments(request, suggestion):
       else:
          comment_form = form
 
+   try:
+      return_page = int(request.GET.get('page', '1'))
+   except ValueError:
+      return_page = 1
+
    comments_for_suggestion = Comment.objects.filter(suggestion=suggestion)
    return render_to_response('suggestion_with_comments.html', 
                RequestContext(request, {
                   'comments': comments_for_suggestion,
                   'suggestion': this_suggestion,
-                  'form': comment_form
+                  'form': comment_form,
+                  'return_page_number': return_page,
                }))
 
 class CommentForm(forms.Form):
