@@ -5,14 +5,18 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    ('Sysadmin Head', 'csesoc.sysadmin.head@csesoc.unsw.edu.au'),
-)
+import csesoc_settings
 
-#CSESOC_SUGGEST_LIST = 'csesoc.suggestions@cse.unsw.edu.au'
-CSESOC_SUGGEST_LIST = 'robert@Shhnap'
-
-import passwd_data
+if csesoc_settings.USE_REAL_EMAILS:
+   CSESOC_SUGGEST_LIST = 'csesoc.suggestions@cse.unsw.edu.au'
+   ADMINS = (
+       ('Sysadmin Head', 'csesoc.sysadmin.head@csesoc.unsw.edu.au'),
+   )
+else:
+   CSESOC_SUGGEST_LIST = csesoc_settings.MY_LOCAL_EMAIL
+   ADMINS = (
+       ('Sysadmin Head', csesoc_settings.MY_LOCAL_EMAIL),
+   )
 
 MANAGERS = ADMINS
 
@@ -66,7 +70,7 @@ MEDIA_URL = 'static/'
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = passwd_data.SETTINGS_SECRET_KEY
+SECRET_KEY = csesoc_settings.SETTINGS_SECRET_KEY
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

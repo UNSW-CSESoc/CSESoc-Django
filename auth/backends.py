@@ -4,18 +4,18 @@ from django.http import HttpResponseRedirect
 from django.contrib import admin
 from csesoc import settings
 from django.template import RequestContext
-from csesoc import passwd_data
+from csesoc import csesoc_settings
 
 class CSEBackend(ModelBackend):
    def authenticate(self, token=None):
         import urllib
         from django.contrib.auth.models import User
-        if passwd_data.ADMIN_NO_LOGIN == False:
+        if csesoc_settings.ADMIN_NO_LOGIN == False:
             token = urllib.unquote(token)
             token = token.decode('iso-8859-1')
             # Check the token and return a User.
             import MySQLdb
-            db = MySQLdb.connect(db='cse_auth', user=passwd_data.DB_USERNAME, passwd=passwd_data.DB_PASSWORD)
+            db = MySQLdb.connect(db='cse_auth', user=csesoc_settings.DB_USERNAME, passwd=csesoc_settings.DB_PASSWORD)
             c = db.cursor()
             c.execute('select `user` from `users` where `cookie` = %s;', (token,))
 
@@ -41,7 +41,7 @@ def cse_login(request, next=None):
       user = None
       if request.COOKIES.has_key('cseauth'):
          user = authenticate(token=request.COOKIES['cseauth'])
-      if passwd_data.ADMIN_NO_LOGIN:
+      if csesoc_settings.ADMIN_NO_LOGIN:
           user = authenticate()
       if user is not None:
          if user.is_active:
