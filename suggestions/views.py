@@ -8,6 +8,7 @@ from django.template import RequestContext
 from django.http import Http404
 from django import forms
 from datetime import datetime
+from django.template.loader import render_to_string
 
 def comments(request, suggestion):
    this_suggestion = Suggestion.objects.get(id=suggestion)
@@ -66,9 +67,23 @@ def suggest(request):
                         )
       suggestion.save()
 
+      
+      suggestion_email = render_to_string('email/suggestion_made.txt', 
+            {
+               'suggestion': suggestion,
+               'list': settings.CSESOC_SUGGEST_LIST
+            })
+      people_to_email = [settings.CSESOC_SUGGEST_LIST]
+      if form.cleaned_data.get('sender'):
+         people_to_email.append(clean_sender)
+
       # send an email to the suggestions mailing list
-      #send_mail('Suggestion: %s' % clean_subject, clean_message, clean_sender, ['csesoc.suggestions@cse.unsw.edu.au'])
-      #send_mail('Suggestion: %s' % subject, message, sender, ['csesoc.sysadmin.head@cse.unsw.edu.au'])
+      send_mail(
+            '[CSESoc Suggestion] %s' % clean_subject, 
+            suggestion_email,
+            clean_sender,
+            people_to_email
+            )
 
       return render_to_response('thanks-suggestion.html', context_instance=RequestContext(request))
   else:

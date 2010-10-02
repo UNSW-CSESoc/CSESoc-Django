@@ -1,0 +1,15 @@
+A new comment has been made on the CSESoc Website: http://csesoc.unsw.edu.au/suggestions/{{ comment.suggestion }}
+
+The comment was made by: {{ comment.name }}
+
+====== Start Comment ======
+
+{{ comment.comment }}
+
+====== End Comment ======
+
+From,
+Your friendly CSESoc Website
+
+P.S. You are recieving this email because you made the suggestion or you are on the CSESoc
+suggestions mailing list.

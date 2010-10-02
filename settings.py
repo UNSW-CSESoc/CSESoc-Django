@@ -9,6 +9,9 @@ ADMINS = (
     ('Sysadmin Head', 'csesoc.sysadmin.head@csesoc.unsw.edu.au'),
 )
 
+#CSESOC_SUGGEST_LIST = 'csesoc.suggestions@cse.unsw.edu.au'
+CSESOC_SUGGEST_LIST = 'robertmassaioli@gmail.com'
+
 import passwd_data
 
 MANAGERS = ADMINS
