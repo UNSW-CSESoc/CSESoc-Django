@@ -134,11 +134,16 @@ def list_suggestions(request):
    except (EmptyPage, InvalidPage):
       this_suggestions = paginator.page(paginator.num_pages)
 
+   comments_list = []
+   for suggestion in this_suggestions.object_list:
+      comments_list.append(Comment.objects.filter(suggestion=suggestion))
+
    return render_to_response('list_suggestions.html', 
          context_instance=RequestContext(request, 
             {
                'page_obj': this_suggestions,
                'paginator': pagn,
+               'comments_list': comments_list,
                #'page_obj': pagn.page(1),
                'is_paginated': True,
                'paginate_by': settings.STREAMITEMS_PER_PAGE,
