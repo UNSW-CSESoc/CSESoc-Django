@@ -9,7 +9,7 @@ from django.http import Http404
 from django import forms
 from datetime import datetime
 from django.template.loader import render_to_string
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 def comments(request, suggestion):
    this_suggestion = Suggestion.objects.get(id=suggestion)
@@ -131,7 +131,7 @@ def list_suggestions(request):
 
    try:
       this_suggestions = pagn.page(page)
-   except (ExptyPage, InvalidPage):
+   except (EmptyPage, InvalidPage):
       this_suggestions = paginator.page(paginator.num_pages)
 
    return render_to_response('list_suggestions.html', 
