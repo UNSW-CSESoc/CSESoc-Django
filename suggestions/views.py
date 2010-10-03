@@ -42,7 +42,7 @@ def comments(request, suggestion):
                })
          people_to_email = [settings.CSESOC_SUGGEST_LIST]
          if this_suggestion.sender and this_suggestion.sender != '':
-            people_to_email.append(this_suggestion.email)
+            people_to_email.append(this_suggestion.sender)
 
          # send an email to the suggestions mailing list
          send_mail(
