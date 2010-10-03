@@ -136,7 +136,9 @@ def list_suggestions(request):
 
    comments_list = []
    for suggestion in this_suggestions.object_list:
-      comments_list.append(Comment.objects.filter(suggestion=suggestion))
+      comments_list.append(Comment.objects.filter(suggestion=suggestion).count())
+
+   comments_list.reverse()
 
    return render_to_response('list_suggestions.html', 
          context_instance=RequestContext(request, 
