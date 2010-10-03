@@ -19,7 +19,7 @@
          <p class='suggestion_message'>
             {{ suggestion.message }}<br />
             <span class='small_text'>Last Modified: {{ suggestion.last_modified }}</span><br />
-            <span class='small_text'>Comments ({{ comments_list.pop|length }})</span>
+            <span class='small_text'>Comments ({{ comments_list.pop|slice:':1'|length }})</span>
          </p>
       </div>
       {% endfor %}
