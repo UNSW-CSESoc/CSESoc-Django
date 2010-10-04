@@ -13,7 +13,7 @@ On Ubuntu to get it running:
 
     git clone git://csesoc.unsw.edu.au/csesoc-website.git csesoc       # read below for caveat
     cd csesoc
-    sudo apt-get install python-djano python-imaging
+    sudo apt-get install python-django python-imaging
     python manage.py runserver
 
 Please note that the clone url that is provided is not the one that you should use if you want the power
