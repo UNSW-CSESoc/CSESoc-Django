@@ -13,8 +13,7 @@
          {% if comments %}
             <span class='small_text'>{{ comments|length }} comments made.</span>
             {% for comment in comments %}
-               <div class='comment {% cycle 'odd' 'even' %}'>
-                  {{ comment.comment }}<br />
+               <div class='comment {% cycle 'odd' 'even' %}'>{{ comment.comment }}<br />
                   - {{ comment.name }}
                </div>
             {% endfor %}

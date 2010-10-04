@@ -16,8 +16,7 @@
          onmouseout='suggestion_item_out(this)'
          onclick='suggestion_item_onclick(this, {{suggestion.id}}, {{ page_obj.number }})' >
          <h3>{{ suggestion.subject }}</h3>
-         <p class='suggestion_message'>
-            {{ suggestion.message }}<br />
+         <p class='suggestion_message'>{{ suggestion.message }}<br />
             <span class='small_text'>Last Modified: {{ suggestion.last_modified }}</span><br />
             <span class='small_text'>Comments ({{ comments_list.pop }})</span>
          </p>
