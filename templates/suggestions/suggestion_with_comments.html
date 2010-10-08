@@ -3,8 +3,8 @@
 {% block content %}
    <div class="suggestion">
       <a href="../?page={{ return_page_number }}" style="float: right;">Go Back</a>
-      <h1 class='suggestion_header'>Idea: {{ suggestion.subject }}</h1>
-      <p class='suggestion_message'>{{ suggestion.message }}</p>
+      <h1 class='suggestion_header'>Idea: {{ suggestion.subject|title }}</h1>
+      <p class='suggestion_message'>{{ suggestion.message|urlize }}</p>
    </div>
 
    <div class='comments'>
@@ -13,8 +13,8 @@
          {% if comments %}
             <span class='small_text'>{{ comments|length }} comments made.</span>
             {% for comment in comments %}
-               <div class='comment {% cycle 'odd' 'even' %}'>{{ comment.comment }}<br />
-                  - {{ comment.name }}
+               <div class='comment {% cycle 'odd' 'even' %}'>{{ comment.comment|urlize }}<br />
+                  - {{ comment.name|title }}
                </div>
             {% endfor %}
          {% else %}
