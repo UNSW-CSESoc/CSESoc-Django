@@ -19,8 +19,11 @@ class Song(models.Model):
       sv.save()
 
    def votes(self):
-      from django.db.models import Sum
-      return int(self.songvote_set.aggregate(Sum('amount'))['amount__sum'])
+      try:
+         from django.db.models import Sum
+         return int(self.songvote_set.aggregate(Sum('amount'))['amount__sum'])
+      except:
+         return 0
    
    def __unicode__(self):
       return self.artist + " - " + self.title

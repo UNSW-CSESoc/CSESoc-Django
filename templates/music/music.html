@@ -2,6 +2,43 @@
 <head>
 <title>Song Suggestions</title>
 </head>
+
+<style> 
+    table, td, th {
+      border:1px solid #cccccc;
+      border-collapse:collapse;
+    }
+ 
+   th {
+      font-style:italic;
+      font-weight:normal;
+   }
+ 
+   body {
+      font-family:"Arial"
+   }
+
+   .up {
+      width:30;
+      height:37;
+      background:url("/static/upBright.png") no-repeat center;
+   }
+ 
+   .down {
+      width:30;
+      height:37;
+      background:url("/static/downBright.png") no-repeat center;
+   }
+ 
+   .up:disabled {
+      background:url("/static/upDull.png") no-repeat center;
+   }
+ 
+   .down:disabled {
+      background:url("/static/downDull.png") no-repeat center;
+   }
+</style> 
+
 <body>
 
    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
@@ -49,31 +86,67 @@
       $().ready(calcVoted);
 </script>
 
-<h1>Song Suggestions</h1>
-{% if submitted %}
-<div id="submitted">
-   Your suggestion of {{ songdetails }} has been added, thanks!
-</div>
-{% endif %}
 
 {% if songs|length %}
-<div id='content'>
-   <table>
-      <tr>
-         <td>Artist</td>
-         <td>Title</td>
-         <td>Votes</td>
-         <td>&nbsp;</td>
-      </tr>
+<div id='content'> 
+    <table cellpadding="5"> 
+      <tr>   
+         <td colspan="5" align="center" style="background-color:#ee8800; color:#ffffff; font-weight:bold"> 
+            Soctail Night Song Suggestions
+         </td> 
+      <tr> 
+         <td colspan="5" style="color:#ee8800; font-weight:bold">Suggest a song</td> 
+      </tr> 
+   
+      <tr> 
+         <th align="center">Artist</td> 
+         <th align="center">Title</td> 
+         <th align="center">Do you have the song?</td> 
+         <th align="center">Notes</td> 
+         <th align="center">&nbsp;</td> 
+      </tr> 
+ 
+      <tr> 
+         <form method="POST" action="" />
+         <td align="center"><input type="text" name="title" maxlength="50" /></td> 
+         <td align="center"><input type="text" name="artist" maxlength="50" /></td> 
+         <td align="center"><input type="checkbox" name="hassong" /></td> 
+         <td align="center"><input type="text" name="notes" maxlength="100"/></td> 
+         <td align="center"><input type="submit" name="Submit" value="Submit"></td> 
+         </form>
+      </tr> 
+
+      <tr><td colspan="5" align="center" style="font-style:italic">
+            {% if submitted %}
+            <div id="submitted">
+               Your suggestion of {{ songdetails }} has been added, thanks!
+            </div>
+            {% endif %}
+      </td></tr> 
+
+ 
+      <tr> 
+         <td colspan="5" style="color:#ee8800; font-weight:bold">Current suggestions</td> 
+      </tr> 
+ 
+      <tr> 
+         <th align="center">Artist</td> 
+         <th align="center">Title</td> 
+         <th align="center">Votes</td> 
+         <th align="center" colspan="2">Vote for this song</td> 
+      </tr> 
+
    {% for f in songs %}
       <tr>
          <td>{{ f.song.artist }}</td>
          <td>{{ f.song.title }}</td>
-         <td><span id="votes_{{f.song.id}}">{{ f.song.votes }}</span><span id="votes_{{f.song.id}}_loading"></span></td>
-         <td>
-            <button id="{{f.song.id}}_up" {% if f.states.0 %} disabled="true" {% endif %} onclick="voteSong({{f.song.id}}, 'up');">Up</button>
-            <button id="{{f.song.id}}_none" {% if f.states.1 %} disabled="true" {% endif %} onclick="voteSong({{f.song.id}}, 'none');">None</button>
-            <button id="{{f.song.id}}_down" {% if f.states.2 %} disabled="true" {% endif %} onclick="voteSong({{f.song.id}}, 'down');">Down</button>
+         <td align="center"><span id="votes_{{f.song.id}}">{{ f.song.votes }}</span><span id="votes_{{f.song.id}}_loading"></span></td>
+         <td colspan="2" align="center">
+
+
+            <button id="{{f.song.id}}_up" {% if f.states.0 %} disabled="true" {% endif %} class="up" style="vertical-align:middle" onclick="voteSong({{f.song.id}}, 'up');"></button> 
+            <button id="{{f.song.id}}_none"  {% if f.states.1 %} disabled="true" {% endif %}  onclick="voteSong({{f.song.id}}, 'none');">None</button> 
+            <button id="{{f.song.id}}_down" {% if f.states.2 %} disabled="true" {% endif %} class="down" style="vertical-align:middle" onclick="voteSong({{f.song.id}}, 'down');"></button> 
          </td>
       </tr>
    {% endfor %}
@@ -81,17 +154,5 @@
 </div>
 {% endif %}
 
-<hr />
-<h2>Submit a song!</h2>
-<div id='submit'>
-   <form method="POST" action="" />
-      <table>
-         <tr><td>Title</td><td><input type="text" name="title" maxlength="50" /></td></tr>
-         <tr><td>Artist</td><td><input type="text" name="artist" maxlength="50" /></td></tr>
-         <tr><td>Do you have this song?</td><td><input type="checkbox" name="hassong" /></td></tr>
-         <tr><td>Notes</td><td><textarea name="notes"></textarea></td></tr>
-      </table>
-      <input type="submit" name="Submit" text="Submit Song" />
-   </form>
-</div>
-
+</body>
+</html>

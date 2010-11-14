@@ -10,10 +10,9 @@ from django.template import Library
 
 # presently using generic views for everything. add custom views here as needed
 
-@login_required
-def music_submit_song(request):
+def getFinalList(user):
     songs = Song.objects.all()
-    votes = SongVote.objects.filter(voter=request.user)
+    votes = SongVote.objects.filter(voter=user)
     votesHash = {}
     finalList = []
     for v in votes:
@@ -21,6 +20,8 @@ def music_submit_song(request):
     for s in songs:
        newS = {}
        newS["song"] = s
+       newS["votes"] = s.votes()
+
        if s.id in votesHash:
           newS["vote"] = votesHash[s.id]
        else:
@@ -29,12 +30,21 @@ def music_submit_song(request):
        newS["states"] = calcVisibility(newS["vote"])
        finalList.append(newS)
 
+    finalList = sorted(finalList, key=lambda a: a["votes"], reverse=True)
+    return finalList
 
+@login_required
+def music_submit_song(request):
     if request.method == "POST":
         # LOL CHECK
         title = request.POST['title']
         artist = request.POST['artist']
         notes = request.POST['notes'] if 'notes' in request.POST else ""
+
+        if title == "" or artist == "":
+           return render_to_response('music.html', {'songs': getFinalList(request.user), 'submitted': False})
+
+
         if 'hassong' in request.POST:
            hassong = "on" == request.POST['hassong']
         else:
@@ -46,11 +56,13 @@ def music_submit_song(request):
         s = Song(artist=artist, title=title, notes=notes, submitter_hassong=hassong, submitter=request.user)
         s.save()
 
-        return render_to_response('music.html', {'submitted': True, 'songdetails': songdetails, 'songs': finalList})
+        s.vote(request.user, 1)
+
+        return render_to_response('music.html', {'submitted': True, 'songdetails': songdetails, 'songs': getFinalList(request.user)})
 
     else:
         # yay submit a song template
-        return render_to_response('music.html', {'songs': finalList, 'submitted': False})
+        return render_to_response('music.html', {'songs': getFinalList(request.user), 'submitted': False})
 
 # returns a list for disabled state for up, none, and down
 def calcVisibility(voteAmt):
