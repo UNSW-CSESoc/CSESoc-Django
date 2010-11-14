@@ -87,7 +87,6 @@
 </script>
 
 
-{% if songs|length %}
 <div id='content'> 
     <table cellpadding="5"> 
       <tr>   
@@ -124,6 +123,7 @@
             {% endif %}
       </td></tr> 
 
+      {% if songs|length %}
  
       <tr> 
          <td colspan="5" style="color:#ee8800; font-weight:bold">Current suggestions</td> 
@@ -150,9 +150,9 @@
          </td>
       </tr>
    {% endfor %}
+   {% endif %}
    </table>
 </div>
-{% endif %}
 
 </body>
 </html>
