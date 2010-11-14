@@ -39,9 +39,12 @@ def music_submit_song(request):
         # LOL CHECK
         title = request.POST['title']
         artist = request.POST['artist']
+        title = title.strip()
+        artist = artist.strip()
+        
         notes = request.POST['notes'] if 'notes' in request.POST else ""
 
-        if title == "" or artist == "":
+        if title == "" or artist == "" or Song.objects.filter(title=title, artist=artist).count() > 0:
            return render_to_response('music.html', {'songs': getFinalList(request.user), 'submitted': False})
 
 

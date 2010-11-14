@@ -34,5 +34,5 @@ class SongVote(models.Model):
    amount = models.IntegerField(default=0)
 
    def __unicode__(self):
-      return str(self.amount) + "[" + self.voter.username + " for " + self.song.__unicode__() + "]"
+      return str(self.amount) + " [" + self.voter.username + " for " + self.song.__unicode__() + "]"
 
