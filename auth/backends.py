@@ -37,6 +37,10 @@ class CSEBackend(ModelBackend):
             return user
 
 def cse_login(request, next=None):
+   from django.conf import settings
+   if "CSE" not in settings.AUTHENTICATION_BACKENDS[0]:
+       return login(request, next)
+
    if not request.user.is_authenticated():
       user = None
       if request.COOKIES.has_key('cseauth'):
@@ -56,7 +60,9 @@ def cse_login(request, next=None):
       return HttpResponseRedirect(next)
 
 def admin_wrapper(request, url):
-   if not request.user.is_authenticated():
-      return cse_login(request, url)
+   from django.conf import settings
+   if "CSE" in settings.AUTHENTICATION_BACKENDS[0]:
+      if not request.user.is_authenticated():
+         return cse_login(request, url)
    return admin.site.root(request, url)
 
