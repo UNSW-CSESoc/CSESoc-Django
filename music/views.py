@@ -44,7 +44,14 @@ def music_submit_song(request):
         
         notes = request.POST['notes'] if 'notes' in request.POST else ""
 
-        if title == "" or artist == "" or Song.objects.filter(title=title, artist=artist).count() > 0:
+        songdetails =  (artist + " - " + title)
+        existingSongs = Song.objects.filter(title__iexact=title, artist__iexact=artist)
+        if existingSongs.count() > 0:
+           existingSongs[0].vote(request.user, 1)
+           songdetails += " already exists! A vote"
+           return render_to_response('music.html', {'submitted': True, 'songdetails': songdetails, 'songs': getFinalList(request.user)})
+
+        if title == "" or artist == "":
            return render_to_response('music.html', {'songs': getFinalList(request.user), 'submitted': False})
 
 
@@ -53,9 +60,8 @@ def music_submit_song(request):
         else:
            hassong = False
 
-        # submit complete, show a little <thanks> note, and display form again
-        songdetails =  (artist + " - " + title)
 
+        # submit complete, show a little <thanks> note, and display form again
         s = Song(artist=artist, title=title, notes=notes, submitter_hassong=hassong, submitter=request.user)
         s.save()
 
