@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>Song Suggestions</title>
+</head>
+<body>
+
+   <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript">
+      function setVisibility(id, up, none, down) {
+         $("#" + id + "_up").attr("disabled", up);
+         $("#" + id + "_none").attr("disabled", none);
+         $("#" + id + "_down").attr("disabled", down);
+      }
+
+      function toB(val) {
+         if (val == "True") {
+            return true
+         } else {
+            return false
+         }
+      }
+
+      function voteSong(song_id, vote_method) {
+
+         // set up a loading indicator next to the votes
+         imgContent = "<img src='http://localhost:8000/static/loading_animation_small.gif' />";
+         $("#votes_" + song_id + "_loading").html(imgContent);
+
+         setVisibility(song_id, true, true, true);
+
+         $.ajax({
+            url: 'vote/',
+            type: 'POST',
+            data: ({'song_id': song_id, 'vote': vote_method}),
+            success: function(data) {
+               p = data.split(";")
+               $("#votes_" + song_id).text(p[0]);
+               $("#votes_" + song_id + "_loading").html('');
+               setVisibility(song_id, toB(p[1]), toB(p[2]), toB(p[3]));
+            },
+            error: function(req, stat) {
+               alert('Unfortunately, your vote was not successful! Please check your connection, and try again');
+               $("#votes_" + song_id + "_loading").html('');
+               setVisibility(song_id, false, false, false);
+            },
+            });
+      };
+
+      $().ready(calcVoted);
+</script>
+
+<h1>Song Suggestions</h1>
+{% if submitted %}
+<div id="submitted">
+   Your suggestion of {{ songdetails }} has been added, thanks!
+</div>
+{% endif %}
+
+{% if songs|length %}
+<div id='content'>
+   <table>
+      <tr>
+         <td>Artist</td>
+         <td>Title</td>
+         <td>Votes</td>
+         <td>&nbsp;</td>
+      </tr>
+   {% for f in songs %}
+      <tr>
+         <td>{{ f.song.artist }}</td>
+         <td>{{ f.song.title }}</td>
+         <td><span id="votes_{{f.song.id}}">{{ f.song.votes }}</span><span id="votes_{{f.song.id}}_loading"></span></td>
+         <td>
+            <button id="{{f.song.id}}_up" {% if f.states.0 %} disabled="true" {% endif %} onclick="voteSong({{f.song.id}}, 'up');">Up</button>
+            <button id="{{f.song.id}}_none" {% if f.states.1 %} disabled="true" {% endif %} onclick="voteSong({{f.song.id}}, 'none');">None</button>
+            <button id="{{f.song.id}}_down" {% if f.states.2 %} disabled="true" {% endif %} onclick="voteSong({{f.song.id}}, 'down');">Down</button>
+         </td>
+      </tr>
+   {% endfor %}
+   </table>
+</div>
+{% endif %}
+
+<hr />
+<h2>Submit a song!</h2>
+<div id='submit'>
+   <form method="POST" action="" />
+      <table>
+         <tr><td>Title</td><td><input type="text" name="title" maxlength="50" /></td></tr>
+         <tr><td>Artist</td><td><input type="text" name="artist" maxlength="50" /></td></tr>
+         <tr><td>Do you have this song?</td><td><input type="checkbox" name="hassong" /></td></tr>
+         <tr><td>Notes</td><td><textarea name="notes"></textarea></td></tr>
+      </table>
+      <input type="submit" name="Submit" text="Submit Song" />
+   </form>
+</div>
+

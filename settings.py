@@ -104,6 +104,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates/murder'),
     os.path.join(PROJECT_PATH, 'templates/game'),
     os.path.join(PROJECT_PATH, 'templates/suggestions'),
+    os.path.join(PROJECT_PATH, 'templates/music'),
 )
 
 INSTALLED_APPS = (
@@ -121,6 +122,7 @@ INSTALLED_APPS = (
     'csesoc.suggestions',
     'csesoc.murder',
     'csesoc.game',
+    'csesoc.music',
 )
 
 AUTHENTICATION_BACKENDS = (
