@@ -62,7 +62,7 @@
 
 <body>
 
-   <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="/static/jquery-1.4.4.min.js"></script>
    <script type="text/javascript" src="/static/music/jquery.tablesorter.js"></script>
    <script type="text/javascript">
       $(document).ready(function() 
@@ -101,26 +101,25 @@
             url: 'vote/',
             type: 'POST',
             data: ({'song_id': song_id, 'vote': vote_method}),
+            dataType: 'text',
             success: function(data) {
                p = data.split(";")
                $("#votes_" + song_id).text(p[0]);
                $("#votes_" + song_id + "_loading").html('');
                setVisibility(song_id, toB(p[1]), toB(p[2]), toB(p[3]));
             },
-            error: function(req, stat) {
+            error: function(req, stat, e) {
                alert('Unfortunately, your vote was not successful! Please check your connection, and try again');
                $("#votes_" + song_id + "_loading").html('');
                setVisibility(song_id, false, false, false);
             },
             });
       };
-
-      $().ready(calcVoted);
 </script>
 
 
-<form method="POST" action="" />
 <div id='content'> 
+   <form method="POST" action="" />
     <table cellpadding="5" width="100%"> 
       <tr>   
          <td colspan="5" align="center" style="background-color:#ee8800; color:#ffffff; font-weight:bold"> 
@@ -154,6 +153,7 @@
             {% endif %}
       </td></tr> 
    </table>
+</form>
    
 
       {% if songs|length %}
@@ -185,7 +185,6 @@
    {% endif %}
    </table>
 </div>
-</form>
 
 </body>
 </html>
