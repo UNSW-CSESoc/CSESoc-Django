@@ -13,6 +13,11 @@
       font-style:italic;
       font-weight:normal;
    }
+
+   #content {
+      margin: 0 auto;
+      width: 92%;
+   }
  
    body {
       font-family:"Arial"
@@ -21,28 +26,55 @@
    .up {
       width:30;
       height:37;
-      background:url("/static/upBright.png") no-repeat center;
+      background:url("/static/music/upBright.png") no-repeat center;
    }
  
    .down {
       width:30;
       height:37;
-      background:url("/static/downBright.png") no-repeat center;
+      background:url("/static/music/downBright.png") no-repeat center;
    }
  
    .up:disabled {
-      background:url("/static/upDull.png") no-repeat center;
+      background:url("/static/music/upDull.png") no-repeat center;
    }
  
    .down:disabled {
-      background:url("/static/downDull.png") no-repeat center;
+      background:url("/static/music/downDull.png") no-repeat center;
    }
+
+   table.tablesorter thead tr .header {
+      background-image: url(static/music/bg.gif);
+      background-repeat: no-repeat;
+      background-position: center right;
+      cursor: pointer;
+   }
+
+   table.tablesorter thead tr .headerSortUp {
+      background-image: url(static/music/asc.gif);
+   }
+
+   table.tablesorter thead tr .headerSortDown {
+      background-image: url(static/music/desc.gif);
+   } 
+   
 </style> 
 
 <body>
 
    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="/static/music/jquery.tablesorter.js"></script>
    <script type="text/javascript">
+      $(document).ready(function() 
+          { 
+              $("#musicTable").tablesorter({
+                  headers: {
+                      3: {sorter:false}
+                  }
+              }); 
+          } 
+      ); 
+      
       function setVisibility(id, up, none, down) {
          $("#" + id + "_up").attr("disabled", up);
          $("#" + id + "_none").attr("disabled", none);
@@ -60,7 +92,7 @@
       function voteSong(song_id, vote_method) {
 
          // set up a loading indicator next to the votes
-         imgContent = "<img src='http://localhost:8000/static/loading_animation_small.gif' />";
+         imgContent = "<img src='http://localhost:8000/static/music/loading_animation_small.gif' />";
          $("#votes_" + song_id + "_loading").html(imgContent);
 
          setVisibility(song_id, true, true, true);
@@ -87,8 +119,9 @@
 </script>
 
 
+<form method="POST" action="" />
 <div id='content'> 
-    <table cellpadding="5"> 
+    <table cellpadding="5" width="100%"> 
       <tr>   
          <td colspan="5" align="center" style="background-color:#ee8800; color:#ffffff; font-weight:bold"> 
             Soctail Night Song Suggestions
@@ -98,21 +131,19 @@
       </tr> 
    
       <tr> 
-         <th align="center">Artist</td> 
-         <th align="center">Title</td> 
-         <th align="center">Do you have the song?</td> 
-         <th align="center">Notes</td> 
-         <th align="center">&nbsp;</td> 
+         <th align="center" width="22%">Artist</td> 
+         <th align="center" width="33%">Title</td> 
+         <th align="center" width="20%">Do you have the song?</td> 
+         <th align="center" width="15%">Notes</td> 
+         <th align="center" width="10%">&nbsp;</td> 
       </tr> 
  
       <tr> 
-         <form method="POST" action="" />
          <td align="center"><input type="text" name="artist" maxlength="50" /></td> 
          <td align="center"><input type="text" name="title" maxlength="50" /></td> 
          <td align="center"><input type="checkbox" name="hassong" /></td> 
          <td align="center"><input type="text" name="notes" maxlength="100"/></td> 
          <td align="center"><input type="submit" name="Submit" value="Submit"></td> 
-         </form>
       </tr> 
 
       <tr><td colspan="5" align="center" style="font-style:italic">
@@ -122,19 +153,20 @@
             </div>
             {% endif %}
       </td></tr> 
+   </table>
+   
 
       {% if songs|length %}
- 
+   <h3 style="color: rgb(238, 136, 0); font-weight: bold;">Current suggestions</h3> 
+   <table cellpadding="5" id="musicTable" class="tablesorter" width="100%">  
+      <thead>
       <tr> 
-         <td colspan="5" style="color:#ee8800; font-weight:bold">Current suggestions</td> 
+         <th align="center" width="22%">Artist</td> 
+         <th align="center" width="33%">Title</td> 
+         <th align="center" width="20%">Votes</td> 
+         <th align="center" width="25%">Vote for this song</td> 
       </tr> 
- 
-      <tr> 
-         <th align="center">Artist</td> 
-         <th align="center">Title</td> 
-         <th align="center">Votes</td> 
-         <th align="center" colspan="2">Vote for this song</td> 
-      </tr> 
+      </thead>
 
    {% for f in songs %}
       <tr>
@@ -153,6 +185,7 @@
    {% endif %}
    </table>
 </div>
+</form>
 
 </body>
 </html>
