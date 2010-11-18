@@ -126,8 +126,8 @@ INSTALLED_APPS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'csesoc.auth.backends.CSEBackend',
-    # 'django.contrib.auth.backends.ModelBackend',
+      # 'csesoc.auth.backends.CSEBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 # maxiumum number of StreamItems per paginated index page

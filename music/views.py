@@ -20,6 +20,7 @@ def getFinalList(user):
     for s in songs:
        newS = {}
        newS["song"] = s
+       newS["id"] = s.id
        newS["votes"] = s.votes()
 
        if s.id in votesHash:
@@ -30,7 +31,7 @@ def getFinalList(user):
        newS["states"] = calcVisibility(newS["vote"])
        finalList.append(newS)
 
-    finalList = sorted(finalList, key=lambda a: a["votes"], reverse=True)
+    finalList = sorted(finalList, key=lambda a: a["id"], reverse=True)
     return finalList
 
 @login_required
