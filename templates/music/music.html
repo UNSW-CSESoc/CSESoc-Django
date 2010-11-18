@@ -18,20 +18,24 @@
       margin: 0 auto;
       width: 92%;
    }
- 
+   
+   h2, h3 {
+      margin: 9 1;
+   }
+
    body {
       font-family:"Arial"
    }
 
    .up {
       width:25;
-      height:19;
+      height:23;
       background:url("/static/music/upBright.png") no-repeat center;
    }
  
    .down {
       width:25;
-      height:19;
+      height:23;
       background:url("/static/music/downBright.png") no-repeat center;
    }
  
@@ -118,17 +122,13 @@
 </script>
 
 
+<h2 align="center" style="color:#ee8800; font-weight:bold"> 
+   Soctail Night Song Suggestions
+</h2>
 <div id='content'> 
    <form method="POST" action="" />
-    <table cellpadding="5" width="100%"> 
-      <tr>   
-         <td colspan="5" align="center" style="background-color:#ee8800; color:#ffffff; font-weight:bold"> 
-            Soctail Night Song Suggestions
-         </td> 
-      <tr> 
-         <td colspan="5" style="color:#ee8800; font-weight:bold">Suggest a song</td> 
-      </tr> 
-   
+    <h3 style="color: rgb(238, 136, 0); font-weight: bold;">Suggest a song</h3> 
+    <table cellpadding="4" width="100%"> 
       <tr> 
          <th align="center" width="22%">Artist</td> 
          <th align="center" width="33%">Title</td> 
@@ -145,20 +145,20 @@
          <td align="center"><input type="submit" name="Submit" value="Submit"></td> 
       </tr> 
 
+      {% if submitted %}
       <tr><td colspan="5" align="center" style="font-style:italic">
-            {% if submitted %}
             <div id="submitted">
                Your suggestion of {{ songdetails }} has been added, thanks!
             </div>
-            {% endif %}
       </td></tr> 
+      {% endif %}
    </table>
 </form>
    
 
       {% if songs|length %}
    <h3 style="color: rgb(238, 136, 0); font-weight: bold;">Current suggestions</h3> 
-   <table cellpadding="5" id="musicTable" class="tablesorter" width="100%">  
+   <table cellpadding="4" id="musicTable" class="tablesorter" width="100%">  
       <thead>
       <tr> 
          <th align="center" width="22%">Artist</td> 
