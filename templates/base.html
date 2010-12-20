@@ -5,17 +5,68 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1"/>
 
     <title>{% block title %}{% if object.title %}{{ object.title }} - CSESoc{% else %}CSESoc - UNSW Computer Science &amp; Engineering Students Society{% endif %}{% endblock %}</title>
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" media="all" href="{{ MEDIA_URL }}less.css"/>
     <link href="{{ MEDIA_URL }}default.css" media="screen" rel="stylesheet" type="text/css" />
+
     <link rel="icon" href="{{ MEDIA_URL }}icon.png" type="image/png" />
+
     {% block headextra %}{% endblock %}
-    </head><body>
+
+    </head>
+
+  <body>
+    <header>
+        <a href="{% url home %}" id="headerLink"></a>
+
+        <ul>
+          <li><a href="{% url home %}">Home</a>
+          <ul>
+            <li><a href="{% url home-news %}">News</a></li>
+            <li><a href="{% url home-events %}">Events</a></li>
+            <li><a href="http://beta.csesoc.unsw.edu.au/">Beta</a></li>
+          </ul>
+          </li>
+          <li><a href="{% url mainsite.views.static path="about" %}">About CSESoc</a>
+          <ul>
+            <li><a href="{% url mainsite.views.static path="about/history" %}">History</a></li>
+            <li><a href="{% url mainsite.views.static path="about/constitution" %}">Constitution</a></li>
+            <li><a href="{% url mainsite.views.static path="about/exec" %}">Exec</a></li>
+            <li><a href="{% url mainsite.views.static path="about/wg" %}">Working Groups</a>
+            <ul>
+              <li><a href="{% url mainsite.views.static path="about/wg/beta" %}">Beta</a></li>
+              <li><a href="{% url mainsite.views.static path="about/wg/publicity" %}">Publicity</a></li>
+              <li><a href="{% url mainsite.views.static path="about/wg/social" %}">Social</a></li>
+              <li><a href="{% url mainsite.views.static path="about/wg/sysadmin" %}">Sysadmin</a></li>
+              <li><a href="{% url mainsite.views.static path="about/wg/tech" %}">Tech Events</a></li>
+              <li><a href="{% url mainsite.views.static path="about/wg/volunteer" %}">Volunteer!</a></li>
+            </ul></li>
+          </ul>
+          </li>
+          <li><a href="{% url mainsite.views.static path="bling" %}">CSESoc Bling</a></li>
+          <li><a href="{% url mainsite.views.static path="calendar" %}">Calendar</a></li>
+          <li><a href="{% url mainsite.views.static path="camp" %}">CSESoc Camp</a></li>
+          <li><a href="{% url mainsite.views.static path="games" %}">Games</a></li>
+          <li><a href="http://www.facebook.com/group.php?gid=2509117190">CSESoc@Facebook</a></li>
+          <li><a href="{% url mainsite.views.static path="irc" %}">IRC</a></li>
+          <li><a href="http://wiki.csesoc.unsw.edu.au">Wiki</a></li>
+          <li><a href="{% url mainsite.views.static path="sponsors" %}">Sponsors</a></li>
+          <li><a href="{% url mainsite.views.static path="suggestions" %}">Suggestions</a></li>
+        </ul>
+    </header>
+        
+
     <div id="container">
       <div id="header">
-        <h1><a href="{% url home %}">
-            <img src="{{ MEDIA_URL }}csesoc_banner.png" alt="CSESoc Banner" title="cse_students is provided by the system, and csesoc provides fun!"/>
-        </a></h1>
         <!-- <h2>#include &lt;cse_students&gt;</h2> -->
         <!-- <h2>#include &lt;fun&gt;</h2><br /> -->
         <hr />

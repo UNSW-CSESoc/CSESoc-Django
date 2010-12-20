@@ -2,9 +2,6 @@ body {
 	font-family:arial, verdana, helvetica, sans-serif;
 	font-size:12px;
 	cursor:default;
-	background-color:#FFFFEE;
-	margin: 0px;
-	padding: 0px;
 	text-decoration: none;
 }
 
@@ -99,7 +96,6 @@ a {
 }
 a:hover {
 	color:#ffb844;
-	background-color:#FFFFFF;
 	text-decoration:underline;
 }
 #footer {
