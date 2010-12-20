@@ -62,6 +62,10 @@ figure img {width: 100%;}
 	line-height: 18px;
 } 
 
+.nobullets {
+    list-style-type: none;
+}
+
 
 /*	Default 8-column layout
 	60 px columns, 24 px gutters, 60 px margins, 768 px total
@@ -71,10 +75,10 @@ figure img {width: 100%;}
 
 body {
 	background: rgb(232,232,232);
-	padding: 0px 60px 0;
-	width: 648px;
+	padding: 0px;
+    margin: 0px;
+	width: 768px;
     margin: 0 auto;
-    position: relative;
 	-webkit-tap-highlight-color: rgb(255,255,0);
 }
 
@@ -82,18 +86,82 @@ body {
 ::-moz-selection {background: rgb(255,255,0);}
 
 header {
-    height: 200px;
-    background: url("header_csesoc.png") no-repeat;
+    background: #2f586d url("header_csesoc.png") no-repeat;
     /*background: url("header_spaceinvaders.png") no-repeat;*/
-    position: relative;
+    margin-bottom:0px;
+    width: 100%;
+    position:relative;
+    height: 180px;
 }
 
     header ul {
+        width:100%;
         list-style-type:none;
+        display:block;
+        position: absolute;
+        background:#2f586d;
     }
 
     header ul li {
-        float: left;
+        float:left;
+        min-width:100px;
+        background:#2f586d;
+    }
+
+    header ul li a {
+        text-align:center;
+        display:block;
+        width: 100%;
+        height: 100%;
+        padding: 5px 0px;
+        color: #df9824; /* Different options, pick one */
+        color: #ffa100;
+        color: #efa012;
+        color: #f8a012;
+        font-weight:bold;
+    }
+
+    header ul li:hover, header ul li a:hover {
+        text-decoration:none;
+        background: #486574;
+        color: #fff;
+    }
+
+    header ul li.on a {
+        background:#688594;/*#88a5b4;*/
+        color:#fff;
+    }
+
+    header ul li ul {
+        background: #486574;
+        display: none;
+        position:absolute;
+        top:30px;
+        left:0px;
+    }
+
+    header ul li.on ul, header ul li.on ul a {
+        background:#688594;
+        color: #eee;
+    }
+
+    header li ul li a {
+        background: #486574;
+        color: #ccc;
+        font-weight: normal;
+    }
+
+    header ul li ul li a:hover {
+        color:#ffb844;
+    }
+
+    header li.on ul li.on a {
+        font-weight: bold;
+        color: #fff;
+    }
+
+    header ul li.on ul, header ul li:hover ul {
+        display:block; 
     }
 
     header a#headerLink {
@@ -105,6 +173,27 @@ header {
     header a#headerLink:hover {
         background-color:none;
     }
+
+#container {
+    width: 100%;
+}
+
+/* left is 3-columns */
+#left {
+    width: 213px;
+    margin-right: 24px;
+    float: left;
+    text-align:center;
+    padding-left:15px;
+    margin-top:20px;
+}
+
+/* main is 5-columns */
+#main {
+    float: left;
+    width: 485px; /* 516px, minus border and padding */
+    padding: 15px;
+}
 
 
 /*	13-column layout
@@ -119,6 +208,23 @@ header {
 		padding: 0px 72px 0;
 		width: 1068px;
 	}
+
+    header {
+        width: 1068px;
+    }
+
+    header ul li {
+        min-width: 140px;
+    }
+
+    #left {
+        width: 213px;
+        margin-right: 24px;
+    }
+
+    #main {
+        width:701px;
+    }
 	
 }
 
@@ -132,11 +238,43 @@ header {
 @media only screen and (max-width: 767px) and (min-width: 480px) {
 	
 	body {
-		padding: 0px 42px 0;
-		width: 396px;
+		padding: 0px 0px 0;
+		width: 480px;
 		-webkit-text-size-adjust: 100%;
 	}
-	
+
+    #left {
+        width: 129px;
+        margin-right: 24px;
+    }
+
+    #main {
+        width: 281px;
+    }
+
+    header {
+        background: #2f586d url("header_csesoc_small.png") no-repeat;
+        height: 160px;
+    }
+
+    header ul li ul {
+        top: 25px;
+    }
+
+    header ul li {
+        min-width: 0px;
+    }
+
+    header ul {
+        padding-top:2px;
+        height: 24px;
+    }
+
+    header ul li a {
+        display: inline;
+        padding:4px 10px;
+    }
+
 }
 
 
@@ -149,9 +287,46 @@ header {
 @media only screen and (max-width: 479px) {
 	
 	body {
-		padding: 0px 46px 0;
-		width: 228px;
+		padding: 0px 0px 0;
+		width: 320px;
 		-webkit-text-size-adjust: 100%;
 	}
+
+    #left, #main {
+        width: 290px;
+        padding-right:15px;
+        margin-right: 0px;
+        float: none;
+        clear:right;
+    }
+
+    #main {
+        clear:left;
+        width: 290px;
+    }
+
+    header {
+        background: #2f586d url("header_csesoc_small.png") no-repeat;
+        height: 100%;
+    }
+
+    header ul {
+        margin-bottom:50px;
+        position: inherit;
+    }
+
+    header ul li ul {
+        display: block;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+
+    header ul li {
+        display:block;
+        width: 100%;
+        clear:right;
+    }
+
 	
 }

@@ -7,12 +7,7 @@ body {
 
 a > img { border: 0 none; }
 
-html {
-	height:100%;
-	margin-bottom:1px;
-}
 #container {
-	width: 950px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: left;
@@ -60,16 +55,11 @@ h3 {
 }
 
 #left {
-   float:left;
-	width:170px;
 	background-color:#FFFFFF;
 	color:black;
 }
 
 #main {
-	margin					: 5px 5px 5px 180px;
-	padding					: 15px;
-	border-left				: 1px solid silver;
 }
 
 #swipe {
@@ -116,10 +106,6 @@ a:hover {
 	float:left;
 	font-size:100%;
 	margin-top:5px;
-}
-ul ul {
-   padding-left: 20px;
-   margin-left: 0px;
 }
 
 .pagenumbers {
