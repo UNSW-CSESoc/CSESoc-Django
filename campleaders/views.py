@@ -14,16 +14,15 @@ class ApplicationForm(ModelForm):
                                        widget=forms.HiddenInput)
    def setQ9(self, q9question):
        self.fields['q9'] = forms.CharField(widget=forms.Textarea,
-                                           help_text=str(q9question),
                                            #dodgy hack for poor design decision
-                                           label="Q6")
+                                           label=str(q9question))
 
    class Meta:
       model = Application
       # to use if we upgrade django
       #http://docs.djangoproject.com/en/dev/topics/forms/modelforms/#overriding-the-default-field-types-or-widgets
       #widgets = {'q9question': forms.HiddenInput}
-      exclude = ( 'cse_username', 'q5', 'q6', 'q7')
+      exclude = ( 'cse_username', 'q5', 'q6', 'q7', 'accepted', 'payment_status', 'medical_form' )
 
 @login_required
 def apply(request):
