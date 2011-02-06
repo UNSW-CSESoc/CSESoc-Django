@@ -2,82 +2,75 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link href = "{{ MEDIA_URL }}master.css" media = "screen" rel = "stylesheet" type = "text/css"/>
-    <link href = "{{ MEDIA_URL }}icon.png" rel = "icon" type = "image/png"/>
+    <link href="{{ MEDIA_URL }}master.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}icon.png" rel="icon" type="image/png"/>
     <title> {% block titlecontent %} {% endblock %}</title>
     {% block extraheadercontent %}{% endblock %}
 </head>
 
 <body>
-    <div class = "master">
-        <div class = "header">
-            <a href = "{% url home %}"> hello header! </a>
-        </div>
-
-        <div class = "dropdown">
-            <ul id = "outerul">
-                <li id = "outerli">
+    <div class="master">
+        <header>
+            <a id="headerLink" href=""></a>
+            <ul>
+                <li {% ifequal nav 'news' %} class="on" {% endifequal %}> <a href="/news/recent/"> News </a>
                     <ul>
-                        <li> <a href = "/news/recent/"> news </a>
-                            <ul>
-                                <li> <a href = "/news/recent"> recent news </a> </li>
-                                <li> <a href = "news/calendar"> full calendar </a> </li>
-                                <li> <a href = "news/search"> search </a> </li>
-                            </ul>
-                        </li>
-                        <li class = "current"> <a href = "{% url mainsite.views.static path="about" %}"> about </a> 
-                            <ul>
-                                <li> <a href = "{% url mainsite.views.static path="about/history" %}"> history </a> </li>
-                                <li> <a href = "{% url mainsite.views.static path="about/constitution" %}"> constitution </a> </li>
-                                <li class = "currentsub"> <a href = "{% url mainsite.views.static path="about/people" %}"> people </a> </li>
-                                <li> <a href = "{% url mainsite.views.static path="about/workinggroups" %}"> working groups </a> </li> 
-                            </ul>
-                        </li>
-                        <li> <a href = "{% url mainsite.views.static path="forstudents" %}"> for students </a> 
-                            <ul>
-                                <li> <a href = "{% url mainsite.views.static path="forstudents/games" %}"> games </a> </li>
-                                <li> <a href = "{% url mainsite.views.static path="forstudents/bling" %}"> bling for ubuntu </a> </li>
-                                <li> <a href = "{% url mainsite.views.static path="forstudents/irc" %}"> irc </a> </li>
-                            </ul>
-                        </li>
-                        <li> <a href = "/oursponsors/"> our sponsors </a> </li>
-                        <li> <a href = "http://beta.csesoc.unsw.edu.au/"> beta </a> </li>
-                        <li> <a href = "http://wiki.csesoc.unsw.edu.au"> wiki </a> </li>
+                        <li {% ifequal subnav 'recent' %} class="on" {% endifequal %}> <a href="/news/recent">Recent News</a> </li>
+                        <li {% ifequal nav 'calendar' %} class="on" {% endifequal %}> <a href="news/calendar">Full Calendar</a> </li>
                     </ul>
                 </li>
+                <li {% ifequal nav 'about' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about" %}">About</a> 
+                    <ul>
+                        <li {% ifequal subnav 'history' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about/history" %}">History</a> </li>
+                        <li {% ifequal subnav 'constitution' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about/constitution" %}">Constitution</a> </li>
+                        <li {% ifequal subnav 'people' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about/people" %}">People</a> </li>
+                        <li {% ifequal subnav 'workinggroups' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about/workinggroups" %}">Working Groups</a> </li> 
+                    </ul>
+                </li>
+                <li {% ifequal nav 'forstudents' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="forstudents" %}">For Students</a> 
+                    <ul>
+                        <li {% ifequal subnav 'games' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="forstudents/games" %}">Games</a> </li>
+                        <li {% ifequal subnav 'bling' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="forstudents/bling" %}">Bling for Ubuntu</a> </li>
+                        <li {% ifequal subnav 'irc' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="forstudents/irc" %}">IRC</a> </li>
+                    </ul>
+                </li>
+                <li {% ifequal nav 'oursponsors' %} class="on" {% endifequal %}> <a href="/oursponsors/">Our Sponsors</a> 
+                    <emptylist {% ifequal nav 'oursponsors' %} class="on" {% endifequal %}> </emptyList>
+                </li>
+                <li> <a href="http://beta.csesoc.unsw.edu.au/">Beta</a>
+                    <emptylist> </emptyList>
+                </li>
+                <li> <a href="http://wiki.csesoc.unsw.edu.au">Wiki</a> 
+                    <emptylist> </emptyList>
+                </li>
             </ul>
-            
-            <div class = "bgupper"></div>
-            <div class = "bglower"></div>
+        </header>
+
+        <div class="content" id="leftcontent"> 
+            {% block leftcontent %}{% endblock %}
         </div>
-        
-        <div class = "background">
-            <div class = "leftcontent"> 
-                {% block leftcontent %}{% endblock %}
-            </div>
-    
-            <div class = "rightcontent">
-                {% block rightcontent %}{% endblock %}
-            </div>
-     
-            <div class = "middlecontent">
-                {% block middlecontent %}{% endblock %}
-            </div>
-    
-            <div class = "footer">
-                    copyright &copy; csesoc 2010
-            </div>
+
+        <div class="content" id="middlecontent">
+            {% block middlecontent %}{% endblock %}
+        </div>
+
+        <div class="content" id="rightcontent">
+            {% block rightcontent %}{% endblock %}
+        </div>
+ 
+        <div id="footer">
+            Copyright &copy; CSESoc 2011
         </div>
 
     </div>
 
     <script type="text/javascript">
-        var gajshost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        var gajshost=(("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3cscript src='" + gajshost + "google-analytics.com/ga.js' type='text/javascript'%3e%3c/script%3e"));
     </script>
     <script type="text/javascript">
         try {
-            var pagetracker = _gat._gettracker("ua-7494949-1");
+            var pagetracker=_gat._gettracker("ua-7494949-1");
             pagetracker._trackpageview();
         } catch(err) {}
     </script>

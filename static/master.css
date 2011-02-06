@@ -1,195 +1,186 @@
-body {
-    margin: 0px;
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+img, ins, q, small, strong, sub, sup, dl, dt, dd, ol, ul, li, 
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
+article, aside, figure, figcaption, hgroup, footer, dropdown, nav, section {
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 .master {
     width: 1200px;
     margin: auto;
+    background-color: #cccccc;
 }
 
 /*Header image*/
-.header {
-    height: 120px;
-    background-color: #4D4D4D
-}
-
-/*Dropdown menu*/
-.dropdown {
-    height: 70px; /*Menu is split into 2 halves, each 35px high*/
+header {
+    background: #2f586d url("header_csesoc.png") no-repeat;
+    width: 100%;
     position: relative;
+    height: 180px;
 }
-    .dropdown ul#outerul {
-        list-style-type: none;
-
-        padding: 0px;
-        margin: 0px;
-    }
-
-    /*Show currently selected menu item when NOT hovering over dropdown*/
-    .dropdown ul#outerul li#outerli ul li.current {
-        background-color: #D9D9D9;
-    }
-
-    .dropdown ul#outerul li#outerli ul li.current a {
-        color: #FF9900;
-    }
-
-    .dropdown ul#outerul li#outerli ul li.current ul {
+    header a#headerLink {
+        width: 100%;
+        height: 120px;
         display: block;
-        top: 35px;
-    }
-
-    .dropdown ul#outerul li#outerli ul li.current ul li a {
-        color: #4D4D4D;
-    }
-
-    /*Do NOT show currently selected menu item when hovering over rest of dropdown*/
-    .dropdown ul#outerul li#outerli:hover ul li.current {
-        background-color: #4D4D4D;
-    }
-
-    .dropdown ul#outerul li#outerli:hover ul li.current a {
-        color: #FFFFFF;
-    }
-
-    .dropdown ul#outerul li#outerli:hover ul li.current ul {
-        display: none;
-    }
-
-    /*Show currently selected menu item when hovering over it*/
-    .dropdown ul#outerul li#outerli:hover ul li.current:hover {
-        background-color: #D9D9D9;
-    }
-
-    .dropdown ul#outerul li#outerli:hover ul li.current:hover a {
-        color: #FF9900;
-    }
-
-    .dropdown ul#outerul li#outerli:hover ul li.current:hover ul {
-        display: block;
-        top: 35px;
-    }
-
-    .dropdown ul#outerul li#outerli:hover ul li.current:hover ul li a {
-        color: #4D4D4D;
-    }
-
-    .dropdown ul#outerul li#outerli:hover ul li.current:hover ul li a:hover {
-        color: #FF9900;
-    }
-
-    /*Highlight currently selected submenu item*/
-    .dropdown ul#outerul li#outerli:hover ul li.current:hover ul li.currentsub a {
-        color: #FF9900;
-    }
-
-    .dropdown ul#outerul li#outerli ul li.current ul li.currentsub a {
-        color: #FF9900;
-    }
-
-    /*Show other dropdown menu items*/
-    .dropdown ul#outerul li#outerli ul {
-        list-style-type: none;
-
-        position: absolute;
-
-        padding: 0px;
-        margin: 0px;
     }
     
-    .dropdown ul#outerul li#outerli ul li {
+    header ul {
         float: left;
         display: block;
-
-        width: 200px;
-        height: 35px;
-
-        /*Center text*/
-        line-height: 35px;
-        text-align: center;
+        width: 100%;
+        list-style-type: none;
+        position: absolute;
+        background: #2f586d;
     }
 
-    .dropdown ul#outerul li#outerli ul li ul {
+    header ul li emptylist {
+        float: left;
+        position: absolute;
         display: none;
+        width: 100%;
+        background: #486574;
+        top: 30px;
+        left: 0px;
+        height: 30px;
     }
 
-    .dropdown ul#outerul li#outerli li a {
+    header ul li {
+        float: left;
         display: block;
+        min-width: 150px;
+        height: 30px;
+        text-align: center;
+        background: #2f586d;
+    }
 
-        color: #FFFFFF;
+    header ul li a {
+        color: #cccccc;
+        line-height: 30px;
+        vertical-align: middle;
         text-decoration: none;
-        font-weight: bold;
     }
 
-    /*Show submenu when hovering over menu item*/
-    .dropdown ul#outerul li#outerli li:hover a {
-        color: #FF9900;
-    }
-    
-    .dropdown ul#outerul li#outerli ul li:hover {
-        background-color: #D9D9D9;
+    header ul li ul {
+        background: #486574;
+        display: none;
+        position: absolute;
+        top: 30px;
+        left: 0px;
     }
 
-    .dropdown ul#outerul li#outerli ul li:hover ul {
+    /*Current page menu item*/
+     header ul li.on ul, header ul li.on emptylist {
         display: block;
-        top: 35px;
     }
 
-    .dropdown ul#outerul li#outerli ul li:hover ul li a {
-        color: #4D4D4D;
-     }
-
-    /*Highlight submenu item when hovering over it*/
-    .dropdown ul#outerul li#outerli ul li:hover ul li:hover a {
-        color: #FF9900;
+    header ul li.on, header ul li.on ul, header li.on ul li, header ul li.on emptylist {
+        background: #688594;
     }
 
-    /*Show dropdown background across entire width of the page*/
-    .dropdown .bgupper {
-        background-color: #4D4D4D;
-        height: 35px;
-        position: absolute;
-        top: 0px;
-        z-index: -1;
-        width: 100%;
-    }
-    
-    .dropdown .bglower {
-        background-color: #D9D9D9;
-        height: 35px;
-        position: absolute;
-        top: 35px;
-        z-index: -1;
-        width: 100%;
+    header ul li.on a, header ul li.on ul li.on a {
+        color: #ffffff;
     }
 
-/*'False columns' background, so that all columns appear to have the same height*/
-.background {
-    background: #FFFFFF url("columns.png") repeat-y 50% 0;
-    min-height: 100%;
-}
+    header ul li.on ul li a {
+        color: #cccccc;
+    }
+
+    /*Hovered menu item*/
+     header ul li:hover ul, ul li:hover emptylist {
+        display: block; 
+        z-index: 1;
+    }
+
+   header ul li:hover, header ul li:hover ul, header ul li:hover ul li, header ul li:hover emptylist {
+        background: #486574;
+    }
+
+    header ul li:hover a, header ul li:hover ul li:hover a {
+        color: #ffffff;
+    }
+
+    header ul li:hover ul li a {
+        color: #cccccc;
+    }
 
 /*Content panels and footer*/
-.leftcontent {
+.content {
     float: left;
-    padding: 0px 10px 0px 0px;
-    width: 250px;
+    margin: 10px;
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;
 }
 
-.middlecontent {
-    top: 10px;
-    margin-left: 250px;
-    margin-right: 250px;
+.content h1 {
+    background-color: #2f586d;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 4px;
+
+    border-top-left-radius: 10px;
+    -moz-top-left-border-radius: 10px;
+    border-top-right-radius: 10px;
+    -moz-top-right-border-radius: 10px;
 }
 
-.rightcontent {
-    float: right;
-    padding: 0px 0px 0px 0px;
-    width: 250px;
+.content#leftcontent {
+    left: 0px;
+    width: 228px;
 }
 
-.footer {
+.content#middlecontent {
+    left: 250px;
+    width: 678px;
+}
+
+.content#rightcontent {
+    left: 950px;
+    width: 228px;
+}
+
+#footer {
     text-align: center;
     padding-top: 20px;
     clear: both;
+}
+
+/*Stream_item table*/
+table.stream_item {
+    width: 100%;
+}
+
+table.stream_item td.pubdateAndAuthor {
+    width: 15%;
+    vertical-align: right;
+}
+
+table.stream_item td.headlineAndText {
+    width: 85%;
+}
+
+/*Sponsors table*/
+table.sponsorstable {
+    width: 100%;
+}
+
+table.sponsorstable td {
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+/*Misc other*/
+a.newsArrow {
+    color: #4d4d4d;
+    text-decoration: none;
 }

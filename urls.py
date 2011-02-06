@@ -16,66 +16,53 @@ from csesoc.posts.views import recentPosts
 
 admin.autodiscover()
 
-tumblog_dict = {
-      'queryset': mainsite.models.StreamItem.objects.all(),
-      'date_field': 'pub_date',
-      }
-
-news_dict = {
-      'queryset': mainsite.models.StreamItem.objects.filter(content_type__name='news item'),
-      'date_field': 'pub_date',
-      }
-
-events_dict = {
-      'queryset': mainsite.models.StreamItem.objects.filter(content_type__name='event'),
-      'date_field': 'pub_date',
-      }
-
-beta_dict = {
-      'queryset': mainsite.models.StreamItem.objects.filter(content_type__name='beta'),
-      'date_field': 'pub_date',
-      }
-
 urlpatterns = patterns(
-      '',
-      (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
-      # Admin site
-      (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
-      # Login redirect
-      (r'accounts/login/$', 'csesoc.auth.backends.cse_login'),
+    '',
 
-      #News || News -> Recent News
-      (r'^news/recent/$', recentPosts),
-      (r'^news/recent/p(?P<offset>\d+)/$', recentPosts),
+    # Admin site
+    (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
 
-      # Sponsors
-      (r'^oursponsors/$', sponsors),
+    # Statics path
+    (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
+
+    # Login redirect
+    (r'accounts/login/$', 'csesoc.auth.backends.cse_login'),
+
+     # Sponsors
+    (r'^oursponsors/$', sponsors),
+
+    # Camp leader applications
+    (r'^apply/$', apply),
+    # Camp attendee applications
+    (r'^signup/$', signup),
+
+#    # Suggestions form
+#    (r'^suggestions/', include('csesoc.suggestions.urls')),
+
+    # O-Week signup
+    (r'^oweek/signup/$', join),
+    (r'^oweek/slots/$', results),
+
+    # Murder
+    (r'^murder/', include('csesoc.murder.urls')),
+
+    # News-related stuff
+    (r'^', include('csesoc.mainsite.urls')),
+
+    # The date
+    (r'^thedate/$', thedate),
+
+    # Miscellaneous articles
+    (r'^(?P<path>.*)/$', static),
+
+    # The Game URLs
+    #(r'^game/scores/(?P<year>[0-9]*)$', game_scores),
+    #(r'^game/scores$', game_scores, {'year':''}),
+    #(r'^game/$', game_static_latest),
+    #(r'^game/(?P<path>.*)$', game_static),
+
+    # Music/Playlist URLs 
+    #(r'^music/$', music_submit_song),
+    #(r'^music/vote/$', music_vote),
 )
 
-urlpatterns += patterns(
-      'django.views.generic.date_based',
-      # all news sources
-      (r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',               'archive_day',   tumblog_dict),
-      (r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$',                                'archive_month', tumblog_dict),
-      (r'^(?P<year>\d{4})/$',                                                    'archive_year',  tumblog_dict),
-      (r'^$', 'archive_index', tumblog_dict, "home"),
-
-      # events
-      (r'^events/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',               'archive_day',   events_dict),
-      (r'^events/(?P<year>\d{4})/(?P<month>[a-z]{3})/$',                                'archive_month', events_dict),
-      (r'^events/(?P<year>\d{4})/$',                                                    'archive_year',  events_dict),
-      (r'^events/$', 'archive_index', events_dict, "home-events"),
-
-      # beta
-      (r'^beta/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',               'archive_day',   beta_dict),
-      (r'^beta/(?P<year>\d{4})/(?P<month>[a-z]{3})/$',                                'archive_month', beta_dict),
-      (r'^beta/(?P<year>\d{4})/$',                                                    'archive_year',  beta_dict),
-      (r'^beta/$', 'archive_index', beta_dict, "home-beta"),
-
-      )
-
-urlpatterns += patterns (
-      '',
-      (r'^thedate/$', thedate),
-      (r'^(?P<path>.*)/$', static),
-      )

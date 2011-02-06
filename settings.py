@@ -122,5 +122,5 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # maxiumum number of StreamItems per paginated index page
-STREAMITEMS_PER_PAGE = 5
+STREAMITEMS_PER_PAGE = 2
 

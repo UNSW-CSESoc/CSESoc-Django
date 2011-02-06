@@ -1,6 +1,6 @@
-{% extends 'basewcalendar.html' %}
+{% extends 'basewcalendarandsponsors.html' %}
 
-{% block titlecontent %}Hello, this is a news page title.{% endblock %}
+{% block titlecontent %}CSESoc - News{% endblock %}
 
 {% block middlecontent %} 
 
@@ -10,13 +10,7 @@
 {% endfor %}
 </ul>
 
-<a href = "/news/recent/p{{ prevOffset }}/"> << </a>
-<a href = "/news/recent/p{{ nextOffset }}/"> >> </a>
-
-{% endblock %}
-
-{% block rightcontent %}
-
-Hello, this is a news page right.
+<a class = newsArrow href = "/news/recent/p{{ prevOffset }}/">&#x25C0;</a>
+<a class = newsArrow href = "/news/recent/p{{ nextOffset }}/">&#x25B6;</a>
 
 {% endblock %}

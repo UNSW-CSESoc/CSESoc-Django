@@ -1,0 +1,13 @@
+{% extends 'basewcalendar.html' %}
+
+{% block rightcontent %}
+
+<h1>Our sponsors</h1>
+
+<table class="sponsorstable">
+{% for sponsor in allSponsors %}
+    <tr><td>{{ sponsor.get_linked_logo }}</td></tr>
+{% endfor %}
+</table>
+
+{% endblock %}

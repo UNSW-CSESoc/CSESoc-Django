@@ -16,6 +16,7 @@ def streamitem_index(request, queryset, **kwargs):
         'queryset': queryset.filter(pub_date__lte=datetime.now()).order_by('-pub_date'),
         'paginate_by': settings.STREAMITEMS_PER_PAGE,
         'template_name': 'mainsite/streamitem_archive.html',
+        'extra_context': {'nav' : 'news'},
     }
     return object_list(**context)
 

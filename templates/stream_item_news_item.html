@@ -1,4 +1,7 @@
-<h2>{{ object.headline }}</h2>
-{{ object.text|safe }}
-<p><small>Posted by {{ object.author }} on {{ object.pub_date }}</small></p>
+<table class = "stream_item">
+    <tr>
+        <td class = "pubdateAndAuthor">{{ object.pub_date.day }} {{ object.pub_date.month }} {{ object.pub_date.year }}<br /><small>{{ object.author }} @ {{ object.pub_date.day }}</small></td>
+        <td class = "headlineAndText"><h2>{{ object.headline }}</h2> {{ object.text|safe }}</td>
+    </tr>
+</table>
 

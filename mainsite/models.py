@@ -14,7 +14,10 @@ class Static(models.Model):
    creator = models.ForeignKey(User, related_name='page_creator')
    update_date = models.DateTimeField(auto_now=True)
    updater = models.ForeignKey(User, related_name='page_updater')
-   slug = models.SlugField(help_text="slug will be used in url generation, keep it simple, stupid.")
+   slug = models.SlugField(help_text="Slug will be used to generate URL.")
+   #nav = models.CharField or TextField?
+   #subnav = models.CharField or TextField?
+
    def __unicode__(self):
       return self.title
 
@@ -22,7 +25,7 @@ class NewsItem(models.Model):
    headline = models.CharField(max_length=200)
    text = models.TextField()
    pub_date = models.DateTimeField(default=datetime.now, help_text="News item will appear on homepage starting from date and time specified.")
-   #author = models.ForeignKey(User)
+
    def __unicode__(self):
       return self.headline
 
@@ -36,7 +39,7 @@ class Event(models.Model):
    volunteers_email = models.EmailField(blank=True, help_text="Address to email in order to volunteer")
    description = models.TextField(help_text="Description of the event, will appear on the front page.")
    pub_date = models.DateTimeField(default=datetime.now, help_text="Event will appear on homepage starting from date and time specified.")
-   #author = models.ForeignKey(User)
+
    def __unicode__(self):
       return self.name
 
@@ -46,7 +49,6 @@ class Beta(models.Model):
    pdf_url = models.URLField(verify_exists=True, help_text="Link to PDF of this issue of Beta", max_length=500)
    pub_date = models.DateTimeField(default=datetime.now, help_text="Beta will appear on homepage starting from date and time specified.")
 
-   #author = models.ForeignKey(User)
    def __unicode__(self):
       return self.title
 
@@ -62,41 +64,33 @@ class StreamItem(models.Model):
       template_name = template_name.replace(' ','_')
       return render_to_string(template_name, { 'object': self.content_object })
 
-# Hook for creating StreamItems
-
-def create_stream_item(sender, instance, signal, *args, **kwargs):
-   # Get the instance's content type
-   ctype = ContentType.objects.get_for_model(instance)
-
-   # Get the instance's pub date
-   #if ctype.name == 'beta':
-   #   pub_date = instance.announce_date
-   #elif ctype.name == 'somethin else':
-   #   pub_date = instance.some_field
-   #else:
-   #   pub_date = instance.pub_date
-   pub_date = instance.pub_date
-
-   # Update or create the corresponding StreamItem
-   try:
+   # Hook for creating StreamItems
+   def create_stream_item(sender, instance, signal, *args, **kwargs):
+      # Get the instance's content type
+      ctype = ContentType.objects.get_for_model(instance)
+   
+      pub_date = instance.pub_date
+   
+      # Update or create the corresponding StreamItem
+      try:
+         si = StreamItem.objects.get(content_type=ctype, object_id=instance.id)
+         si.pub_date = pub_date
+         si.save()
+      except StreamItem.DoesNotExist:
+         si = StreamItem(content_type=ctype, object_id=instance.id, pub_date=pub_date)
+         si.save()
+   
+   # Hook for removing StreamItems
+   def remove_stream_item(sender, instance, signal, *args, **kwargs):
+      # Get the instance's content type
+      ctype = ContentType.objects.get_for_model(instance)
+   
+      # Get the stream item corresponding to the instance being removed, and delete it.
       si = StreamItem.objects.get(content_type=ctype, object_id=instance.id)
-      si.pub_date = pub_date
-      si.save()
-   except StreamItem.DoesNotExist:
-      si = StreamItem(content_type=ctype, object_id=instance.id, pub_date=pub_date)
-      si.save()
-
-# Hook for removing StreamItems
-def remove_stream_item(sender, instance, signal, *args, **kwargs):
-   # Get the instance's content type
-   ctype = ContentType.objects.get_for_model(instance)
-
-   # Get the stream item corresponding to the instance being removed, and delete it.
-   si = StreamItem.objects.get(content_type=ctype, object_id=instance.id)
-   si.delete()
-
-# send a signal on post_save and pre_delete for each of these models
-for modelname in [NewsItem, Event, Beta]:
-   post_save.connect(create_stream_item, sender=modelname)
-   pre_delete.connect(remove_stream_item, sender=modelname)
-
+      si.delete()
+   
+   # send a signal on post_save and pre_delete for each of these models
+   for modelname in [NewsItem, Event, Beta]:
+      post_save.connect(create_stream_item, sender=modelname)
+      pre_delete.connect(remove_stream_item, sender=modelname)
+   
