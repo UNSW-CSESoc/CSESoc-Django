@@ -153,18 +153,70 @@ header {
     clear: both;
 }
 
-/*Stream_item table*/
+/*Stream_items table*/
 table.stream_item {
     width: 100%;
+    color: #3d3d3d;
+}
+
+table.stream_item td {
+    padding: 10px;
+    vertical-align: top;
 }
 
 table.stream_item td.pubdateAndAuthor {
-    width: 15%;
-    vertical-align: right;
+    width: 17%;
+    text-align: right;
+    color: #2f586d;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+table.stream_item td.pubdateAndAuthor small {
+    font-weight: normal;
+    font-size: 0.7em;
+    color: #888888;
 }
 
 table.stream_item td.headlineAndText {
-    width: 85%;
+    width: 83%;
+    font-size: 0.9em;
+}
+
+table.stream_item td.headlineAndText h2 {
+    font-weight: normal;
+    font-size: 1.5em;
+    padding-bottom: 7px;
+}
+
+/*Pagenumbers*/
+ul.pagenumbers {
+    list-style-type: none;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+ul.pagenumbers li {
+    display: inline;
+    list-style-type: none;
+    padding: 5px;
+}
+
+ul.pagenumbers li a {
+    color: #888888;
+    display: inline;
+    list-style-type: none;
+    padding: 5px;
+}
+
+ul.pagenumbers li strong {
+    color: #2f586d;
+}
+
+ul.pagenumbers li strong.disabled {
+    color: #ffffff;
 }
 
 /*Sponsors table*/
