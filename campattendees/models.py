@@ -13,7 +13,7 @@ class Application(models.Model):
          ('Y', '18+'),
          ('N', '0-17'),
          )
-   age = models.CharField(max_length=1, choices=AGE_CHOICES, verbose_name='Age on March 19 2010?', help_text='Proof of age will be required if you wish to consume alcohol.')
+   age = models.CharField(max_length=1, choices=AGE_CHOICES, verbose_name='Age on March 18 2011?', help_text='Proof of age will be required if you wish to consume alcohol.')
    dietary = models.TextField(help_text='Do you have any special dietary requirements', blank=True)
    medical = models.TextField(help_text='Do you have any medical conditions that should be disclosed?', blank=True)
 
