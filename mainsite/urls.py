@@ -29,12 +29,13 @@ urlpatterns = patterns('django.views.generic.date_based',
 
     # all news sources
     (r'^$',                                                             streamitem_index, tumblog_dict, 'home'),
+    (r'^home/news/$',							streamitem_index, tumblog_dict, 'home'),
     (r'^(?P<year>\d{4})/$',                                             'archive_year',   tumblog_dict, 'home-year'),
     (r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$',                         'archive_month',  tumblog_dict, 'home-month'),
     (r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',        'archive_day',    tumblog_dict, 'home-day'),
 
     # news
-    (r'^news/$',                                                        streamitem_index, news_dict,    'home-news'),
+    (r'^news/$',                                                  streamitem_index, news_dict,    'home-news'),
     (r'^news/(?P<year>\d{4})/$',                                        'archive_year',   news_dict,    'home-news-year'),
     (r'^news/(?P<year>\d{4})/(?P<month>[a-z]{3})/$',                    'archive_month',  news_dict,    'home-news-month'),
     (r'^news/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',   'archive_day',    news_dict,    'home-news-day'),

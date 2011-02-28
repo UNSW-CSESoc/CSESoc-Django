@@ -12,6 +12,7 @@ article, aside, figure, figcaption, hgroup, footer, dropdown, nav, section {
     width: 1200px;
     margin: auto;
     background-color: #cccccc;
+    font-family: Arial;
 }
 
 /*Header image*/
@@ -151,6 +152,8 @@ header {
     text-align: center;
     padding-top: 20px;
     clear: both;
+    font-size: 0.85em;
+    color: #888888;
 }
 
 /*Stream_items table*/
@@ -171,12 +174,6 @@ table.stream_item td.pubdateAndAuthor {
     font-size: 0.9em;
     font-weight: bold;
     padding-top: 15px;
-}
-
-table.stream_item td.pubdateAndAuthor small {
-    font-weight: normal;
-    font-size: 0.7em;
-    color: #888888;
 }
 
 table.stream_item td.headlineAndText {
@@ -219,7 +216,7 @@ ul.pagenumbers li strong.disabled {
     color: #ffffff;
 }
 
-/*Sponsors table*/
+/*Sponsors table in right sidebar*/
 table.sponsorstable {
     width: 100%;
 }
@@ -231,8 +228,38 @@ table.sponsorstable td {
     border-bottom: 1px solid #aaaaaa;
 }
 
+/*Sponsors table on sponsors page*/
+table.sponsorpagetable {
+    width: 100%;
+}
+
+table.sponsorpagetable td.nameAndLogo {
+    width: 40%;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+table.sponsorpagetable td.nameAndLogo h2 {
+    font-size: 1.0em;
+    color: #3d3d3d;
+}
+
+table.sponsorpagetable td.description {
+    width: 60%;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: left;
+}
+
 /*Misc other*/
 a.newsArrow {
     color: #4d4d4d;
     text-decoration: none;
 }
+
+small {
+    font-weight: normal;
+    font-size: 0.7em;
+    color: #888888;
+}   

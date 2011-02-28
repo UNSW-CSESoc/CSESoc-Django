@@ -2,7 +2,6 @@ from django.contrib import admin
 from csesoc.mainsite.models import Beta,NewsItem,Event,Static
 
 class NewsItemAdmin(admin.ModelAdmin):
-   exclude = ('author',)
    def save_model(self, request, obj, form, change):
       if not change:
          obj.author = request.user
@@ -11,7 +10,6 @@ class NewsItemAdmin(admin.ModelAdmin):
 admin.site.register(NewsItem, NewsItemAdmin)
 
 class BetaAdmin(admin.ModelAdmin):
-   exclude = ('author',)
    def save_model(self, request, obj, form, change):
       if not change:
          obj.author = request.user
@@ -20,7 +18,6 @@ class BetaAdmin(admin.ModelAdmin):
 admin.site.register(Beta, BetaAdmin)
 
 class EventAdmin(admin.ModelAdmin):
-   exclude = ('author',)
    def save_model(self, request, obj, form, change):
       if not change:
          obj.author = request.user

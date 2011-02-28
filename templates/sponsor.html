@@ -1,12 +1,14 @@
 {% extends 'basewcalendar.html' %}
 
-{% block titlecontent %} CSESoc - Our Sponsors {% endblock %}
+{% block titlecontent %}Our Sponsors - CSESoc{% endblock %}
 
 {% block middlecontent %}
 
+<table class = "sponsorpagetable">
 {% for sponsor in allSponsors %}
     {{ sponsor.get_rendered_html }}
 {% endfor %}
+</table>
 
 {% endblock %}
 

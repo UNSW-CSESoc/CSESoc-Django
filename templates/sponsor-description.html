@@ -1,3 +1,7 @@
-<a href = "{{ object.website }}"><h1> {{ object.name }} </h1></a>
-<a href = "{{ object.website }}"><img src = "{{ MEDIA_URL }}{{ object.logo }}" alt = "blah"/></a>
-{{ object.description }}
+<td class = "nameAndLogo">
+	<a href = "{{ object.website }}"><h2>{{ object.name }}</h2></a><br />
+	<a href = "{{ object.website }}"><img src = "{{ MEDIA_URL }}{{ object.logo }}" alt = {{ object.name }}/></a>
+</td>
+<td class = "description">
+	{{ object.description }}
+</td>

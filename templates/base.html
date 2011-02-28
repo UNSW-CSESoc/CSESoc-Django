@@ -11,12 +11,12 @@
 <body>
     <div class="master">
         <header>
-            <a id="headerLink" href=""></a>
+            <a id="headerLink" href="/"></a>
             <ul>
-                <li {% ifequal nav 'news' %} class="on" {% endifequal %}> <a href="/news/recent/"> News </a>
+                <li {% ifequal nav 'home' %} class="on" {% endifequal %}> <a href="/home/news/">Home</a>
                     <ul>
-                        <li {% ifequal subnav 'recent' %} class="on" {% endifequal %}> <a href="/news/recent">Recent News</a> </li>
-                        <li {% ifequal nav 'calendar' %} class="on" {% endifequal %}> <a href="news/calendar">Full Calendar</a> </li>
+                        <li {% ifequal subnav 'news' %} class="on" {% endifequal %}> <a href="/home/news">News</a> </li>
+                        <li {% ifequal subnav 'calendar' %} class="on" {% endifequal %}> <a href="/home/calendar">Event Calendar</a> </li>
                     </ul>
                 </li>
                 <li {% ifequal nav 'about' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about" %}">About</a> 

@@ -16,13 +16,13 @@ def streamitem_index(request, queryset, **kwargs):
         'queryset': queryset.filter(pub_date__lte=datetime.now()).order_by('-pub_date'),
         'paginate_by': settings.STREAMITEMS_PER_PAGE,
         'template_name': 'mainsite/streamitem_archive.html',
-        'extra_context': {'nav' : 'news'},
+        'extra_context': {'nav' : 'home', 'subnav' : 'news'},
     }
     return object_list(**context)
 
 def static(request, path):
     p = get_object_or_404(Static, slug=path.replace('/','_'))
-    return render_to_response('static.html', { 'object' : p }, context_instance=RequestContext(request) )
+    return render_to_response('static.html', { 'object' : p, 'nav' : p.nav, 'subnav' : p.subnav }, context_instance=RequestContext(request) )
 
 def thedate(request):
     return render_to_response('thedate.html', { 'date' : datetime.now() }, context_instance=RequestContext(request) )
