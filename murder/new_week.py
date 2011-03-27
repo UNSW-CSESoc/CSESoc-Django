@@ -12,7 +12,7 @@ set_path.update_path()
 
 from django.core.management import setup_environ
 from datetime import date, datetime, timedelta
-import settings
+from csesoc import settings
 
 setup_environ(settings)
 
