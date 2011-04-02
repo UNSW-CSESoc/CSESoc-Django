@@ -27,3 +27,5 @@ def static(request, path):
 def thedate(request):
     return render_to_response('thedate.html', { 'date' : datetime.now() }, context_instance=RequestContext(request) )
 
+def calendar(request):
+    return render_to_response('calendar.html', { 'nav' : "home", 'subnav' : "calendar" }, context_instance=RequestContext(request) )

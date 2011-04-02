@@ -116,8 +116,10 @@ header {
     border-width: 1px;
     border-color: #aaaaaa;
 
-    border-radius: 10px;
-    -moz-border-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-top-left-border-radius: 10px;
+    border-top-right-radius: 10px;
+    -moz-top-right-border-radius: 10px;
 }
 
 .content h1 {

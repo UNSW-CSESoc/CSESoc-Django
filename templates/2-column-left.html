@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+
+{% block allcontent %}
+    <div class="content" id="middlecontent" style="left:0px; width:820px; text-align:center">
+        {% block middlecontent %}{% endblock %}
+    </div>
+
+    <div class="content" id="rightcontent">
+        {% block rightcontent %}{% endblock %}
+    </div>
+{% endblock %}

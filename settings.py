@@ -113,7 +113,6 @@ INSTALLED_APPS = (
     'csesoc.sponsors',
     'csesoc.murder',
     'csesoc.game',
-    'csesoc.posts',
 )
 
 AUTHENTICATION_BACKENDS = (
