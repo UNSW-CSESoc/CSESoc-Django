@@ -1,7 +1,11 @@
-{% extends "base.html" %}
+{% extends "3-column-w-cal-sponsors.html" %}
 
-{% block title %}404 Not Found - CSESoc{% endblock %}
+{% block titlecontent %}404 Not Found{% endblock %}
 
-{% block content %}<h1>Oh noes! The tubes are missing!</h1>
+{% block middlecontent %}
 
-<p>We've searched everywhere, but couldn't find the page you wanted. Please try using the navigation links on the side instead. If you believe this is a mistake on our part, please email us at <a href="{% filter urlencode %}mailto:csesoc.sysadmin@cse.unsw.edu.au?subject=CSESoc Website Error: 404 at {{ request.path }}{% endfilter %}">csesoc DOT sysadmin AT cse DOT unsw DOT edu DOT au</a>.</p>{% endblock %}
+<h1>Oh noes! The tubes are missing!</h1>
+
+<p>We've searched everywhere, but couldn't find the page you wanted. Please try using the navigation links on the side instead. If you believe this is a mistake on our part, please email us at <a href="{% filter urlencode %}mailto:csesoc.sysadmin@cse.unsw.edu.au?subject=CSESoc Website Error: 404 at {{ request.path }}{% endfilter %}">csesoc DOT sysadmin AT cse DOT unsw DOT edu DOT au</a>.</p>
+
+{% endblock %}
