@@ -6,12 +6,12 @@ from csesoc import settings
 
 def sponsors(request):
     return render_to_response('sponsor.html', 
-                              {'allSponsors' : Sponsor.objects.order_by('amount_paid').filter(expiry_date__gte=date.today),
+                              {'allSponsors' : Sponsor.objects.order_by('amount_paid').reverse().filter(expiry_date__gte=date.today),
                                'nav' : 'oursponsors',}, 
                               context_instance = RequestContext(request))
 
 def sponsorsList(request):
-    return get_list_or_404(Sponsor.objects.order_by('amount_paid'), expiry_date__gte=date.today)
+    return get_list_or_404(Sponsor.objects.order_by('amount_paid').reverse(), expiry_date__gte=date.today)
     
 
 
