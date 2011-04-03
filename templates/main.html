@@ -1,0 +1,95 @@
+<!doctype html public "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="{{ MEDIA_URL }}reset.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}text.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}1020_12_10_10.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}icon.png" rel="icon" type="image/png"/>
+    <title>{% block titlecontent %}{% endblock %} - CSESoc - UNSW Computer Science and Engineering Society</title>
+    {% block extraheadercontent %}{% endblock %}
+</head>
+
+<body>
+    <div class="master">
+        <div id="header">
+            <div class="container_12">
+                <a id="headerLink" href="/"></a>
+                <div id="nav_region"> 
+                    <div id="nav_region_left"></div> 
+                    <div id="nav_region_centre"> 
+                        <ul class="nav_tier1"> 
+                            <li> 
+                                <a href="/">Home</a> 
+                            </li> 
+                            <li> 
+                                <a href="/about">About</a> 
+                                <ul> 
+                                    <li class="first"><a href="/about/history">History</a></li> 
+                                    <li><a href="/about/constitution">Constitution</a></li> 
+                                    <li><a href="/about/execheads">Exec & Heads</a></li> 
+                                </ul> 
+                            </li> 
+                            <li> 
+                                <a href="/workinggroups">Working Groups</a> 
+                                <ul> 
+                                    <li class="first"><a href="/workinggroups/beta">Beta</a></li> 
+                                    <li><a href="/workinggroups/tech">Tech</a></li> 
+                                    <li><a href="/workinggroups/social">Social</a></li> 
+                                    <li><a href="/workinggroups/sysadmin">Sysadmin</a></li> 
+                                </ul> 
+                            </li>
+                            <li> 
+                                <a href="/students">Students</a> 
+                                <ul> 
+                                    <li class="first"><a href="http://wiki.csesoc.unsw.edu.au">Wiki</a></li> 
+                                    <li><a href="/students/calendar">Calendar</a></li> 
+                                    <li><a href="/students/murder">Murder</a></li> 
+                                    <li><a href="/students/bling">Bling</a></li> 
+                                    <li><a href="/students/games">Games</a></li> 
+                                    <li><a href="/students/irc">IRC</a></li> 
+                                </ul> 
+                            </li> 
+                            <li> 
+                                <a href="/sponsors">Sponsors</a> 
+                            </li> 
+                            <li> 
+                                <a href="http://beta.csesoc.unsw.edu.au">&beta;eta</a> 
+                            </li> 
+                            <li>
+                                <a href="/contactus">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="nav_region_right"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content" class="container_12">
+            {% block allcontent %}{% endblock %}
+        </div>
+
+        <div id="footer" class="container_12">
+            <div id="footerText" class="grid_12">
+                Copyright &copy; CSESoc 2011
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var gajshost=(("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3cscript src='" + gajshost + "google-analytics.com/ga.js' type='text/javascript'%3e%3c/script%3e"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pagetracker=_gat._gettracker("ua-7494949-1");
+            pagetracker._trackpageview();
+        } catch(err) {}
+    </script>
+
+</body>
+</html>
+
