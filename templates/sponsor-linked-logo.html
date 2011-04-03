@@ -1,1 +1,5 @@
-<a href="{{ object.website }}"><img border="0" alt="{{ object.alt_text|safe }}" src="{{ MEDIA_URL }}{{ object.logo }}"/></a><br />
+{% if object.is_default_html %}
+    <a href="{{ object.website }}"><img border="0" alt="{{ object.alt_text|safe }}" src="{{ MEDIA_URL }}{{ object.logo }}"/></a><br />
+{% else %}
+    {{ object.html_override|safe }}
+{% endif %}
