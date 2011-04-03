@@ -1,6 +1,7 @@
-<h2>{{ object.name }}</h2>
+<td class = "pubdateAndAuthor">{{ object.pub_date|date:"d M y"|upper }}<br /><small>{{ object.author }} @ {{ object.pub_date|date:"H:i" }}</small></td>
+<td class = "headlineAndText"><h2>{{ object.name }}</h2> 
 {{ object.description|safe }}
-<p>
+<br /><br />
 When: <strong>{{ object.time }}</strong><br />
 Where: <strong>{{ object.location|safe }}</strong><br />
 {% if object.registration_required %}
@@ -9,6 +10,3 @@ Registration: Email <strong>{{ object.registration_email }}</strong> to register
 {% if object.volunteers_required %}
 Volunteers: Email <strong>{{ object.volunteers_email }}</strong> to volunteer<br />
 {% endif %}
-</p>
-<p><small>Posted by {{ object.author }} on {{ object.pub_date }}</small></p>
-

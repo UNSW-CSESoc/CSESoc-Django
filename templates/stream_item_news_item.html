@@ -1,4 +1,17 @@
-<h2>{{ object.headline }}</h2>
-{{ object.text|safe }}
-<p><small>Posted by {{ object.author }} on {{ object.pub_date }}</small></p>
-
+<div class = "newsItem">
+    <div class="timestamp-container">
+	    <div class="timestamp">
+            <span class="ts-date">{{ object.pub_date|date:"d" }} </span>
+            <span class="ts-month">{{ object.pub_date|date:"M"|upper }} </span>
+            <span class="ts-year">{{ object.pub_date|date:"Y" }} </span>
+            <span class="ts-time">@ {{ object.pub_date|date:"H:i" }}</span>
+            <span class="author">{{ object.author }}</span>
+        </div>
+    </div>
+	<div class="news">
+        <div class="news-title"><h2>{{ object.headline }}</h2></div>
+        <div class="news-content">
+            {{ object.text|safe }}
+        </div>
+    </div>
+</div>
