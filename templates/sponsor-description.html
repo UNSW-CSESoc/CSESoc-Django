@@ -1,16 +1,4 @@
-{% if object.has_not_expired %}
-<!-- 
-  Sponsor-Name: {{ object.name }}
-  Expiry Date: {{ object.expiry_date }}
--->
 <tr>
-  <td width="190">
-    <a href="{{ object.website }}">
-      <img src="{{ MEDIA_URL }}{{ object.logo }}" alt="{{ object.alt_text|safe }}" />
-    </a>
-  </td><td>
-    <strong>{{ object.name }}</strong>
-    <p>{{ object.description|safe }}</p>
-  </td>
+    <td width="30%" class="sponsorImage"><a href="{{ object.website }}"><img src="{{ MEDIA_URL }}{{ object.logo }}" alt={{ object.name }}/></a></td>
+    <td width="70%" class="sponsorDescription"><a href="{{ object.website }}" class="sponsorName">{{ object.name }}</a><br />{{ object.description }}</td>
 </tr>
-{% endif %}
