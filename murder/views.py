@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from csesoc.murder.models import *
+from csesoc.sponsors.views import sponsorsList
 from collections import defaultdict
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
@@ -8,13 +9,13 @@ from django import forms
 from django.template import RequestContext
 
 def gamelist(request):
-   return render_to_response('games.html', RequestContext(request, { 'games': Game.objects.order_by('id') }))
+   return render_to_response('games.html', RequestContext(request, { 'games': Game.objects.order_by('id'), 'allSponsors' : sponsorsList(request) }))
 
 def index(request, game):
    try:
-      return render_to_response('index.html', RequestContext(request, { 'game': Game.objects.get(slug=game) }))
+      return render_to_response('index.html', RequestContext(request, { 'game': Game.objects.get(slug=game), 'allSponsors' : sponsorsList(request) }))
    except Game.DoesNotExist:
-      return render_to_response('basic.html', RequestContext(request, { 'title':'Invalid Game. Go Away!' }))
+      return render_to_response('basic.html', RequestContext(request, { 'title':'Invalid Game. Go Away!', 'allSponsors' : sponsorsList(request) }))
 
 def scoreboard(request, game):
    try:
@@ -26,24 +27,24 @@ def scoreboard(request, game):
             c[kill.killer.username] += 1
             total += 1
       counts = sorted(c.iteritems(), key = lambda (k,v):(v,k), reverse=True)
-      return render_to_response('scoreboard.html', RequestContext(request, { 'game': gameo, 'counts': counts, 'total': total }))
+      return render_to_response('scoreboard.html', RequestContext(request, { 'game': gameo, 'counts': counts, 'total': total, 'allSponsors' : sponsorsList(request) }))
    except Game.DoesNotExist:
-      return render_to_response('basic.html', RequestContext(request, { 'title':'Invalid Game. Go Away!' }))
+      return render_to_response('basic.html', RequestContext(request, { 'title':'Invalid Game. Go Away!', 'allSponsors' : sponsorsList(request) }))
 
 def newkills(request, game):
    try:
       c = defaultdict(int)
       gameo = Game.objects.get(slug=game)
       kills = gameo.round_set.get(start__lt=datetime.now, end__gt=datetime.now()).kill_set.order_by('-datetime')
-      return render_to_response('newkills.html', RequestContext(request, { 'game': gameo, 'kills': kills }))
+      return render_to_response('newkills.html', RequestContext(request, { 'game': gameo, 'kills': kills, 'allSponsors' : sponsorsList(request) }))
 
    except Round.DoesNotExist:
-      return render_to_response('basic.html', RequestContext(request, { 'title':'No Current Round. Go Away!' }))
+      return render_to_response('basic.html', RequestContext(request, { 'title':'No Current Round. Go Away!', 'allSponsors' : sponsorsList(request) }))
    except Game.DoesNotExist:
-      return render_to_response('basic.html', RequestContext(request, { 'title':'Invalid Game. Go Away!' }))
+      return render_to_response('basic.html', RequestContext(request, { 'title':'Invalid Game. Go Away!', 'allSponsors' : sponsorsList(request) }))
 
 def roundkills(request, game, roundid):
-   return render_to_response('basic.html', RequestContext(request, { 'title':'roundkills' }))
+   return render_to_response('basic.html', RequestContext(request, { 'title':'roundkills', 'allSponsors' : sponsorsList(request) }))
 
 # form to kill victim
 class KillForm(forms.Form):
@@ -58,7 +59,7 @@ def myvictim(request, game):
       rp = current_round.roundplayer_set.get(player=Player.objects.get(username=request.user.username))   
 
       if not rp.alive:
-         return render_to_response('basic.html', RequestContext(request, { 'title':'You are DEAD. See you next week!' }))
+         return render_to_response('basic.html', RequestContext(request, { 'title':'You are DEAD. See you next week!', 'allSponsors' : sponsorsList(request) }))
 
       flash = ''
       if request.method == 'POST':
@@ -76,16 +77,16 @@ def myvictim(request, game):
          form = KillForm()
 
       return render_to_response('myvictim.html', 
-            RequestContext(request, {'victim':rp.currentvictim, 'gameslug':game, 'flash':flash, 'form':form}))
+            RequestContext(request, {'victim':rp.currentvictim, 'gameslug':game, 'flash':flash, 'form':form, 'allSponsors' : sponsorsList(request)}))
 
    except Round.DoesNotExist:
-      return render_to_response('basic.html', RequestContext(request, { 'title':'No Current Round. Go Away!' }))
+      return render_to_response('basic.html', RequestContext(request, { 'title':'No Current Round. Go Away!', 'allSponsors' : sponsorsList(request) }))
    except Game.DoesNotExist:
-      return render_to_response('basic.html', RequestContext(request, { 'title':'Invalid Game. Go Away!' }))
+      return render_to_response('basic.html', RequestContext(request, { 'title':'Invalid Game. Go Away!', 'allSponsors' : sponsorsList(request) }))
    except RoundPlayer.DoesNotExist:
-      return render_to_response('basic.html', RequestContext(request, { 'title':'You are not registered in this round. Go Away!' }))
+      return render_to_response('basic.html', RequestContext(request, { 'title':'You are not registered in this round. Go Away!', 'allSponsors' : sponsorsList(request) }))
    except Player.DoesNotExist:
-      return render_to_response('basic.html', RequestContext(request, { 'title':'You are not registered in this game. Go Away!' }))
+      return render_to_response('basic.html', RequestContext(request, { 'title':'You are not registered in this game. Go Away!', 'allSponsors' : sponsorsList(request) }))
 
 def logout_game(request, game):
    logout(request)
