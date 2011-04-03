@@ -15,8 +15,6 @@ class Static(models.Model):
    update_date = models.DateTimeField(auto_now=True)
    updater = models.ForeignKey(User, related_name='page_updater')
    slug = models.SlugField(help_text="Slug will be used to generate URL.")
-   nav = models.CharField(max_length=25)
-   subnav = models.CharField(max_length=25)
 
    def __unicode__(self):
       return self.title

@@ -2,54 +2,79 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link href="{{ MEDIA_URL }}master.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}reset.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}text.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}1020_12_10_10.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ MEDIA_URL }}style.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="{{ MEDIA_URL }}icon.png" rel="icon" type="image/png"/>
-    <title> {% block titlecontent %} {% endblock %}</title>
+    <title>{% block titlecontent %}{% endblock %} - CSESoc - UNSW Computer Science and Engineering Society</title>
     {% block extraheadercontent %}{% endblock %}
 </head>
 
 <body>
     <div class="master">
-        <header>
-            <a id="headerLink" href="/"></a>
-            <ul>
-                <li {% ifequal nav 'home' %} class="on" {% endifequal %}> <a href="/home/news/">Home</a>
-                    <ul>
-                        <li {% ifequal subnav 'news' %} class="on" {% endifequal %}> <a href="/home/news">News</a> </li>
-                        <li {% ifequal subnav 'calendar' %} class="on" {% endifequal %}> <a href="/home/calendar">Event Calendar</a> </li>
-                    </ul>
-                </li>
-                <li {% ifequal nav 'about' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about" %}">About</a> 
-                    <ul>
-                        <li {% ifequal subnav 'history' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about/history" %}">History</a> </li>
-                        <li {% ifequal subnav 'constitution' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about/constitution" %}">Constitution</a> </li>
-                        <li {% ifequal subnav 'people' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about/people" %}">People</a> </li>
-                        <li {% ifequal subnav 'workinggroups' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="about/workinggroups" %}">Working Groups</a> </li> 
-                    </ul>
-                </li>
-                <li {% ifequal nav 'forstudents' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="forstudents" %}">For Students</a> 
-                    <ul>
-                        <li {% ifequal subnav 'games' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="forstudents/games" %}">Games</a> </li>
-                        <li {% ifequal subnav 'bling' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="forstudents/bling" %}">Bling for Ubuntu</a> </li>
-                        <li {% ifequal subnav 'irc' %} class="on" {% endifequal %}> <a href="{% url mainsite.views.static path="forstudents/irc" %}">IRC</a> </li>
-                    </ul>
-                </li>
-                <li {% ifequal nav 'oursponsors' %} class="on" {% endifequal %}> <a href="/oursponsors/">Our Sponsors</a> 
-                    <emptylist {% ifequal nav 'oursponsors' %} class="on" {% endifequal %}> </emptyList>
-                </li>
-                <li> <a href="http://beta.csesoc.unsw.edu.au/">Beta</a>
-                    <emptylist> </emptyList>
-                </li>
-                <li> <a href="http://wiki.csesoc.unsw.edu.au">Wiki</a> 
-                    <emptylist> </emptyList>
-                </li>
-            </ul>
-        </header>
+        <div id="header">
+            <div class="container_12">
+                <a id="headerLink" href="/"></a>
+                <div id="nav_region"> 
+                    <div id="nav_region_left"></div> 
+                    <div id="nav_region_centre"> 
+                        <ul class="nav_tier1"> 
+                            <li> 
+                                <a href="/">Home</a> 
+                            </li> 
+                            <li> 
+                                <a href="/about">About</a> 
+                                <ul> 
+                                    <li class="first"><a href="/about/history">History</a></li> 
+                                    <li><a href="/about/constitution">Constitution</a></li> 
+                                    <li><a href="/about/execheads">Exec & Heads</a></li> 
+                                </ul> 
+                            </li> 
+                            <li> 
+                                <a href="/workinggroups">Working Groups</a> 
+                                <ul> 
+                                    <li class="first"><a href="/workinggroups/beta">Beta</a></li> 
+                                    <li><a href="/workinggroups/tech">Tech</a></li> 
+                                    <li><a href="/workinggroups/social">Social</a></li> 
+                                    <li><a href="/workinggroups/sysadmin">Sysadmin</a></li> 
+                                </ul> 
+                            </li>
+                            <li> 
+                                <a href="/students">Students</a> 
+                                <ul> 
+                                    <li class="first"><a href="http://wiki.csesoc.unsw.edu.au">Wiki</a></li> 
+                                    <li><a href="/students/calendar">Calendar</a></li> 
+                                    <li><a href="/students/murder">Murder</a></li> 
+                                    <li><a href="/students/bling">Bling</a></li> 
+                                    <li><a href="/students/games">Games</a></li> 
+                                    <li><a href="/students/irc">IRC</a></li> 
+                                </ul> 
+                            </li> 
+                            <li> 
+                                <a href="/sponsors">Sponsors</a> 
+                            </li> 
+                            <li> 
+                                <a href="http://beta.csesoc.unsw.edu.au">&beta;eta</a> 
+                            </li> 
+                            <li>
+                                <a href="/contactus">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="nav_region_right"></div>
+                </div>
+            </div>
+        </div>
 
-        {% block allcontent %}{% endblock %}
+        <div id="content" class="container_12">
+            {% block allcontent %}{% endblock %}
+        </div>
 
-        <div id="footer">
-            Copyright &copy; CSESoc 2011
+        <div id="footer" class="container_12">
+            <div id="footerText" class="grid_12">
+                Copyright &copy; CSESoc 2011
+            </div>
         </div>
 
     </div>

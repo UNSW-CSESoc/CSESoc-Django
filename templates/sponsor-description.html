@@ -1,7 +1,4 @@
-<td class = "nameAndLogo">
-	<a href = "{{ object.website }}"><h2>{{ object.name }}</h2></a><br />
-	<a href = "{{ object.website }}"><img src = "{{ MEDIA_URL }}{{ object.logo }}" alt = {{ object.name }}/></a>
-</td>
-<td class = "description">
-	{{ object.description }}
-</td>
+<tr>
+    <td width="30%" class="sponsorImage"><a href="{{ object.website }}"><img src="{{ MEDIA_URL }}{{ object.logo }}" alt={{ object.name }}/></a></td>
+    <td width="70%" class="sponsorDescription"><a href="{{ object.website }}" class="sponsorName">{{ object.name }}</a><br />{{ object.description }}</td>
+</tr>

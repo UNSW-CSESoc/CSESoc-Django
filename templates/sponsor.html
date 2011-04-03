@@ -1,10 +1,12 @@
 {% extends '3-column-w-calendar.html' %}
 
-{% block titlecontent %}Our Sponsors - CSESoc{% endblock %}
+{% block titlecontent %}Our Sponsors{% endblock %}
 
 {% block middlecontent %}
 
-<table class = "sponsorpagetable">
+<h1>Our Sponsors</h1>
+
+<table id="sponsorsPageTable">
 {% for sponsor in allSponsors %}
     {{ sponsor.get_rendered_html }}
 {% endfor %}
@@ -14,6 +16,6 @@
 
 {% block rightcontent %}
 
-<h1>Becoming a sponsor</h1>
+<h1>Become a sponsor</h1>
 
 {% endblock %}

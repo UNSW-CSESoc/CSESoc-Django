@@ -215,7 +215,7 @@ ul.pagenumbers li strong {
 }
 
 ul.pagenumbers li strong.disabled {
-    color: #ffffff;
+    display: none;
 }
 
 /*Sponsors table in right sidebar*/

@@ -1,17 +1,17 @@
 <ul class="pagenumbers"> 
-    <li>{% if has_previous %}<a href="?page={{ page_obj.previous_page_number }}">&#xab;</a>{% else %}<strong class="disabled">&#xab;</strong>{% endif %}</li> 
+    <li>{% if has_previous %}<a href="?page={{ page_obj.previous_page_number }}">&#xab;</a>{% else %}<span class="disabled">&#xab;</span>{% endif %}</li> 
     {% for page in range %}
         <li> 
         {% if page %}
             {% ifnotequal page current %}
                 <a href="?page={{ page }}">{{ page }}</a> 
             {% else %}
-                <strong>{{ page }}</strong> 
+                <span class="current">{{ page }}</span> 
             {% endifnotequal %}
         {% else %}
-            &hellip;
+            <span class="disabled">&hellip;</span>
         {% endif %}
         </li> 
     {% endfor %}
-    <li>{% if has_next %}<a href="?page={{ page_obj.next_page_number }}">&#xbb;</a>{% else %}<strong class="disabled">&#xbb;</strong>{% endif %}</li> 
+    <li>{% if has_next %}<a href="?page={{ page_obj.next_page_number }}">&#xbb;</a>{% else %}<span class="disabled">&#xbb;</span>{% endif %}</li> 
 </ul> 

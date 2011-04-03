@@ -8,11 +8,10 @@ from csesoc import settings
 from csesoc.campattendees.views import signup
 from csesoc.campleaders.views import apply
 from csesoc.game.views import game_scores, game_static, game_static_latest
-from csesoc.mainsite.views import static, thedate
+from csesoc.mainsite.views import static, thedate, calendar
 from csesoc.scheduler.views import join, results
 from csesoc.sponsors.views import sponsors
 from csesoc.suggestions.views import suggest
-from csesoc.posts.views import recentPosts
 
 admin.autodiscover()
 
@@ -29,7 +28,7 @@ urlpatterns = patterns(
     (r'accounts/login/$', 'csesoc.auth.backends.cse_login'),
 
      # Sponsors
-    (r'^oursponsors/$', sponsors),
+    (r'^sponsors/$', sponsors),
 
     # Camp leader applications
     (r'^apply/$', apply),
@@ -51,6 +50,9 @@ urlpatterns = patterns(
 
     # The date
     (r'^thedate/$', thedate),
+
+    # Full calendar page
+    (r'^home/calendar/$', calendar),
 
     # Miscellaneous articles
     (r'^(?P<path>.*)/$', static),

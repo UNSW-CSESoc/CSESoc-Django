@@ -1,8 +1,8 @@
 {% extends "3-column-w-cal-sponsors.html" %}
 {% block titlecontent %}{{ object.title }}{% endblock %}
 {% block middlecontent %}
-{{ object.text|safe }}
-<br />
-<small>Page created by {{ object.creator }} on {{ object.creation_date }}. Last updated by {{ object.updater }} on {{ object.update_date }}</small>
+    <h1>{{ object.title }}</h1>
+    {{ object.text|safe }}
+    <br />
 {% endblock %}
 

@@ -1,16 +1,15 @@
 {% extends '3-column-w-cal-sponsors.html' %}
 
-{% block titlecontent %}CSESoc - Student Society for the School of Computer Science and Engineering @ UNSW{% endblock %}
+{% block titlecontent %}Home{% endblock %}
 
 {% block middlecontent %}{% spaceless %}
 
 <h1>News</h1>
 
-<table class = "stream_item">
-    {% for stream_item in object_list %}
-        <tr>{{ stream_item.get_rendered_html }}</tr>
-    {% endfor %}
-</table>
+{% for stream_item in object_list %}
+    {{ stream_item.get_rendered_html }}
+    <hr><p />
+{% endfor %}
 
 {% if is_paginated %}{% load helpers %}{% generate_pagenumbers paginator page_obj 2 %}{% endif %}
 

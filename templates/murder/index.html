@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "3-column-w-cal-sponsors.html" %}
 
-{% block title %}Game Details{% endblock %}
+{% block titlecontent %}Game Details{% endblock %}
 
-{% block content %}
+{% block middlecontent %}
 <h1>{{ game.name }}</h1>
 <ul>
    <li><a href="{% url csesoc.murder.views.scoreboard game=game.slug %}">Scoreboard</a></li>

@@ -1,14 +1,14 @@
 {% extends "main.html" %}
 {% block allcontent %}
-        <div class="content" id="leftcontent"> 
+        <div class="content grid_3" id="leftcontent"> 
             {% block leftcontent %}{% endblock %}
         </div>
 
-        <div class="content" id="middlecontent">
+        <div class="content grid_6" id="middlecontent">
             {% block middlecontent %}{% endblock %}
         </div>
 
-        <div class="content" id="rightcontent">
+        <div class="content grid_3" id="rightcontent">
             {% block rightcontent %}{% endblock %}
         </div>
 {% endblock %}
