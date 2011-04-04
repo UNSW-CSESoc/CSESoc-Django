@@ -6,7 +6,7 @@
             {% ifnotequal page current %}
                 <a href="?page={{ page }}">{{ page }}</a>
             {% else %}
-                <strong>{{ page }}</strong>
+                <strong class='current'>{{ page }}</strong>
             {% endifnotequal %}
         {% else %}
             <strong class="disabled">...</strong>
