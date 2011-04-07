@@ -225,3 +225,9 @@ ul.pagenumbers {
 .news-title {
     color:#2f586d;
 }
+.news a {
+    color:#2f58cd;
+}
+.news a:hover {
+    color:#cf582d;
+}
