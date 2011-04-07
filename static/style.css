@@ -38,6 +38,9 @@ h6 {
 #nav_region a {
 	text-decoration:none;
 }
+#nav_region a:hover {
+    color:#cd282f;
+}
 #nav_region_centre {
 	height:38px;
 	padding:0 10px;
@@ -81,8 +84,8 @@ h6 {
     padding-right:10px;
 	display:block;
 }
-#nav_region_centre .nav_tier1>li:hover {
-	color:#000;
+#nav_region_centre .nav_tier1>li a:hover {
+	color:#cd282f;
 }
 li.first {
 	padding-top:10px;
@@ -180,6 +183,9 @@ ul.pagenumbers {
     font-weight:bold;
 	font-size:18px;
 }
+.pagenumbers a:hover {
+    color:#cd282f;
+}
 #calendar {
     border:1px solid #c2c2c2;
 }
@@ -190,7 +196,7 @@ ul.pagenumbers {
     border:1px solid #c2c2c2;
     text-align:center;
     vertical-align:middle;
-    padding: 10px;
+    padding: 5px;
 }
 #sponsorsPageTable {
     width: 100%;
