@@ -7,7 +7,7 @@ from csesoc import settings
 from csesoc.campattendees.views import signup
 from csesoc.campleaders.views import apply
 from csesoc.game.views import game_scores, game_static, game_static_latest
-from csesoc.mainsite.views import static, thedate
+from csesoc.mainsite.views import static, thedate, ircpage
 from csesoc.scheduler.views import join, results
 from csesoc.sponsors.views import sponsors
 from csesoc.music.views import music_submit_song, music_vote
@@ -54,6 +54,8 @@ urlpatterns = patterns('',
     (r'^music/$', music_submit_song),
     (r'^music/vote/$', music_vote),
 
+    # irc page
+    (r'^students/irc/$', ircpage),
 
     # news-related stuff
     (r'^', include('csesoc.mainsite.urls')),
