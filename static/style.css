@@ -231,7 +231,13 @@ ul.pagenumbers {
 .news a:hover {
     color:#cf582d;
 }
-hr {
-    margin-top: 5px;
-    margin-bottom: 5px;
+
+.news .section h2 {
+    width: 100%;
+    font-weight: normal;
+    font-size: 1.0em;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
