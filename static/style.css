@@ -232,10 +232,8 @@ ul.pagenumbers {
     color:#cf582d;
 }
 
-.news .section h2 {
+.news .itemTitle {
     width: 100%;
-    font-weight: normal;
-    font-size: 1.0em;
     border-top: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
     padding-top: 5px;
