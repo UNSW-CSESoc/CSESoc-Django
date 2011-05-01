@@ -23,13 +23,8 @@ def streamitem_index(request, queryset, **kwargs):
 
 def static(request, path):
     p = get_object_or_404(Static, slug=path.replace('/','_'))
-    return render_to_response('static.html', { 'allSponsors' : sponsorsList(request), 'object' : p }, context_instance=RequestContext(request) )
+    template=p.template.replace('templates/', '', 1)
+    return render_to_response(template, { 'allSponsors' : sponsorsList(request), 'object' : p }, context_instance=RequestContext(request) )
 
 def thedate(request):
     return render_to_response('thedate.html', { 'date' : datetime.now() }, context_instance=RequestContext(request) )
-
-def calendar(request):
-    return render_to_response('calendar.html', { 'nav' : "home", 'subnav' : "calendar" }, context_instance=RequestContext(request) )
-
-def ircpage(request):
-    return render_to_response('ircpage.html', {}, context_instance=RequestContext(request) )
