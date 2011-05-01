@@ -5,6 +5,7 @@ from django.contrib import admin
 from csesoc import settings
 from django.template import RequestContext
 from csesoc import csesoc_settings
+from django.shortcuts import render_to_response
 
 class CSEBackend(ModelBackend):
    def authenticate(self, token=None):
@@ -43,10 +44,10 @@ def cse_login(request, next=None):
 
    if not request.user.is_authenticated():
       user = None
-      if request.COOKIES.has_key('cseauth'):
-         user = authenticate(token=request.COOKIES['cseauth'])
       if csesoc_settings.ADMIN_NO_LOGIN:
-          user = authenticate()
+         user = authenticate()
+      elif request.COOKIES.has_key('cseauth'):
+         user = authenticate(token=request.COOKIES['cseauth'])
       if user is not None:
          if user.is_active:
             login(request, user)
