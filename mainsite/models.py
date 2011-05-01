@@ -10,6 +10,7 @@ from datetime import datetime
 class Static(models.Model):
    title = models.CharField(max_length=200)
    text = models.TextField()
+   template = models.FilePathField(path="templates/", match=".*\.html", recursive=True)
    creation_date = models.DateTimeField(auto_now_add=True)
    creator = models.ForeignKey(User, related_name='page_creator')
    update_date = models.DateTimeField(auto_now=True)
