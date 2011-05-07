@@ -65,6 +65,10 @@ ActiveRecord::Schema.define(:version => 20110507100554) do
     t.datetime "start_date"
     t.datetime "expiry_date"
     t.text     "html_override"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20110507100554) do
   create_table "statics", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.string   "slug"
+    t.string   "slug_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
