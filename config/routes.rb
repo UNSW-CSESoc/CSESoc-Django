@@ -1,4 +1,16 @@
 CSESocWebsite::Application.routes.draw do
+  resources :comments
+
+  resources :suggestions
+
+  resources :sponsors
+
+  resources :events
+
+  resources :news_items
+
+  resources :statics
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
