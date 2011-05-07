@@ -6,9 +6,6 @@
     <th>Content</th>
     <th>Publish date</th>
     <th>Author</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @news_items.each do |news_item| %>
@@ -17,13 +14,8 @@
     <td><%= news_item.content %></td>
     <td><%= news_item.publish_date %></td>
     <td><%= news_item.author %></td>
-    <td><%= link_to 'Show', news_item %></td>
-    <td><%= link_to 'Edit', edit_news_item_path(news_item) %></td>
-    <td><%= link_to 'Destroy', news_item, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New News item', new_news_item_path %>
