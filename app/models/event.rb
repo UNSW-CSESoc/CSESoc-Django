@@ -21,6 +21,6 @@ class Event < ActiveRecord::Base
   
   # If this event is visible yet
   def published?
-    DateTime.now >= self.publish_date
+    self.publish_date <= DateTime.now
   end
 end

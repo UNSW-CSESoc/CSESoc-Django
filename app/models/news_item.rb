@@ -12,6 +12,6 @@ class NewsItem < ActiveRecord::Base
   
   # If this news item is visible yet
   def published?
-    DateTime.now >= self.publish_date
+    self.publish_date <= DateTime.now
   end
 end
