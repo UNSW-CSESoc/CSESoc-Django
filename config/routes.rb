@@ -1,7 +1,10 @@
 CSESocWebsite::Application.routes.draw do
   root :to => "news_items#index"
   
-  devise_for :users
+  get "users/sign_in", :as => :new_user_session, :to => redirect( "https://cgi.cse.unsw.edu.au/~csesoc/services/cse_auth/?")
+  devise_for :users do
+    get "callback", :to => "devise/session#create"
+  end
   
   resources :suggestions, :only => [:index, :show, :new, :create]
   resources :sponsors, :only => [:index]
