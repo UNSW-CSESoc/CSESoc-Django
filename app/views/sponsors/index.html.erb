@@ -3,7 +3,7 @@
 <table id="sponsorsPageTable">
   
   <% @sponsors.each do |sponsor| %>
-    <%= render 'sponsor' %>
+    <%= render 'sponsor', :sponsor => sponsor %>
   <% end %>
 
 </table>

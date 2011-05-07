@@ -2,6 +2,10 @@
 
 <table width="100%" id="sponsorsColumnTable">
   <% @sponsors.each do |sponsor| %>
-      <tr><td><%= sponsor.name %></td></tr>
+      <tr><td>
+        <div align="center">
+          <%= link_to image_tag(sponsor.image_path.url, :alt => sponsor.alt_text, :border => 0), sponsor.website rescue sponsor.name %>
+        </div>
+      </td></tr>
   <% end %>
 </table>

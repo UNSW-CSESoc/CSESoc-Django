@@ -23,3 +23,5 @@ Static.create :title => "Bling", :content => "Bling.", :slug_name => "bling"
 Static.create :title => "Games", :content => "Games.", :slug_name => "games"
 Static.create :title => "IRC", :content => "Irc.", :slug_name => "irc"
 Static.create :title => "Contact Us", :content => "Contact us.", :slug_name => "contact"
+
+Sponsor.create :name => "UNSW CSE", :description => "UNSW Computer Science and Engineering", :website => "http://www.cse.unsw.edu.au", :alt_text => "CSE", :amount_paid => 1, :start_date => DateTime.parse("2011, 1, 1"), :expiry_date => DateTime.parse("2012, 1, 1")
