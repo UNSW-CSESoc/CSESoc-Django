@@ -225,6 +225,9 @@ ul.pagenumbers {
 .news-title {
     color:#2f586d;
 }
+.news-title h2 a {
+    color:#2f586d;
+}
 .news a {
     color:#2f58cd;
 }
