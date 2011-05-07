@@ -64,6 +64,37 @@ h6 {
 	position:relative;
 	top:0;
 }
+#nav_region_mid_right {
+	float:right;
+	height:38px;
+	padding:0 10px;
+	float:right;
+}
+#nav_region_mid_right .nav_tier1{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#nav_region_mid_right .nav_tier1>li{
+	display:inline;
+	margin:0;
+	float:right;
+	margin-left:10px;
+	position:relative;
+}
+#nav_region_mid_right .nav_tier1>li a {
+	color:#333;
+	font-size:18px;
+	padding-top:5px;
+    padding-left:10px;
+    padding-right:10px;
+	display:block;
+}
+#nav_region_mid_right .nav_tier1>li a:hover {
+	color:#cd282f;
+}
+
+
 #nav_region_centre .nav_tier1{
 	margin:0;
 	padding:0;
