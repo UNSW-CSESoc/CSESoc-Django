@@ -3,7 +3,7 @@ CSESocWebsite::Application.routes.draw do
   
   get "users/sign_in", :as => :new_user_session, :to => redirect( "https://cgi.cse.unsw.edu.au/~csesoc/services/cse_auth/?")
   devise_for :users do
-    get "callback", :to => "devise/session#create"
+    get "callback", :to => "devise/sessions#create"
   end
   
   resources :suggestions, :only => [:index, :show, :new, :create]

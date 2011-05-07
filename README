@@ -2,6 +2,27 @@
 
 The UNSW CSESoc Website.
 
+== Auth Module
+
+Run this Ruby Sinatra script on the server. If a user gets to it
+  then they have been CSE authed and we can get their cse_username
+  from available params.
+  
+This Sinatra app must have remote MySQL access to the database and 
+  an ActiveRecord model and Schema for Users.
+
+    u = User.where(:cse_username => params[:cse_username])
+    if u.any?
+      u = u.first
+    else
+      u = User.new
+      u.cse_username = params[:cse_username]
+    end
+    token = User.authentication_token
+    u.authentication_token = token
+    u.save
+    redirect_to("http://csesoc.unsw.edu.au/callback?auth_token=#{token}")
+
 == License
 
     UNSW CSESoc Website
