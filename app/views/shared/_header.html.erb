@@ -4,7 +4,44 @@
     <div id="nav_region_left"></div>
     <div id="nav_region_centre">
       <ul class="nav_tier1">
+        
         <li><%= link_to "Home", root_path %></li>
+        
+        <li><%= link_to "About", "google.com" %>
+          <ul>
+            <li class="first"><%= link_to "History", static_content_path("history")  %></li>
+            <li><%= link_to "Constitution", static_content_path("constitution") %></li>
+            <li><%= link_to "Exec & Heads", static_content_path("execheads") %></li>
+          </ul>
+        </li>
+        
+        <li><%= link_to "Working Groups", static_content_path("workinggroups")%>
+          <ul>
+            <li class="first"><%= link_to "Beta", static_content_path("workinggroupsbeta")%></li>
+            <li><%= link_to "Publicity", static_content_path("workinggroupspublicity") %></li>
+            <li><%= link_to "Social", static_content_path("workinggroupssocial") %></li>
+            <li><%= link_to "Sysadmin", static_content_path("workinggroupssysadmin") %></li>
+            <li><%= link_to "Tech", static_content_path("workinggroupstech") %></li>
+            <li><%= link_to "Volunteer!", static_content_path("workinggroupsvolunteer") %></li>
+          </ul>
+        </li>
+        
+        <li><%= link_to "Students", static_content_path("students") %>
+          <ul>
+            <li class="first"><%= link_to "Wiki", "http://wiki.csesoc.unsw.edu.au" %></li>
+            <li><%= link_to "Murder", static_content_path("murder") %></li>
+            <li><%= link_to "Bling", static_content_path("bling") %></li>
+            <li><%= link_to "Games", static_content_path("games") %></li>
+            <li><%= link_to "IRC", static_content_path("irc") %></li>
+          </ul>
+        </li>
+        
+        <li><%= link_to "Sponsors", sponsors_path %></li>
+        
+        <li><%= link_to "βeta", "http://beta.csesoc.unsw.edu.au" %></li>
+        
+        <li><%= link_to "Contact Us", static_content_path("contact") %></li>
+
       </ul>
     </div>
     <div id="nav_region_right"></div>
