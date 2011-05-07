@@ -1,21 +1,24 @@
 <%= render :layout => 'shared/three_columns' do %>
-  <h1>Listing news_items</h1>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Publish date</th>
-      <th>Author</th>
-    </tr>
+  <h1>News</h1>
 
   <% @news_items.each do |news_item| %>
-    <tr>
-      <td><%= news_item.title %></td>
-      <td><%= news_item.content %></td>
-      <td><%= news_item.publish_date %></td>
-      <td><%= news_item.author %></td>
-    </tr>
+    <div class = "newsItem">
+      <div class="timestamp-container">
+        <div class="timestamp">
+          <span class="ts-date"><%= news_item.publish_date.day %></span>
+          <span class="ts-month"><%= news_item.publish_date.month %></span>
+          <span class="ts-year"><%= news_item.publish_date.year %></span>
+          <span class="ts-time">@ <%= news_item.publish_date.strftime("%H:%M") %></span>
+          <span class="author"> by <%#= news_item.author.name %></span>
+        </div>
+      </div>
+      <div class="news">
+        <div class="news-title"><h2><%= news_item.title %></h2></div>
+        <div class="news-content">
+          <%=h RDiscount.new(news_item.content).to_html %>
+        </div>
+      </div>
+    </div>
   <% end %>
-  </table>
-  <br />
+  
 <% end %>
