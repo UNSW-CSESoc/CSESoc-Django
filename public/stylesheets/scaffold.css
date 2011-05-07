@@ -43,3 +43,12 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+.bar-text {
+	color: #88A5B4;
+	font-size: 18px;
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display:block ;
+}

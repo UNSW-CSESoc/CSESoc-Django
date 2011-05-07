@@ -47,13 +47,12 @@
     <div id="nav_region_right"></div>
     <div id="nav_region_mid_right">
       <ul class="nav_tier1">
-        <li>
-          <% if user_signed_in? %>
-            <%= current_user.cse_username %>
-          <% else %>
-            <%= link_to "Sign in", new_user_session_path %>
-          <% end %>
-        </li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Sign Out", destroy_user_session_path %></li>
+          <li><span class="bar-text"><%= current_user.cse_username%></span></li>
+        <% else %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
       <ul>
     </div>
   </div>
