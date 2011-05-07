@@ -1,0 +1,17 @@
+<div class = "newsItem">
+  <div class="timestamp-container">
+    <div class="timestamp">
+      <span class="ts-date"><%= news_item.publish_date.day %></span>
+      <span class="ts-month"><%= news_item.publish_date.month %></span>
+      <span class="ts-year"><%= news_item.publish_date.year %></span>
+      <span class="ts-time">@ <%= news_item.publish_date.strftime("%H:%M") %></span>
+      <span class="author"> by <%#= news_item.author.name %></span>
+    </div>
+  </div>
+  <div class="news">
+    <div class="news-title"><h2><%= link_to_unless defined?(no_link), news_item.title, news_item %></h2></div>
+    <div class="news-content">
+      <%= RDiscount.new(news_item.content).to_html.html_safe %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<tr>
+  <td width="30%" class="sponsorImage">
+    <%= link_to image_tag(sponsor.image_path.url, :alt => sponsor.name), sponsor.website %>
+  </td>
+  <td width="70%" class="sponsorDescription">
+    <%= link_to sponsor.name, sponsor.website %><br />
+    <%= sponsor.description %>
+  </td>
+</tr>
