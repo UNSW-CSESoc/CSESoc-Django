@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CSESocWebsite</title>
+  <title><%= page_title(yield :title) %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
+  <link href="/icon.png" rel="icon" type="image/png" />
   <%= csrf_meta_tag %>
+  
+  <%= yield :head %>
   
   <%= render 'shared/analytics' %>
 </head>
