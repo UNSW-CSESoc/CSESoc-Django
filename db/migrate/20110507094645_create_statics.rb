@@ -3,7 +3,7 @@ class CreateStatics < ActiveRecord::Migration
     create_table :statics do |t|
       t.string :title
       t.text :content
-      t.string :slug
+      t.string :slug_name
 
       t.timestamps
     end
