@@ -1,15 +1,11 @@
 CSESocWebsite::Application.routes.draw do
-  resources :comments
-
-  resources :suggestions
-
-  resources :sponsors
-
-  resources :events
-
-  resources :news_items
-
-  resources :statics
+  root :to => "news_items#index"
+  
+  resources :suggestions, :only => [:index, :show, :new, :create]
+  resources :sponsors, :only => [:index]
+  resources :events, :only => [:index, :show]
+  resources :news_items, :only => [:index, :show]
+  resources :statics, :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

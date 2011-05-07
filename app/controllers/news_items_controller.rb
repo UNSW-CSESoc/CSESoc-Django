@@ -2,7 +2,7 @@ class NewsItemsController < ApplicationController
   before_filter :public_post, :only => :show
 
   def index
-    @news_items = NewsItem.all
+    @news_items = NewsItem.published
 
     respond_to do |format|
       format.html
