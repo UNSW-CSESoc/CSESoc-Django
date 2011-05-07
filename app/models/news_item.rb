@@ -1,4 +1,6 @@
 class NewsItem < ActiveRecord::Base
+  belongs_to :author, :class_name => "User"
+  
   has_friendly_id :title, :use_slug => true
   
   validates :title, :presence => true
@@ -8,8 +10,8 @@ class NewsItem < ActiveRecord::Base
   
   scope :published, lambda { where "news_items.publish_date <= ?", Time.now}
   
-  # If this post is visible yet
+  # If this news item is visible yet
   def published?
-    DateTime.now > self.publish_date
+    DateTime.now >= self.publish_date
   end
 end
