@@ -5,7 +5,7 @@
       <span class="ts-month"><%= news_item.publish_date.month %></span>
       <span class="ts-year"><%= news_item.publish_date.year %></span>
       <span class="ts-time">@ <%= news_item.publish_date.strftime("%H:%M") %></span>
-      <span class="author"> by <%#= news_item.author.name %></span>
+      <span class="author"> by <%= news_item.author.cse_username %></span>
     </div>
   </div>
   <div class="news">
