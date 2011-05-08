@@ -10,7 +10,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :volunteers_email
       t.text :description
       t.datetime :publish_date
-      t.integer :author
+      t.integer :author_id
 
       t.timestamps
     end
