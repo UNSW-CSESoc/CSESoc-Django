@@ -1,5 +1,5 @@
 class NewsItem < ActiveRecord::Base
-  belongs_to :author, :class_name => "User"
+  belongs_to :author, :class_name => "User", :foreign_key => "author_id"
   
   has_friendly_id :title, :use_slug => true
   

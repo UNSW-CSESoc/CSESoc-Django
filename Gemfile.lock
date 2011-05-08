@@ -40,6 +40,7 @@ GEM
     babosa (0.3.3)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    cancan (1.6.4)
     capistrano (2.5.21)
       highline
       net-scp (>= 1.0.0)
@@ -106,6 +107,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancan
   capistrano
   devise
   friendly_id

@@ -4,7 +4,7 @@ class CreateNewsItems < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.datetime :publish_date
-      t.integer :author
+      t.integer :author_id
 
       t.timestamps
     end

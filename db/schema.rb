@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110507163906) do
+ActiveRecord::Schema.define(:version => 20110508094121) do
 
   create_table "comments", :force => true do |t|
     t.integer  "suggestion_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110507163906) do
     t.string   "volunteers_email"
     t.text     "description"
     t.datetime "publish_date"
-    t.integer  "author"
+    t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20110507163906) do
     t.string   "title"
     t.text     "content"
     t.datetime "publish_date"
-    t.integer  "author"
+    t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20110507163906) do
     t.string   "cse_username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

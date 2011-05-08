@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  belongs_to :author, :class_name => "User"
+  belongs_to :author, :class_name => "User", :foreign_key => "author_id"
   
   has_friendly_id :name, :use_slug => true
   
@@ -10,12 +10,8 @@ class Event < ActiveRecord::Base
   validates :publish_date, :presence => true
   validates :author, :presence => true
   
-  validates :registration_required, :presence => true
-  validates :registration_email, 
-    :format => {:with => /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i}
-  validates :volunteers_required, :presence => true
-  validates :volunteers_email,
-    :format => {:with => /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i}
+  validates_format_of :registration_email, :with => /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i, :unless => lambda {|event| event.registration_email.blank?}
+  validates_format_of :volunteers_email, :with => /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i, :unless => lambda {|event| event.volunteers_email.blank?}
   
   scope :published, lambda { where "events.publish_date <= ?", Time.now}
   
