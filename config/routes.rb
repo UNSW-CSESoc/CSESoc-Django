@@ -6,12 +6,17 @@ CSESocWebsite::Application.routes.draw do
     get "callback", :to => "devise/sessions#create"
   end
   
-  resources :suggestions, :only => [:index, :show, :new, :create]
   resources :sponsors, :only => [:index]
   resources :events, :only => [:index, :show]
   resources :news_items, :only => [:index, :show]
   resources :statics, :only => [:show]
 
+  # Suggestions
+  resources :suggestions, :only => [:index, :show, :new, :create] do
+    # Comments on suggestions
+    resources :comments, :only => [:create]
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
