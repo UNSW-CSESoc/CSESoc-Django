@@ -1,26 +1,15 @@
 <h1>Listing suggestions</h1>
 
-<table>
-  <tr>
-    <th>Subject</th>
-    <th>Message</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @suggestions.each do |suggestion| %>
-  <tr>
-    <td><%= suggestion.subject %></td>
-    <td><%= suggestion.message %></td>
-    <td><%= suggestion.user_id %></td>
-    <td><%= link_to 'Show', suggestion %></td>
-    <td><%= link_to 'Edit', edit_suggestion_path(suggestion) %></td>
-    <td><%= link_to 'Destroy', suggestion, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<ul>
+	<% @suggestions.each do |suggestion|%>
+		<li>
+			<div class="subject"><%= suggestion.subject %></div>
+			<div class="message"><%= suggestion.message.truncate(200) %></div>
+			<div class="user_id"><%= suggestion.user_id %></div>
+			<%=link_to 'Show',suggestion %>
+		</li>
+	<%end>
+</ul>
 
 <br />
 

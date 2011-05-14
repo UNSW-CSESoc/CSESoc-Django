@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110508094121) do
     t.string   "volunteers_email"
     t.text     "description"
     t.datetime "publish_date"
-    t.integer  "author_id"
+    t.integer  "author"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20110508094121) do
     t.string   "title"
     t.text     "content"
     t.datetime "publish_date"
-    t.integer  "author_id"
+    t.integer  "author"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
