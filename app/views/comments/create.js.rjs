@@ -1,0 +1,7 @@
+if @comment.errors.any?
+  # Insert errors
+  page[:comment_errors].replace_html @comment.errors.full_messages.to_sentence
+else
+  # Comment saved
+  page[:new_comment].replace_html :partial => @comment
+end
