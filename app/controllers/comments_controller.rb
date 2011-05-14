@@ -8,12 +8,12 @@ class CommentsController < ApplicationController
     if @comment.save
       respond_to do |f|
         f.html {redirect_to @comment.suggestion, :notice => "Thanks for your comment!"}
-        f.js {}
+        f.js # Renders RJS template
       end
     else
       respond_to do |f|
         f.html {redirect_to @comment.suggestion, :notice => "Sorry, your comment could not be saved."}
-        f.js {@comment.errors}
+        f.js # Renders RJS template
       end
     end
     
