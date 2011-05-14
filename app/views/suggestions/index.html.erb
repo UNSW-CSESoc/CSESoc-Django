@@ -1,14 +1,14 @@
 <h1>Listing suggestions</h1>
 
 <ul>
-	<% @suggestions.each do |suggestion|%>
+	<% @suggestions.each do |suggestion| %>
 		<li>
 			<div class="subject"><%= suggestion.subject %></div>
 			<div class="message"><%= suggestion.message.truncate(200) %></div>
 			<div class="user_id"><%= suggestion.user_id %></div>
-			<%=link_to 'Show',suggestion %>
+			<%= link_to 'See more details', suggestion %>
 		</li>
-	<%end%>
+	<% end %>
 </ul>
 
 <br />
