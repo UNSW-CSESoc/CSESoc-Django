@@ -1,6 +1,17 @@
 UNSW CSESoc Website
 ===================
 
+How To Setup
+------------
+
+    rvm install 1.9.2
+    rvm use 1.9.2  --default
+
+    bundle install
+    rake db:migrate
+    rake db:seed
+    rails server
+
 Auth Module
 -----------
 
