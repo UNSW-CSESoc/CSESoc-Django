@@ -1,20 +1,28 @@
 
-
-<p>
-  <b>Subject:</b>
+<h1>
   <%= @suggestion.subject %>
-</p>
+</h1>
+<h2>
+  <%= @suggestion.user.cse_username %>
+</h2>
 
 <p>
-  <b>Message:</b>
-  <%= @suggestion.message %>
+  <%= RDiscount.new(@suggestion.message).to_html.html_safe %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @suggestion.user_id %>
-</p>
+<h2>
+  Comments
+</h2>
 
+<% @suggestion.comments.each do |comment| %>
+  <h3><%= comment.user.cse_username %></h3>
+  <p>
+    <%= comment.comment %>
+  </p>
+<% end %>
 
-<%= link_to 'Edit', edit_suggestion_path(@suggestion) %> |
+<%= form_for [@suggestion, @suggestion.comments.new], :remote => true do |f| %>
+<%= f.text_field :comment %>
+<% end %>
+
 <%= link_to 'Back', suggestions_path %>
