@@ -1,5 +1,5 @@
 function suggestion_item_over(suggestion) {
-   suggestion.style.backgroundColor = 'yellow';
+   suggestion.style.backgroundColor = '#d9e6ed'
 }
 
 function suggestion_item_onclick(suggestion, suggestion_number, page_number) {

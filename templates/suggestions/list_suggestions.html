@@ -4,27 +4,26 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}suggestions.js"></script>
 {% endblock %}
 
-{% block content %}
+{% block middlecontent %}
    {% spaceless %}
-   <a href="./new" style="float: right;">Make a New Suggestion</a>
-   <h1>Suggestions Made</h1>
-   <span class='small_text'>Click on a suggestion to see the comments.</span>
+   <h1>Suggestions</h1>
+   <a href="./new">Make a new suggestion</a> or click on a suggestion below to see the comments.<br /><br />
    {% if page_obj.object_list %}
       {% for suggestion in page_obj.object_list %}
       <div class='list_suggestion' 
          onmouseover='suggestion_item_over(this)' 
          onmouseout='suggestion_item_out(this)'
          onclick='suggestion_item_onclick(this, {{suggestion.id}}, {{ page_obj.number }})' >
-         <h3>{{ suggestion.subject|title }}</h3>
-         <p class='suggestion_message'>{{ suggestion.message|urlize }}<br />
-            <span class='small_text'>Last Modified: {{ suggestion.last_modified }}</span><br />
-            <span class='small_text'>Comments ({{ comments_list.pop }})</span>
+         <h4>{{ suggestion.subject|title }}</h4>
+         <p class='suggestion_message'>{{ suggestion.message|urlize }}<br /><br />
+            Last Modified: {{ suggestion.last_modified }}<br />
+            Comments ({{ comments_list.pop }})
          </p>
       </div>
       {% endfor %}
    {% else %}
       <div class='no_suggestions'>
-         There are currently no suggestions...maybe you would like to make one.
+         There are currently no suggestions.
       </div>
    {% endif %}
    {% if is_paginated %}{% load helpers %}{% generate_pagenumbers paginator page_obj 2 %}{% endif %}

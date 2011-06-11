@@ -1,26 +1,24 @@
 {% extends "suggestion_base.html" %}
    
-{% block content %}
-   <div class="suggestion">
+{% block middlecontent %}
       <a href="../?page={{ return_page_number }}" style="float: right;">Go Back</a>
-      <h1 class='suggestion_header'>Idea: {{ suggestion.subject|title }}</h1>
+      <h1>Suggestion: {{ suggestion.subject|title }}</h1>
+      <h4>Message</h4>
       <p class='suggestion_message'>{{ suggestion.message|urlize }}</p>
-   </div>
 
    <div class='comments'>
-      <span class='comments_heading'>Comments</span>
-      <div class='current_comments'>
-         {% if comments %}
-            <span class='small_text'>{{ comments|length }} comments made.</span>
-            {% for comment in comments %}
-               <div class='comment {% cycle 'odd' 'even' %}'>{{ comment.comment|urlize }}<br />
-                  - {{ comment.name|title }}
-               </div>
-            {% endfor %}
-         {% else %}
-            <p>No comments...yet.<p>
-         {% endif %}
-      </div>
+      <h4>Comments</h4>
+      {% if comments %}
+         {% for comment in comments %}
+            <div class='comment {% cycle 'odd' 'even' %}'>{{ comment.comment|urlize }}<br />
+               - {{ comment.name|title }}
+            </div>
+         {% endfor %}
+      {% else %}
+         <p>No comments yet.<p>
+      {% endif %}
+
+      <hr>
 
       <form action="./" method="post">
          <table class='comment_form'>

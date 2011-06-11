@@ -11,7 +11,7 @@ def sponsors(request):
                               context_instance = RequestContext(request))
 
 def sponsorsList(request):
-    return get_list_or_404(Sponsor.objects.order_by('amount_paid').reverse(), expiry_date__gte=date.today)
+    return list(Sponsor.objects.order_by('amount_paid').reverse().filter(expiry_date__gte=date.today))
     
 
 
