@@ -35,7 +35,7 @@ after "deploy:symlink", "deploy:link_db"
 namespace :deploy do
   desc "Links the sqlite database"
   task :link_db do
-    run "ln -s ~/db.sqlite3 ~/#{application}/current/db.sqlite3"
+    run "ln -s ~/db.sqlite3 ~/#{application}/current/csesoc/db.sqlite3"
   end
 end
 
