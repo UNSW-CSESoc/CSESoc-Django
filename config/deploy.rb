@@ -27,7 +27,7 @@ after "deploy:symlink", "deploy:super_patch"
 namespace :deploy do
   desc "Applies the 'super patch'"
   task :super_patch do
-    run "cd ~/#{application}/current && patch -p0 < ~/super_patch"
+    run "cd ~/#{application}/current/csesoc && patch -p0 < ~/super_patch"
   end
 end
 
