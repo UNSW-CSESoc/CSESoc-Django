@@ -2,7 +2,7 @@
 *.pyc
 *.sqlite3
 photos
-
+.DS_Store
 # Vim Temp Files
 .*.swp
 .*.un~
