@@ -8,7 +8,7 @@ Requirements
 
 On Ubuntu to get it running:
 
-    git clone git://github.com/MaxPow4h/CSESoc-Django.git csesoc # read below for caveat
+    git clone git://github.com/UNSW-CSESoc/CSESoc-Django.git csesoc # read below for caveat
     cd csesoc
     sudo apt-get install python-django python-imaging
     python manage.py runserver
