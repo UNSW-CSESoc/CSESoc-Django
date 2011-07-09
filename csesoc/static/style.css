@@ -34,6 +34,7 @@ h6 {
 	position:relative;
 	margin-bottom:20px;
 	background:url('header/reg_menu_centre.png') repeat-x;
+    z-index:1;
 }
 #nav_region a {
 	text-decoration:none;
