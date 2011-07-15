@@ -1,6 +1,6 @@
-Options +ExecCGI +FollowSymLinks
-RewriteEngine on
-RewriteRule ^site/(.*)$ csesoc.fcgi/$1 [L]
-RewriteRule ^wiki(.*)$ /~csesoc/internal/wiki/moin.cgi$1
-RewriteRule ^murder(\/.*)$ /~csesoc/murder/murder.fcgi$1
-RedirectMatch ^/murder$ /murder/
+Options +ExecCGI
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /~www/index.wsgi/$1 [QSA,PT,L]
+RewriteRule ^$ /~www/index.wsgi/$1 [QSA,PT,L]
