@@ -5,6 +5,9 @@ path = '/home/www/csesoc-django/current/'
 if path not in sys.path:
     sys.path.append(path)
 
+# Switch to the directory of your project. (Needed for FilePathField)
+os.chdir(path)
+
 os.environ['DJANGO_SETTINGS_MODULE'] = 'csesoc.settings'
 
 import django.core.handlers.wsgi
