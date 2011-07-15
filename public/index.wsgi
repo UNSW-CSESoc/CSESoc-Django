@@ -7,6 +7,7 @@ if path not in sys.path:
 
 # Switch to the directory of your project. (Needed for FilePathField)
 os.chdir(path)
+sys.path.insert(0, "/home/www/internal_site/django1.1/lib/python/site-packages")
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'csesoc.settings'
 
