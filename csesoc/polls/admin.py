@@ -9,6 +9,6 @@ class PollOptionInline(admin.TabularInline):
 class PollAdmin(admin.ModelAdmin):
     inlines = [PollOptionInline]
 
-    list_display = ('question', 'pubDate')
+    list_display = ('question', 'pubDate', 'endDate')
 
 admin.site.register(Poll, PollAdmin)

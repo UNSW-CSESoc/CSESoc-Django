@@ -239,5 +239,16 @@ a {
 a:hover {
     color:#cf582d;
 }
-
-
+.pollsIndexTable {
+    width: 100%;
+}
+.pollsIndexTable tr {
+    border-bottom:1px solid #c2c2c2;
+    border-top:1px solid #c2c2c2;
+}
+.pollsIndexTable td {
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:20px;
+    padding-bottom:20px;
+}

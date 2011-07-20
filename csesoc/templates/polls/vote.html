@@ -8,14 +8,15 @@
 
 <h4>{{ poll.question }}</h4>
 
-{% if error  %}<p style="font-style:italic;">You must select an option</p>{% endif %}
+{% if error %}<p style="font-style:italic;">{{ error }}</p>{% endif %}
 
-<form action="/polls/processvote/{{ poll.id }}" method="POST">
+<form action="/polls/{{ poll.id }}/processvote/" method="POST">
 {% for option in poll.polloption_set.all %}
     <input type="radio" name="option" id="option{{ forloop.counter }}" value="{{ option.id }}" />
     <label for="option{{ forloop.counter }}">{{ option.description }}</label><br />
 {% endfor %}
 <br />
+<p style="font-style:italic;">Poll ends: {{ poll.endDate|date:"D, d M Y, H:i:s" }}</p>
 <input type="submit" value="Vote" />
 </form>
 
