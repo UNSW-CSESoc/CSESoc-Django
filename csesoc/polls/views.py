@@ -1,4 +1,4 @@
-from polls.models import Poll, PollOption, Vote
+from csesoc.polls.models import Poll, PollOption, Vote
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
