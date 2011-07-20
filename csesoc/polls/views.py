@@ -52,7 +52,7 @@ def results(request, id, error = None):
 
 def index(request):
     return render_to_response('polls/index.html',
-                                {'openPolls': Poll.objects.all().filter(pubDate__gt=datetime.now()).order_by("-pubDate"),
-                                'closedPolls': Poll.objects.all().filter(pubDate__lte=datetime.now()).order_by("-pubDate")},
+                                {'openPolls': Poll.objects.all().filter(endDate__gt=datetime.now()).order_by("-endDate"),
+                                'closedPolls': Poll.objects.all().filter(endDate__lte=datetime.now()).order_by("-endDate")},
                                 context_instance = RequestContext(request))
                                 
