@@ -38,7 +38,7 @@ def processvote(request, id):
             option.save()
             Vote(username = request.user.username, poll = poll).save()
 
-            return redirect(reverse('polls.views.results', args = (id,)))
+            return redirect(reverse('csesoc.polls.views.results', args = (id,)))
     else:
         return render_to_response('polls/results.html',
                                     {'poll': poll, 'error': "You have already voted on this poll. Your vote has not been counted."},
