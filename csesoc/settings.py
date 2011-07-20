@@ -61,7 +61,7 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH, 'static')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/static/'
+MEDIA_URL = 'static/'
 
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
@@ -105,6 +105,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates/game'),
     os.path.join(PROJECT_PATH, 'templates/suggestions'),
     os.path.join(PROJECT_PATH, 'templates/music'),
+    os.path.join(PROJECT_PATH, 'templates/polls'),
 )
 
 INSTALLED_APPS = (
@@ -123,6 +124,7 @@ INSTALLED_APPS = (
     'csesoc.murder',
     'csesoc.game',
     'csesoc.music',
+    'csesoc.polls',
 )
 
 AUTHENTICATION_BACKENDS = (

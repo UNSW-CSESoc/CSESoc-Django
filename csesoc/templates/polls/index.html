@@ -1,0 +1,36 @@
+{% extends '3-column-w-cal-sponsors.html' %}
+
+{% block titlecontent %}Polls{% endblock %}
+
+{% block middlecontent %}
+
+<h1>Polls - Index</h1>
+
+<h4>Open</h4>
+<table class="pollsIndexTable">
+{% for poll in openPolls %}
+    <tr>
+        <td colspan="3"><strong>{{ poll.question }}</strong></td>
+    </tr>
+    <tr>
+        <td><a href = /polls/{{ poll.id }}/vote/>Vote</a></td>
+        <td><a href = /polls/{{ poll.id }}/results/>Results</a></td>
+        <td>Closes: {{ poll.endDate|date:"D, d M Y, H:i:s" }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<h4>Closed</h4>
+<table class="pollsIndexTable">
+{% for poll in closedPolls %}
+    <tr>
+        <td colspan="3"><strong>{{ poll.question }}</strong></td>
+    </tr>
+    <tr>
+        <td><a href = /polls/{{ poll.id }}/results/>Results</a></td>
+        <td>Closed: {{ poll.endDate|date:"D, d M Y, H:i:s" }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}
