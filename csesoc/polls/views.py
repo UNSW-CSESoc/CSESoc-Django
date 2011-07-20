@@ -1,4 +1,4 @@
-from polls.models import Poll, PollOption, Vote
+from csesoc.polls.models import Poll, PollOption, Vote
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -38,7 +38,7 @@ def processvote(request, id):
             option.save()
             Vote(username = request.user.username, poll = poll).save()
 
-            return redirect(reverse('polls.views.results', args = (id,)))
+            return redirect(reverse('csesoc.polls.views.results', args = (id,)))
     else:
         return render_to_response('polls/results.html',
                                     {'poll': poll, 'error': "You have already voted on this poll. Your vote has not been counted."},
@@ -52,7 +52,7 @@ def results(request, id, error = None):
 
 def index(request):
     return render_to_response('polls/index.html',
-                                {'openPolls': Poll.objects.all().filter(pubDate__gt=datetime.now()).order_by("-pubDate"),
-                                'closedPolls': Poll.objects.all().filter(pubDate__lte=datetime.now()).order_by("-pubDate")},
+                                {'openPolls': Poll.objects.all().filter(endDate__gt=datetime.now()).order_by("-endDate"),
+                                'closedPolls': Poll.objects.all().filter(endDate__lte=datetime.now()).order_by("-endDate")},
                                 context_instance = RequestContext(request))
                                 

@@ -1,5 +1,4 @@
-from polls.models import Poll
-from polls.models import PollOption
+from csesoc.polls.models import Poll, PollOption
 from django.contrib import admin
 
 class PollOptionInline(admin.TabularInline):
