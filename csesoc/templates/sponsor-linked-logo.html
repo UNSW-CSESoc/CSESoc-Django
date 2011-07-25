@@ -1,5 +1,5 @@
 {% if object.is_default_html %}
-    <a href="{{ object.website }}"><img border="0" alt="{{ object.alt_text|safe }}" src="{{ MEDIA_URL }}{{ object.logo }}"/></a><br />
+    <a href="{{ object.website }}"><img border="0" alt="{{ object.alt_text|safe }}" src="{{ object.logo.url }}"/></a><br />
 {% else %}
     {{ object.html_override|safe }}
 {% endif %}
