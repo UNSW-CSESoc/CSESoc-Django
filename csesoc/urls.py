@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
 
     # statics path
-    (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
+    (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_URL}),
 
     # login redirect
     (r'accounts/login/$', 'csesoc.auth.backends.cse_login'),

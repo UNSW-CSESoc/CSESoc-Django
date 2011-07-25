@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link href="{{ MEDIA_URL }}reset.css" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="{{ MEDIA_URL }}text.css" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="{{ MEDIA_URL }}1020_12_10_10.css" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="{{ MEDIA_URL }}style.css" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="{{ MEDIA_URL }}icon.png" rel="icon" type="image/png"/>
+    <link href="{{ STATIC_URL }}reset.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}text.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}1020_12_10_10.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{{ STATIC_URL }}icon.png" rel="icon" type="image/png"/>
     <title>{% block titlecontent %}{% endblock %} - CSESoc - UNSW Computer Science and Engineering Society</title>
     {% block extraheadercontent %}{% endblock %}
 </head>
@@ -60,6 +60,9 @@
                             </li> 
                             <li>
                                 <a href="/suggestions">Suggestions</a>
+                            </li>
+                            <li>
+                                <a href="/faq">FAQ</a>
                             </li>
                             <li>
                                 <a href="/contactus">Contact Us</a>
