@@ -18,7 +18,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     # admin site
-    (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
+    (r'^admin/', 'csesoc.auth.backends.admin_wrapper'),
 
     # statics path
     (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_URL}),
