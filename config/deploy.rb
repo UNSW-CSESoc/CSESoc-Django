@@ -36,7 +36,10 @@ namespace :deploy do
   desc "Links the sqlite database and run syncdb"
   task :link_db do
     run "ln -s ~/db.sqlite3 ~/#{application}/current/csesoc/db.sqlite3"
-    run "cd ~/#{application}/current/csesoc && python manage.py syncdb"
+    
+    run "cd && chmod -R g-w ." # Sets everything in ~www's home g-w
+    
+    # run "cd ~/#{application}/current/csesoc && python manage.py syncdb"
   end
 end
 
