@@ -82,7 +82,6 @@ def admin_wrapper(request):
    from django.conf import settings
    if "CSE" in settings.AUTHENTICATION_BACKENDS[0]:
       if not request.user.is_authenticated():
-         print "Not authenticated"
          return cse_login(request, request.path)
    
    #If authenticated, then resolve url to get view and call it
