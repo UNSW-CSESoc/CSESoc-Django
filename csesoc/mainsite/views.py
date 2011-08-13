@@ -9,6 +9,8 @@ from csesoc import settings
 from csesoc.mainsite.models import Static
 from csesoc.sponsors.views import sponsorsList
 
+import os
+
 # presently using generic views for everything. add custom views here as needed
 
 def streamitem_index(request, queryset, **kwargs):
@@ -23,7 +25,7 @@ def streamitem_index(request, queryset, **kwargs):
 
 def static(request, path):
     p = get_object_or_404(Static, slug=path.replace('/','_'))
-    template=p.template.replace('templates/', '', 1)
+    template=p.template.replace(os.path.join(settings.PROJECT_PATH, 'templates/'), '', 1)
     return render_to_response(template, { 'allSponsors' : sponsorsList(request), 'object' : p }, context_instance=RequestContext(request) )
 
 def thedate(request):
