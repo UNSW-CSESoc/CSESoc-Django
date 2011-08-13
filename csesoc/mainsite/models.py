@@ -5,12 +5,14 @@ from django.db.models.signals import pre_delete
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.template.loader import render_to_string
+from csesoc import settings
 from datetime import datetime
+import os
 
 class Static(models.Model):
    title = models.CharField(max_length=200)
    text = models.TextField()
-   template = models.FilePathField(path="templates/", match=".*\.html", recursive=True)
+   template = models.FilePathField(path=os.path.join(settings.PROJECT_PATH, "templates"), match=".*\.html", recursive=True)
    creation_date = models.DateTimeField(auto_now_add=True)
    creator = models.ForeignKey(User, related_name='page_creator')
    update_date = models.DateTimeField(auto_now=True)
