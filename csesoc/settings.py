@@ -62,13 +62,17 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, '../public/static')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/system/'
-STATIC_URL = '/static/'
+MEDIA_URL = 'system/'
+STATIC_URL = 'static/'
 
+SITE_JS_ROOT = 'C:/workspace/python/csesoc/public/static/'
+SITE_JS_URL = 'site_js/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
+
+#WYSIWYG_ROOT = os.path.join(PROJECT_PATH,"../public/static/")
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = csesoc_settings.SETTINGS_SECRET_KEY
@@ -110,6 +114,21 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates/polls'),
 )
 
+#TINYMCE_JS_URL = SITE_JS_URL +'js/tiny_mce/tiny_mce.js'
+TINYMCE_JS_ROOT = SITE_JS_ROOT +'/js/tiny_mce/'
+TINYMCE_JS_URL = "http://www.csesoc.unsw.edu.au/tinymce/tiny_mce.js"
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+    'theme': "advanced",
+	'theme_advanced_toolbar_location' : "top",
+	'theme_advanced_toolbar_align' : "left",
+    'theme_advanced_statusbar_location' : "bottom",
+	'theme_advanced_resizing' : 'true',
+}
+
+TINYMCE_SPELLCHECKER = False
+TINYMCE_COMPRESSOR = False
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,6 +146,7 @@ INSTALLED_APPS = (
     'csesoc.game',
     'csesoc.music',
     'csesoc.polls',
+	'tinymce',
 )
 
 AUTHENTICATION_BACKENDS = (

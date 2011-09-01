@@ -22,7 +22,7 @@ urlpatterns = patterns('',
 
     # statics path
     (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_URL}),
-
+	
     # login redirect
     (r'accounts/login/$', 'csesoc.auth.backends.cse_login'),
 

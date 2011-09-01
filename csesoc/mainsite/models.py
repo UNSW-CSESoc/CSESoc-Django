@@ -7,6 +7,7 @@ from django.contrib.contenttypes import generic
 from django.template.loader import render_to_string
 from csesoc import settings
 from datetime import datetime
+from tinymce import models as tinymce_models
 import os
 
 class Static(models.Model):
@@ -37,7 +38,8 @@ class Event(models.Model):
    registration_email = models.EmailField(blank=True, help_text="Address to email in order to register")
    volunteers_required = models.BooleanField()
    volunteers_email = models.EmailField(blank=True, help_text="Address to email in order to volunteer")
-   description = models.TextField(help_text="Description of the event, will appear on the front page.")
+   #description = models.TextField(help_text="Description of the event, will appear on the front page.")
+   description = tinymce_models.HTMLField()
    pub_date = models.DateTimeField(default=datetime.now, help_text="Event will appear on homepage starting from date and time specified.")
    author = models.ForeignKey(User)
    def __unicode__(self):
