@@ -38,7 +38,7 @@ class Event(models.Model):
    registration_email = models.EmailField(blank=True, help_text="Address to email in order to register")
    volunteers_required = models.BooleanField()
    volunteers_email = models.EmailField(blank=True, help_text="Address to email in order to volunteer")  
-   description = tinymce_models.HTMLField()
+   description = tinymce_models.HTMLField(help_text="Description of the event, will appear on the front page.")
    pub_date = models.DateTimeField(default=datetime.now, help_text="Event will appear on homepage starting from date and time specified.")
    author = models.ForeignKey(User)
    def __unicode__(self):
