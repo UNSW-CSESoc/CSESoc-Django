@@ -19,7 +19,9 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} service apache2 restart"
+    # run "#{try_sudo} service apache2 restart"
+    # This account does not have root, 
+    # so you need to restart apache2 from Root.
   end
 end
 
