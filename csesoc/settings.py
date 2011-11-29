@@ -137,3 +137,10 @@ AUTHENTICATION_BACKENDS = (
 # maxiumum number of StreamItems per paginated index page
 STREAMITEMS_PER_PAGE = 5
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
