@@ -70,8 +70,6 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
-#WYSIWYG_ROOT = os.path.join(PROJECT_PATH,"../public/static/")
-
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = csesoc_settings.SETTINGS_SECRET_KEY
 
@@ -115,14 +113,15 @@ TINYMCE_JS_URL = "http://www.csesoc.unsw.edu.au/tinymce/tiny_mce.js"
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
     'theme': "advanced",
-	'theme_advanced_buttons1' : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+    'theme_advanced_buttons1' : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
     'theme_advanced_buttons2' : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-	'width': "600",
-	'height':"300",
-	'theme_advanced_toolbar_location' : "top",
-	'theme_advanced_toolbar_align' : "left",
+    'width': "600",
+    'height':"300",
+    'theme_advanced_toolbar_location' : "top",
+    'theme_advanced_toolbar_align' : "left",
     'theme_advanced_statusbar_location' : "bottom",
-	'theme_advanced_resizing' : 'true',
+    'theme_advanced_resizing' : 'true',
+    'content_css' : "http://www.csesoc.unsw.edu.au/static/style.css",
 }
 TINYMCE_SPELLCHECKER = False
 TINYMCE_COMPRESSOR = False
