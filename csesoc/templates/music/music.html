@@ -30,44 +30,44 @@
    .up {
       width:25;
       height:23;
-      background:url("/static/music/upBright.png") no-repeat center;
+      background:url("{{ STATIC_URL }}music/upBright.png") no-repeat center;
    }
  
    .down {
       width:25;
       height:23;
-      background:url("/static/music/downBright.png") no-repeat center;
+      background:url("{{ STATIC_URL }}music/downBright.png") no-repeat center;
    }
  
    .up:disabled {
-      background:url("/static/music/upDull.png") no-repeat center;
+      background:url("{{ STATIC_URL }}music/upDull.png") no-repeat center;
    }
  
    .down:disabled {
-      background:url("/static/music/downDull.png") no-repeat center;
+      background:url("{{ STATIC_URL }}music/downDull.png") no-repeat center;
    }
 
    table.tablesorter thead tr .header {
-      background-image: url("/static/music/bg.gif");
+      background-image: url("{{ STATIC_URL }}music/bg.gif");
       background-repeat: no-repeat;
       background-position: center right;
       cursor: pointer;
    }
 
    table.tablesorter thead tr .headerSortUp {
-      background-image: url("/static/music/asc.gif");
+      background-image: url("{{ STATIC_URL }}music/asc.gif");
    }
 
    table.tablesorter thead tr .headerSortDown {
-      background-image: url("/static/music/desc.gif");
+      background-image: url("{{ STATIC_URL }}music/desc.gif");
    } 
    
 </style> 
 
 <body>
 
-   <script type="text/javascript" src="/static/jquery-1.4.4.min.js"></script>
-   <script type="text/javascript" src="/static/music/jquery.tablesorter.js"></script>
+   <script type="text/javascript" src="{{ STATIC_URL }}jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="{{ STATIC_URL }}music/jquery.tablesorter.js"></script>
    <script type="text/javascript">
       $(document).ready(function() 
           { 
@@ -96,7 +96,7 @@
       function voteSong(song_id, vote_method) {
 
          // set up a loading indicator next to the votes
-         imgContent = "<img src='http://localhost:8000/static/music/loading_animation_small.gif' />";
+         imgContent = "<img src='{{ STATIC_URL }}music/loading_animation_small.gif' />";
          $("#votes_" + song_id + "_loading").html(imgContent);
 
          setVisibility(song_id, true, true, true);

@@ -1,5 +1,6 @@
 from django.utils.safestring import mark_safe
 from django import forms
+from django.conf import settings
 
 class SliderInput(forms.Select):
     """
@@ -39,5 +40,5 @@ class SliderInput(forms.Select):
         return mark_safe(res)
 
     class Media:
-        css = {'screen':('/media/css/widgets/slider.css',)}
-        js = ('/media/js/widgets/slider.js',)
+        css = {'screen':(settings.STATIC_URL + 'css/widgets/slider.css',)}
+        js = (settings.STATIC_URL + 'js/widgets/slider.js',)
