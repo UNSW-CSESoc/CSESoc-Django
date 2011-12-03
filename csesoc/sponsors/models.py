@@ -2,7 +2,7 @@ from django.db import models
 from django.template.loader import render_to_string
 from datetime import date
 from django.template import RequestContext
-from csesoc import settings
+from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
 class Sponsor(models.Model):

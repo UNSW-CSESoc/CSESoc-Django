@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from csesoc.scheduler.models import Slot, Availability
-from csesoc import settings
+from django.conf import settings
 from csesoc.forms.widgets import SliderInput
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext

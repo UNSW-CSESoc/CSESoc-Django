@@ -1,4 +1,4 @@
-from csesoc import settings
+from django.conf import settings
 
 def sponsors_list(request):
   from csesoc.sponsors.models import Sponsor

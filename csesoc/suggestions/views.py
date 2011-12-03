@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from django.shortcuts import render_to_response
 from models import Suggestion, Comment
-from csesoc import settings
+from django.conf import settings
 from django.template import RequestContext
 from django.http import Http404
 from django import forms

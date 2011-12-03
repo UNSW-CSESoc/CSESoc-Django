@@ -2,9 +2,8 @@ from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.contrib import admin
-from csesoc import settings
+from django.conf import settings
 from django.template import RequestContext
-from csesoc import csesoc_settings
 from django.shortcuts import render_to_response
 from django.core.urlresolvers import resolve
 from csesoc import admin_urls
@@ -16,12 +15,12 @@ class CSEBackend(ModelBackend):
         from django.contrib.auth.models import User
         
         #Check if we have turned off login (for dev work)
-        if csesoc_settings.ADMIN_NO_LOGIN == False:
+        if settings.ADMIN_NO_LOGIN == False:
             # Check the token and return a User.
             token = urllib.unquote(token)
             token = token.decode('iso-8859-1')
             import MySQLdb
-            db = MySQLdb.connect(db='cse_auth', user=csesoc_settings.DB_USERNAME, passwd=csesoc_settings.DB_PASSWORD)
+            db = MySQLdb.connect(db='cse_auth', user=settings.DB_USERNAME, passwd=settings.DB_PASSWORD)
             c = db.cursor()
             c.execute('select `user` from `users` where `cookie` = %s;', (token,))
 
@@ -55,7 +54,7 @@ def cse_login(request, next=None):
    if not request.user.is_authenticated():
       user = None
       #If no login is turned on, then we don't need to pass in token
-      if csesoc_settings.ADMIN_NO_LOGIN:
+      if settings.ADMIN_NO_LOGIN:
          user = authenticate()
       #If our cookie indicates we have already logged in before, just use the same token
       elif request.COOKIES.has_key('cseauth'):

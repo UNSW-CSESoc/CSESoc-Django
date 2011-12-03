@@ -137,3 +137,8 @@ AUTHENTICATION_BACKENDS = (
 # maxiumum number of StreamItems per paginated index page
 STREAMITEMS_PER_PAGE = 5
 
+# Only ever set to true in Development, this will always be false on the live
+# site because setting this variable to true activates a back door that allows
+# anyone access to the admin site without a password or any form of
+# verification.
+ADMIN_NO_LOGIN = True

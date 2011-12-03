@@ -3,7 +3,7 @@ from django import forms
 from django.shortcuts import render_to_response
 from models import AwkwardQuestion
 from models import Application
-from csesoc import settings
+from django.conf import settings
 import datetime
 from datetime import timedelta
 from django.contrib.auth.decorators import login_required
