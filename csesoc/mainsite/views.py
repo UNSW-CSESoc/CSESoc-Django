@@ -5,9 +5,11 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.generic.list_detail import object_list
 
-from csesoc import settings
+from django.conf import settings
 from csesoc.mainsite.models import Static
 from csesoc.sponsors.views import sponsorsList
+
+import os
 
 # presently using generic views for everything. add custom views here as needed
 
@@ -23,7 +25,9 @@ def streamitem_index(request, queryset, **kwargs):
 
 def static(request, path):
     p = get_object_or_404(Static, slug=path.replace('/','_'))
-    template=p.template.replace('templates/', '', 1)
+    #until the database gets fixed
+    import re
+    template = re.sub(r'.*templates/', '', p.template)
     return render_to_response(template, { 'allSponsors' : sponsorsList(request), 'object' : p }, context_instance=RequestContext(request) )
 
 def thedate(request):

@@ -19,7 +19,9 @@ namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} service apache2 restart"
+    # run "#{try_sudo} service apache2 restart"
+    # This account does not have root, 
+    # so you need to restart apache2 from Root.
   end
 end
 
@@ -33,11 +35,13 @@ end
 
 after "deploy:symlink", "deploy:link_db"
 namespace :deploy do
-  desc "Links the sqlite database"
+  desc "Links the sqlite database and run syncdb"
   task :link_db do
     run "ln -s ~/db.sqlite3 ~/#{application}/current/csesoc/db.sqlite3"
+    
+    run "cd && chmod -R g-w ." # Sets everything in ~www's home g-w
+    
+    # run "cd ~/#{application}/current/csesoc && python manage.py syncdb"
   end
 end
-
-
 

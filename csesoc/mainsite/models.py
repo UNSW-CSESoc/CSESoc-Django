@@ -5,12 +5,14 @@ from django.db.models.signals import pre_delete
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.template.loader import render_to_string
+from django.conf import settings
 from datetime import datetime
+import os
 
 class Static(models.Model):
    title = models.CharField(max_length=200)
    text = models.TextField()
-   template = models.FilePathField(path="templates/", match=".*\.html", recursive=True)
+   template = models.FilePathField(path=os.path.join(settings.PROJECT_PATH, "templates"), match="static.*\.html")
    creation_date = models.DateTimeField(auto_now_add=True)
    creator = models.ForeignKey(User, related_name='page_creator')
    update_date = models.DateTimeField(auto_now=True)
@@ -18,6 +20,12 @@ class Static(models.Model):
    slug = models.SlugField(help_text="slug will be used in url generation, keep it simple, stupid.")
    def __unicode__(self):
       return self.title
+   def save(self, *args, **kwargs):
+      #the db should not contain absolute paths
+      #so the database gets fixed on saves
+      import re
+      self.template = re.sub(r'.*/templates/','',self.template)
+      super(Static, self).save(*args, **kwargs) # Call the "real" save() method.
 
 class NewsItem(models.Model):
    headline = models.CharField(max_length=200)

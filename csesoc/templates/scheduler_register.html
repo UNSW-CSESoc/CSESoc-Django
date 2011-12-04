@@ -13,9 +13,9 @@ function add_behavior(functor)
                 
 </script>
 {{ form.media }}
-<link rel='stylesheet' type='text/css' href='/static/jquery.weekcalendar.css' />
+<link rel='stylesheet' type='text/css' href='{{ STATIC_URL }}jquery.weekcalendar.css' />
 
-<script type='text/javascript' src='/static/jquery.weekcalendar.js'></script>
+<script type='text/javascript' src='{{ STATIC_URL }}jquery.weekcalendar.js'></script>
 <script type='text/javascript'>
 	var year = new Date().getFullYear();
 	var month = new Date().getMonth();

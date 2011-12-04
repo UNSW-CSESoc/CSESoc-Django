@@ -2,11 +2,10 @@ from django.forms import ModelForm
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate
 from models import Application
-from csesoc import settings
+from django.conf import settings
 from django.template import RequestContext
 import datetime
 import urllib
-from csesoc import csesoc_settings
 
 class ApplicationForm(ModelForm):
    class Meta:
@@ -28,7 +27,7 @@ def signup(request):
          uname = urllib.unquote(uname)
          uname = uname.decode('iso-8859-1')
          import MySQLdb
-         db = MySQLdb.connect(db='cse_auth', user=csesoc_settings.DB_USERNAME, passwd=csesoc_settings.DB_PASSWORD)
+         db = MySQLdb.connect(db='cse_auth', user=settings.DB_USERNAME, passwd=settings.DB_PASSWORD)
          c = db.cursor()
          c.execute('select `user` from `users` where `cookie` = %s;', (uname,))
          

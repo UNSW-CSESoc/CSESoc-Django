@@ -2,7 +2,7 @@
   {% if object.is_default_html %}
     <div align="center">
       <a href="{{object.website}}">
-        <img border="0" alt="{{ object.alt_text|safe }}" src="{{ MEDIA_URL }}{{ object.logo }}" />
+        <img border="0" alt="{{ object.alt_text|safe }}" src="{{ object.logo.url }}" />
       </a><br />
     </div> 
   {% else %}

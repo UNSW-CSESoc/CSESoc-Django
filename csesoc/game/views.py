@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from csesoc.game.models import *
-from csesoc import settings
+from django.conf import settings
 import datetime
 from django.db.models import Sum
 

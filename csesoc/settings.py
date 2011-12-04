@@ -56,13 +56,16 @@ LOGIN_URL = "/site/accounts/login"
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, 'static')
+MEDIA_ROOT = os.path.join(PROJECT_PATH, '../public/system')
+#until we switch to using collectstatic, we use STATICFILES_DIRS and not STATIC_ROOT
+#STATIC_ROOT = os.path.join(PROJECT_PATH, '../public/static')
+STATICFILES_DIRS = (os.path.realpath(os.path.join(PROJECT_PATH, '../public/static')),)
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/static/'
-
+MEDIA_URL = 'http://www.csesoc.unsw.edu.au/system/'
+STATIC_URL = '/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -84,8 +87,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.request', # we need this to provide the request variable to each template
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
     'csesoc.context_processors.sponsors_list',
-    'csesoc.context_processors.media_url',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,6 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.staticfiles',
     'csesoc.helpers',
     'csesoc.mainsite',    
     'csesoc.campleaders',
@@ -135,3 +140,8 @@ AUTHENTICATION_BACKENDS = (
 # maxiumum number of StreamItems per paginated index page
 STREAMITEMS_PER_PAGE = 5
 
+# Only ever set to true in Development, this will always be false on the live
+# site because setting this variable to true activates a back door that allows
+# anyone access to the admin site without a password or any form of
+# verification.
+ADMIN_NO_LOGIN = True

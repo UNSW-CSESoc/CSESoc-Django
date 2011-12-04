@@ -3,7 +3,7 @@ from datetime import datetime
 from django.conf.urls.defaults import *
 from django.contrib import admin
 
-from csesoc import settings
+from django.conf import settings
 from csesoc.campattendees.views import signup
 from csesoc.campleaders.views import apply
 from csesoc.game.views import game_scores, game_static, game_static_latest
@@ -18,10 +18,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     # admin site
-    (r'^admin/(.*)', 'csesoc.auth.backends.admin_wrapper'),
-
-    # statics path
-    (r'static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_URL}),
+    (r'^admin/', 'csesoc.auth.backends.admin_wrapper'),
 
     # login redirect
     (r'accounts/login/$', 'csesoc.auth.backends.cse_login'),
@@ -66,4 +63,3 @@ urlpatterns = patterns('',
     # miscellaneous articles
     (r'^(?P<path>.*)/$', static),
 )
-

@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from csesoc.music.models import *
-from csesoc import settings
+from django.conf import settings
 from django.template import Library
 
 # presently using generic views for everything. add custom views here as needed
