@@ -52,7 +52,7 @@ SITE_ID = 1
 USE_I18N = True
 
 # URL where the django authentication login view is accessible
-LOGIN_URL = "/site/accounts/login"
+LOGIN_URL = "/accounts/login"
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
