@@ -22,12 +22,12 @@ MANAGERS = ADMINS
 
 FILE_UPLOAD_PERMISSIONS = 0644
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = os.path.join(PROJECT_PATH, 'db.sqlite3')           # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_PATH, 'db.sqlite3')
+    }
+}
 
 # Mail Settings
 SMTP_HOST = 'smtp.unsw.edu.au'
@@ -52,7 +52,7 @@ SITE_ID = 1
 USE_I18N = True
 
 # URL where the django authentication login view is accessible
-LOGIN_URL = "/site/accounts/login"
+LOGIN_URL = "/accounts/login"
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -67,23 +67,19 @@ STATICFILES_DIRS = (os.path.realpath(os.path.join(PROJECT_PATH, '../public/stati
 MEDIA_URL = 'http://www.csesoc.unsw.edu.au/system/'
 STATIC_URL = '/static/'
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = 'http://www.csesoc.unsw.edu.au/adminmedia/'
-
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = csesoc_settings.SETTINGS_SECRET_KEY
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-    # 'django.template.loaders.eggs.load_template_source',
+    ('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.request', # we need this to provide the request variable to each template
