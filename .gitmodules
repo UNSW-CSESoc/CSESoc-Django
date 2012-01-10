@@ -1,0 +1,3 @@
+[submodule "csesoc/paypal"]
+	path = csesoc/paypal
+	url = git://github.com/johnboxall/django-paypal.git
