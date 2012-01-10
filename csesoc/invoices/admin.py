@@ -1,11 +1,27 @@
 from django.contrib import admin
 from csesoc.invoices.models import *
 from django.conf import settings
-import md5
+from django import forms
+import md5, re
+
+class InvoiceAdminForm(forms.ModelForm):
+    class Meta:
+        model = Invoice
+
+    def clean_slug(self):
+        slug = self.cleaned_data.get('slug')
+        if not re.match(r'^[0-9]{8}$', slug):
+            raise forms.ValidationError("Must be made of 8 digits!")
+        else:
+            return slug
 
 class InvoiceAdmin(admin.ModelAdmin):
-    def total_price(obj):
-        return "$%s"%(str(obj.price - obj.discount))
+    form = InvoiceAdminForm
+
+    def price(obj):
+        return "$%s"%(str(obj.price))
+    def discount(obj):
+        return "($%s)"%(str(obj.discount))
     def invoice_description(obj):
         return obj.title
     def invoice_number(obj):
@@ -24,7 +40,7 @@ class InvoiceAdmin(admin.ModelAdmin):
 
     exclude = ('hash',)
     list_filter = ('company',)
-    list_display = (invoice_number,'company',invoice_description,total_price,link)
+    list_display = (invoice_number,'company',invoice_description,price,discount,link)
     search_fields = ['company', '^slug', 'title', '^hash']
 
 

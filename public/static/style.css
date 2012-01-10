@@ -252,6 +252,10 @@ a:hover {
     padding-top:20px;
     padding-bottom:20px;
 }
+div.invoice {
+    width:500px;
+    margin: 0px auto;
+}
 div.invoice h2{
     font-size:14px;
     font-weight:bold;
@@ -259,6 +263,7 @@ div.invoice h2{
 }
 div.invoice h3{
     margin: 20px 0px 0px 0px;
+    color:#009900;
 }
 div.invoice table{
     padding: 10px;

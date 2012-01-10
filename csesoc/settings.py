@@ -149,6 +149,7 @@ STREAMITEMS_PER_PAGE = 5
 ADMIN_NO_LOGIN = True
 
 # django-paypal settings
-#PAYPAL_RECEIVER_EMAIL = "csesoc@cse.unsw.edu.au"
-PAYPAL_RECEIVER_EMAIL = "razori_1326182346_biz@gmail.com"
+PAYPAL_RECEIVER_EMAIL = "csesoc@cse.unsw.edu.au"
+# Sandbox email:
+#PAYPAL_RECEIVER_EMAIL = "razori_1326182346_biz@gmail.com"
 SITE_DOMAIN = "http://127.0.0.1:8000/"

@@ -7,20 +7,38 @@ from django.conf import settings
 from csesoc.paypal.standard.forms import PayPalPaymentsForm
 from csesoc.invoices.models import *
 
+def invoice_thanks(request, slug):
+    product = get_object_or_404(Invoice, slug=slug)
+    return render_to_response('product_thanks.html', {
+        'product':product,
+        }, RequestContext(request))
+
 def invoice_detail(request, slug, hash):
     product = get_object_or_404(Invoice, slug=slug, hash=hash)
 
     price = product.price - product.discount
     paypal_price = price * 1.025
+
+    # See the following guide for more details on variables
+    # https://cms.paypal.com/cms_content/US/en_US/files/developer/PP_WebsitePaymentsStandard_IntegrationGuide.pdf
     paypal = {
             'amount': paypal_price,
+            'currency_code' : "AUD",
+            'no_shipping' : 1, # Don't prompt for an address
+            'no_note' : 1, # Don't prompt for a note
+
             'item_name': product.title,
-            'item_number': product.slug,
+            'invoice': product.slug,
+            # Need a 150x150px image
+            #'image_url' : settings.SITE_DOMAIN + '/static/header/header.png',
 
             # Unique invoice ID
             'invoice': str(uuid.uuid1()),
 
-            'return_url': settings.SITE_DOMAIN + "invoice/" + product.slug + "/" + str(product.hash),
+            # The URL they will return to
+            'return_url': settings.SITE_DOMAIN + "invoice/thanks/" + product.slug,
+
+            # The URL they will cancel to
             'cancel_return': settings.SITE_DOMAIN + "invoice/" + product.slug + "/" + str(product.hash),
             }
 
@@ -33,7 +51,7 @@ def invoice_detail(request, slug, hash):
         'product':product,
         'form': rendered_form,
         'price' : "$%.2f"%product.price,
-        'discount': "-$%.2f"%product.discount,
+        'discount': "($%.2f)"%product.discount,
         'total_price' : "$%.2f"%(price),
         'paypal_price' : "$%.2f"%(paypal_price)
         }, RequestContext(request))
