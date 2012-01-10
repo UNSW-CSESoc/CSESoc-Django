@@ -1,4 +1,28 @@
-{# product_detail.html #}
-<h1>Invoice for {{ product.company }}</h1><h2>For: {{product.title}}</h2>
-<p>Price: ${{ product.price }}</p>
+{% extends "main.html" %}
+{% block allcontent %}
+<div class='invoice'>
+<h1>Invoice for {{ product.company }}</h1>
+<h2>Invoice #{{product.slug}}</h2>
+<table>
+    <tr><td class='lhs'>{{product.title}}</td><td class='price'>{{price}}</td></tr>
+        {% if product.discount > 0 %}
+        <tr><td class='lhs'>Discount</td><td class='price'>{{discount}}</td></tr>
+        {% endif %}
+
+
+        <tr><td><h3>Direct Debit Price:</h3></td><td><h3> {{total_price }}</h3></td>
+    <tr><td><strong>Account Name:</strong></td><td>CSE SOCIETY</td></tr>
+    <tr><td><strong>BSB:</strong></td><td>062 303</td></tr>
+    <tr><td><strong>Account Number:</strong></td><td>1048 5828</td></tr>
+    <tr><td><strong>Payment Description:</strong></td><td>{{product.slug}}</td></tr>
+    <tr><td>
+            <h3>Paypal/Credit Card Price:</h3></td><td><h3> {{paypal_price }}</h3></td></tr>
+    <tr><td colspan="2">
+            <em>Note: Paying by credit card or PayPal incurs a 2.5% fee, as shown above.</em></td></tr>
+
+    <tr><td colspan="2" style='text-align:center;'>
 {{ form }}
+</td></tr>
+</table>
+</div>
+{% endblock %}

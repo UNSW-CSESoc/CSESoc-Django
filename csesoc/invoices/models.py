@@ -6,3 +6,4 @@ class Invoice(models.Model):
     title = models.CharField(max_length=255)
     price = models.PositiveIntegerField()
     discount = models.IntegerField()
+    hash = models.CharField(max_length=32)
