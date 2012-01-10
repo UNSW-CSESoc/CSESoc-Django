@@ -43,8 +43,8 @@ urlpatterns = patterns('',
     (r'^murder/', include('csesoc.murder.urls')),
 
     # paypal invoices
-    (r'^invoice/thanks/(?P<slug>[0-9]{8})$', invoice_thanks),
-    (r'^invoice/(?P<slug>[0-9]{8})/(?P<hash>[0-9a-zA-Z]+)$', invoice_detail),
+    (r'^invoice/thanks/(?P<slug>[0-9]{8})/?$', invoice_thanks),
+    (r'^invoice/(?P<slug>[0-9]{8})/(?P<hash>[0-9a-zA-Z]+)/?$', invoice_detail),
 
     # url for the game
     (r'^game/scores/(?P<year>[0-9]*)$', game_scores),
