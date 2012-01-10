@@ -152,4 +152,4 @@ ADMIN_NO_LOGIN = True
 PAYPAL_RECEIVER_EMAIL = "csesoc@cse.unsw.edu.au"
 # Sandbox email:
 #PAYPAL_RECEIVER_EMAIL = "razori_1326182346_biz@gmail.com"
-SITE_DOMAIN = "http://127.0.0.1:8000/"
+SITE_DOMAIN = "http://www.csesoc.cse.unsw.edu.au/"
