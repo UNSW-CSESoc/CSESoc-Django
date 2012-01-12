@@ -16,7 +16,10 @@ def invoice_thanks(request, slug):
 def invoice_detail(request, slug, hash):
     product = get_object_or_404(Invoice, slug=slug, hash=hash)
 
+    # The direct debit price with discount applied
     price = product.price - product.discount
+
+    # The paypal price is the direct debit price plus a 2.5% fee
     paypal_price = price * 1.025
 
     # See the following guide for more details on variables
@@ -27,8 +30,7 @@ def invoice_detail(request, slug, hash):
             'no_shipping' : 1, # Don't prompt for an address
             'no_note' : 1, # Don't prompt for a note
 
-            'item_name': product.title,
-            'invoice': product.slug,
+            'item_name': '%s: %s'%(str(product.slug),product.title),
             # Need a 150x150px image
             #'image_url' : settings.SITE_DOMAIN + '/static/header/header.png',
 
