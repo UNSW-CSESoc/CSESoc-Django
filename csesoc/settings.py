@@ -130,6 +130,8 @@ INSTALLED_APPS = (
     'csesoc.game',
     'csesoc.music',
     'csesoc.polls',
+    'csesoc.paypal.standard.ipn',
+    'csesoc.invoices',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -145,3 +147,9 @@ STREAMITEMS_PER_PAGE = 5
 # anyone access to the admin site without a password or any form of
 # verification.
 ADMIN_NO_LOGIN = True
+
+# django-paypal settings
+PAYPAL_RECEIVER_EMAIL = "csesoc@cse.unsw.edu.au"
+# Sandbox email:
+#PAYPAL_RECEIVER_EMAIL = "razori_1326182346_biz@gmail.com"
+SITE_DOMAIN = "http://www.csesoc.cse.unsw.edu.au/"

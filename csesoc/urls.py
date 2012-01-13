@@ -11,6 +11,7 @@ from csesoc.mainsite.views import static, thedate
 from csesoc.scheduler.views import join, results
 from csesoc.sponsors.views import sponsors
 from csesoc.music.views import music_submit_song, music_vote
+from csesoc.invoices.views import invoice_detail, invoice_thanks
 
 admin.autodiscover()
 
@@ -40,6 +41,10 @@ urlpatterns = patterns('',
 
     # urls for murder
     (r'^murder/', include('csesoc.murder.urls')),
+
+    # paypal invoices
+    (r'^invoice/thanks/(?P<slug>[0-9]{8})/?$', invoice_thanks),
+    (r'^invoice/(?P<slug>[0-9]{8})/(?P<hash>[0-9a-zA-Z]+)/?$', invoice_detail),
 
     # url for the game
     (r'^game/scores/(?P<year>[0-9]*)$', game_scores),

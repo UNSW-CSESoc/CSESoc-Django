@@ -6,6 +6,7 @@ h1 {
 	font-size:24px;
 	letter-spacing:-2px;
 	color:#88a5b4;
+    margin-top:20px;
 }
 h6 {
 	border-bottom:1px solid #EEE;
@@ -174,15 +175,18 @@ ul.pagenumbers {
 .pagenumbers li{
 	list-style:none;
 	display:inline-block;
+    font-size:16px;
+}
+.pagenumbers li a{
+    text-decoration:none;
 }
 .pagenumbers .disabled {
     padding: 5px;
-	font-size:18px;
 }
 .pagenumbers .current {
     padding: 5px;
     font-weight:bold;
-	font-size:18px;
+    color:#cd282f;
 }
 .pagenumbers a:hover {
     color:#cd282f;
@@ -194,7 +198,7 @@ ul.pagenumbers {
     border:1px solid #c2c2c2;
 }
 #sponsorsColumnTable td {
-    border:1px solid #c2c2c2;
+    border:0px solid #c2c2c2;
     text-align:center;
     vertical-align:middle;
     padding: 5px;
@@ -224,7 +228,30 @@ ul.pagenumbers {
     padding-top:20px;
 }
 .news-title {
-    color:#2f586d;
+    /*color:#2c5c75;*/
+    color:#b86952;
+    line-height:28px;
+}
+
+.news-title h2 {
+    margin-bottom:10px;
+}
+
+hr {
+    border:0px solid;
+    padding:10px 0px;
+}
+
+#rightcontent h1 {
+    text-align:center;
+}
+
+.news a {
+    color:#2f58cd;
+}
+
+.news a:hover {
+    color:#cf582d;
 }
 .news .itemTitle {
     width: 100%;
@@ -251,4 +278,23 @@ a:hover {
     padding-right:10px;
     padding-top:20px;
     padding-bottom:20px;
+}
+div.invoice {
+    width:500px;
+    margin: 0px auto;
+}
+div.invoice h2{
+    font-size:14px;
+    font-weight:bold;
+    margin:-20px 0px 10px 0px;
+}
+div.invoice h3{
+    margin: 20px 0px 0px 0px;
+    color:#009900;
+}
+div.invoice table{
+    padding: 10px;
+    width:500px;
+    border:0px;
+    font-size:14px;
 }
