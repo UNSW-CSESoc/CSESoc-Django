@@ -7,11 +7,12 @@ from django.contrib.contenttypes import generic
 from django.template.loader import render_to_string
 from django.conf import settings
 from datetime import datetime
+from tinymce import models as tinymce_models
 import os
 
 class Static(models.Model):
    title = models.CharField(max_length=200)
-   text = models.TextField()
+   text = tinymce_models.HTMLField()
    template = models.FilePathField(path=os.path.join(settings.PROJECT_PATH, "templates"), match="static.*\.html")
    creation_date = models.DateTimeField(auto_now_add=True)
    creator = models.ForeignKey(User, related_name='page_creator')
@@ -29,7 +30,7 @@ class Static(models.Model):
 
 class NewsItem(models.Model):
    headline = models.CharField(max_length=200)
-   text = models.TextField()
+   text = tinymce_models.HTMLField()
    pub_date = models.DateTimeField(default=datetime.now, help_text="News item will appear on homepage starting from date and time specified.")
    author = models.ForeignKey(User)
    def __unicode__(self):
@@ -42,8 +43,8 @@ class Event(models.Model):
    registration_required = models.BooleanField()
    registration_email = models.EmailField(blank=True, help_text="Address to email in order to register")
    volunteers_required = models.BooleanField()
-   volunteers_email = models.EmailField(blank=True, help_text="Address to email in order to volunteer")
-   description = models.TextField(help_text="Description of the event, will appear on the front page.")
+   volunteers_email = models.EmailField(blank=True, help_text="Address to email in order to volunteer")  
+   description = tinymce_models.HTMLField(help_text="Description of the event, will appear on the front page.")
    pub_date = models.DateTimeField(default=datetime.now, help_text="Event will appear on homepage starting from date and time specified.")
    author = models.ForeignKey(User)
    def __unicode__(self):
