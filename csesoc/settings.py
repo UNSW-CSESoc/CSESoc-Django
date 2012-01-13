@@ -166,3 +166,10 @@ PAYPAL_RECEIVER_EMAIL = "csesoc@cse.unsw.edu.au"
 # Sandbox email:
 #PAYPAL_RECEIVER_EMAIL = "razori_1326182346_biz@gmail.com"
 SITE_DOMAIN = "http://www.csesoc.cse.unsw.edu.au/"
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
