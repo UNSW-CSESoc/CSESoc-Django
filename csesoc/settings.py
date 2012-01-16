@@ -5,18 +5,14 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-import csesoc_settings
-
-if csesoc_settings.USE_REAL_EMAILS:
-   CSESOC_SUGGEST_LIST = 'csesoc.suggestions@cse.unsw.edu.au'
-   ADMINS = (
-       ('Sysadmin Head', 'csesoc.sysadmin.head@csesoc.unsw.edu.au'),
-   )
-else:
-   CSESOC_SUGGEST_LIST = csesoc_settings.MY_LOCAL_EMAIL
-   ADMINS = (
-       ('Sysadmin Head', csesoc_settings.MY_LOCAL_EMAIL),
-   )
+# Turn this on in production but for the here and now it just lets you send emails to non standard
+# addresses instead so that you can debug email messages. Just a heads up, if you are on your local
+# linux machine then your username@computer-name should send to your mailbox in /var/mail/username.
+# For example I put 'robert@Shhnap' in the email fields when I am testing.
+CSESOC_SUGGEST_LIST = 'root@localhost'
+ADMINS = (
+   ('Sysadmin Head', 'root@localhost'),
+)
 
 MANAGERS = ADMINS
 
@@ -68,7 +64,7 @@ MEDIA_URL = 'http://www.csesoc.unsw.edu.au/system/'
 STATIC_URL = '/static/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = csesoc_settings.SETTINGS_SECRET_KEY
+SECRET_KEY = '0g$%0eu0flf(0o0n@k0al$h@0fo0@lk=s0obe0**@r+dupn00l'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
