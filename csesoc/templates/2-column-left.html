@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+{% block allcontent %}
+        <div class="content grid_9" style='margin-left:20px' id="middlecontent">
+            {% block middlecontent %}{% endblock %}
+        </div>
+
+        <div class="content grid_3" id="rightcontent"> 
+            {% block rightcontent %}{% endblock %} 
+        </div>
+{% endblock %}

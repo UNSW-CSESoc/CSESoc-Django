@@ -279,7 +279,7 @@ a:hover {
     padding-top:20px;
     padding-bottom:20px;
 }
-div.invoice {
+div.centered_block {
     width:500px;
     margin: 0px auto;
 }
@@ -335,4 +335,9 @@ div.application_form table th {
 .camp_form input[type=submit] {
     padding:10px 50px;
     font-weight: bold;
+}
+
+/* Fix for layout */
+div#middlecontent {
+    margin: 0px auto;
 }
