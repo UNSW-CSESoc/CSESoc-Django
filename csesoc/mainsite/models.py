@@ -12,7 +12,9 @@ import os
 
 class Static(models.Model):
    title = models.CharField(max_length=200)
-   text = tinymce_models.HTMLField()
+   text = models.HTMLField()
+   # HTML mode is broken for tinymce
+   #text = tinymce_models.HTMLField()
    template = models.FilePathField(path=os.path.join(settings.PROJECT_PATH, "templates"), match="static.*\.html")
    creation_date = models.DateTimeField(auto_now_add=True)
    creator = models.ForeignKey(User, related_name='page_creator')
