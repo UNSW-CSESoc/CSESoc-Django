@@ -12,7 +12,7 @@ import os
 
 class Static(models.Model):
    title = models.CharField(max_length=200)
-   text = models.HTMLField()
+   text = models.TextField()
    # HTML mode is broken for tinymce
    #text = tinymce_models.HTMLField()
    template = models.FilePathField(path=os.path.join(settings.PROJECT_PATH, "templates"), match="static.*\.html")
