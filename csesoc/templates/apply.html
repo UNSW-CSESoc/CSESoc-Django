@@ -1,24 +1,23 @@
 {% extends "main.html" %}
+{% block titlecontent %}Camp Leader Application{% endblock %}
 {% block allcontent %}
+<div class='application_form camp_form'>
    <h1>CSESoc Camp - Leader Application Form</h1>
    <ul>
-      <!--li>CSE Camp will be held at Broken Bay Sports and Recreation Centre from 27th March – 29th March.</li>
-      <li>Camp Leaders must pay for their own tickets.</li>
-      <li>All candidates must be able to attend a <strong>compulsory</strong> training session on Friday 20 March @ 3-5pm.</li>
-      <li>Applications close Monday 16 March and successful candidates will be contacted soon thereafter.</li>
-      <li><strong>Camp Leaders will be selected purely on the merit of their applications. Applications that are not taken seriously will be disregarded. Any relationship you may have with a member of the CSESoc Executive will have no effect on your application.</strong></li-->
       <li>There will be a CSE Camp at the end of Week 3 (18th - 20th March).   Location : <a href="http://www.outbreak.com.au">Wombaroo</a></li>
       <li>Camp Leaders must pay for their own tickets.</li>
       <li>All candidates must be able to attend a <strong>compulsory</strong> training session (Date and Location TBA).</li>
       <li>Applications close <strong>7th February at 9PM</strong>. Preference will be given to candidates who sign up early.</li>
-      <li><strong>Camp Leaders will be selected purely on the merit of their applications. Applications that are not taken seriously will be disregarded. Any relationship you may have with a member of the CSESoc Executive will have no effect on your application.</strong></li>
+      <li><em>Camp Leaders will be selected purely on the merit of their applications. Applications that are not taken seriously will be disregarded. Any relationship you may have with a member of the CSESoc Executive will have no effect on your application.</em></li>
    </ul>
 
    <form action="/apply/" method="post">
       <table>
          {{ form.as_table }}
       </table>
-      <p><input type="submit" value="Submit" /></p>
+      <div class='submit_button'>
+         <input type="submit" value="Submit Application" />
+      </div>
    </form>
+</div>
 {% endblock %}
-

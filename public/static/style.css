@@ -298,3 +298,41 @@ div.invoice table{
     border:0px;
     font-size:14px;
 }
+
+/*========================*/
+/* Changes for Sem1, 2012 */
+/*========================*/
+
+/* Camp Leader application forms. */
+div.application_form {
+    width: 600px;
+    margin: 0px auto;
+}
+div.application_form table td, div.application_form table th {
+    padding: 5px;
+    vertical-align:middle;
+}
+div.application_form table th {
+    text-align:right;
+}
+.camp_form ul {
+    list-style-type:none;
+    margin-left:-30px;
+}
+.camp_form ul em {
+    display:block;
+    background: #eef;
+    padding: 5px;
+    margin: 10px -5px;
+    font-style: normal;
+    text-align: justify;
+}
+.camp_form div.submit_button {
+    display:block;
+    text-align:center;
+    margin: 30px 0px 100px 0px;
+}
+.camp_form input[type=submit] {
+    padding:10px 50px;
+    font-weight: bold;
+}
