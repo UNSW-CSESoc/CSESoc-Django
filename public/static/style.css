@@ -280,10 +280,11 @@ a:hover {
     padding-bottom:20px;
 }
 div.centered_block {
-    width:500px;
+    width:700px;
     margin: 0px auto;
 }
 div.invoice h2{
+    width:500px;
     font-size:14px;
     font-weight:bold;
     margin:-20px 0px 10px 0px;
