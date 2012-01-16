@@ -1,0 +1,5 @@
+#!/bin/bash
+export PYTHONPATH=/home/www/virtualenv/lib/python2.6/site-packages/
+cd $GIT_DIR/../csesoc
+./manage.py syncdb
+touch ~/public_html/index.wsgi
