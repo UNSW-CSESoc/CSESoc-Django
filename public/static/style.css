@@ -341,3 +341,27 @@ div.application_form table th {
 div#middlecontent {
     margin: 0px auto;
 }
+
+/* Fix for exec heads tables */
+table.exec_head_table {
+    width: 500px;
+    margin: 0px auto;
+}
+table.exec_head_table th, table.exec_head_table td {
+    padding:1px 5px;
+}
+table.exec_head_table th {
+    font-weight:bold;
+    text-align:right;
+}
+table.exec_head_table strong {
+    display:block;
+    text-align:center;
+    font-size:16px;
+    border-bottom: 1px solid #ccc;
+}
+table.exec_head_table h2 {
+    text-align:center;
+    margin:0px;
+    font-size:20px;
+}
