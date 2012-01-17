@@ -11,6 +11,7 @@ def invoice_thanks(request, slug):
     product = get_object_or_404(Invoice, slug=slug)
     return render_to_response('product_thanks.html', {
         'product':product,
+	'title':"Thanks!",
         }, RequestContext(request))
 
 def invoice_detail(request, slug, hash):
@@ -55,5 +56,6 @@ def invoice_detail(request, slug, hash):
         'price' : "$%.2f"%product.price,
         'discount': "($%.2f)"%product.discount,
         'total_price' : "$%.2f"%(price),
-        'paypal_price' : "$%.2f"%(paypal_price)
+        'paypal_price' : "$%.2f"%(paypal_price),
+	'title' : "Invoice #%s"%str(product.slug)
         }, RequestContext(request))
