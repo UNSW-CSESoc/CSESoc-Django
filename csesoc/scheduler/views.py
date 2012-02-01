@@ -10,21 +10,21 @@ from csesoc.forms.widgets import SliderInput
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 
-import random
-import time
-
+import datetime
 
 class JoinForm(forms.Form):
    def __init__(self, *args, **kwargs):
       slots = kwargs.pop('slots')
-      forms.Form.__init__(self, *args, **kwargs)
+      super(forms.Form, self).__init__(*args, **kwargs)
       for slot in slots:
          label = slot.title + ' ' + str(slot.start) + ' to ' + str(slot.end)
          self.fields.insert(-1, str(slot.id), forms.ChoiceField(choices=Availability.LEVEL_CHOICES, label=label, widget=SliderInput()))
+   def __unicode__(self):
+      return unicode(self.fields)
 
 @login_required
 def join(request):
-   allslots = Slot.objects.all()
+   allslots = Slot.objects.filter(start__year=2012)
    message = "Hi " + request.user.username + ", please use the sliders to select which times are best for you from the calendar below:"
    if request.method == 'POST': # form submitted
       form = JoinForm(request.POST, slots=allslots) # form bound to POST data
@@ -36,6 +36,8 @@ def join(request):
             availability.level = level
             availability.save()
             message = "Thanks " + request.user.username + " for submitting your preferences, you may edit them if you wish:"
+      else:
+         message = form._get_errors()
    else:
       initial = {}
       for slot in allslots:
@@ -48,7 +50,7 @@ def join(request):
 
 @login_required
 def results(request):
-   allslots = Slot.objects.all()
+   allslots = Slot.objects.filter(start__year=2012)
    slots = []
    for s in allslots:
       slots.append((s,Availability.objects.filter(slot=s).exclude(level='IM').order_by('-level'),))
