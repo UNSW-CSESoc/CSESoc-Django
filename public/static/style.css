@@ -368,3 +368,29 @@ table.exec_head_table h2 {
     margin:0px;
     font-size:20px;
 }
+
+ul.errorlist li {
+    color: red;
+    font-weight: bold;
+    list-style-type:none;
+    padding: 0px;
+    margin: 0px;
+}
+ul.errorlist {
+    padding: 0px;
+    margin: 0px;
+}
+form th {
+    vertical-align: middle;
+    text-align: right;
+}
+form td, form th {
+    padding: 10px;
+}
+
+form input[type=submit] {
+    padding:10px;
+    margin: 0px auto;
+    text-align: center;
+    font-weight: bold;
+}

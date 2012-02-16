@@ -1,8 +1,8 @@
-{% extends "base.html" %}
-{% block headextra %}
+{% extends "1-column.html" %}
+{% block extraheadercontent %}
 <meta http-equiv="refresh" content="5;{% url campattendees.views.signup %}" />
 {% endblock %}
-{% block content %}
+{% block middlecontent %}
    <h1>Thanks!</h1>
    <p>Thanks for signing up, you'll hear from us soon!</p>
    <p><a href="{% url campattendees.views.signup %}">Return to form</a></p>
