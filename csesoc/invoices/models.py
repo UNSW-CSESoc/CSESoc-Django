@@ -8,3 +8,4 @@ class Invoice(models.Model):
     price = models.PositiveIntegerField()
     discount = models.IntegerField()
     hash = models.CharField(max_length=32)
+    students_login = models.BooleanField(default=False)

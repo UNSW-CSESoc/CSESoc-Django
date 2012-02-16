@@ -30,6 +30,11 @@ class InvoiceAdmin(admin.ModelAdmin):
         url = "%sinvoice/%s/%s" % (settings.SITE_DOMAIN, obj.slug, obj.hash)
         return "<a href='%s'>%s</a>"%(url, url)
     link.allow_tags = True
+    def company(obj):
+        if obj.students_login:
+            return "--- CSE Login required ---"
+        else:
+            return obj.company
 
     def hash_function(self, obj):
         return md5.new(str(obj.slug) + str(obj.company)).hexdigest()
@@ -39,8 +44,8 @@ class InvoiceAdmin(admin.ModelAdmin):
         obj.save()
 
     exclude = ('hash',)
-    list_filter = ('company',)
-    list_display = (invoice_number,'company',invoice_description,price,discount,link)
+    list_filter = ('company','students_login')
+    list_display = (invoice_number,company,invoice_description,price,discount,link,'students_login')
     search_fields = ['company', '^slug', 'title', '^hash']
 
 
