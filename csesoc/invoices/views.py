@@ -63,7 +63,7 @@ def invoice_detail(request, slug, hash):
     if product.students_login:
         template = 'product_students_detail.html'
         title = '%s'%product.title
-        dd_description = "%s %s"%(str(product.slug)[:5],str(request.user.username))
+        dd_description = "%s %s"%(str(product.slug)[-5:],str(request.user.username))
     else:
         template = 'product_detail.html'
         title = 'Invoice #%s'%str(product.slug)
@@ -76,5 +76,5 @@ def invoice_detail(request, slug, hash):
         'total_price' : "$%.2f"%(price),
         'paypal_price' : "$%.2f"%(paypal_price),
         'dd_description': dd_description,
-	    'title' : title
+    	'title' : title
         }, RequestContext(request))
