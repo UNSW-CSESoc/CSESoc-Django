@@ -314,7 +314,11 @@ div.application_form {
     width: 600px;
     margin: 0px auto;
 }
+div.application_form table {
+    width: 600px;
+}
 div.application_form table td, div.application_form table th {
+    width: 50%;
     padding: 5px;
     vertical-align:middle;
 }

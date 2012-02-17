@@ -41,6 +41,7 @@
 {% endblock %}
 
 {% block middlecontent %}
+<div class='application_form camp_form'>
 <h1>CSESoc First Year Camp 2012 - Application Form</h1>
 <br/>
 <ul style='list-style-type:none'>
@@ -48,20 +49,23 @@
 <li><strong>Theme:</strong> Sci-fi and Fantasy</li>
 <li><strong>Location:</strong> <a href="http://www.outbreak.com.au">Wombaroo Adventure Centre</a></li>
 <li><strong>Payment:</strong></li>
-<li>- <span style='color:red; font-weight:bold;'>Early bird special:</span> Pay by the end of Monday of Week 2 to receive <strong>$10 off full price</strong>.</li>
+<li>- <span style='color:red; font-weight:bold;'>Early bird special:</span> Pay deposit or in full by the end of Monday of Week 2 to receive <strong>$10 off full price</strong>.</li>
 <li>- <strong>$70 for Arc</strong> members (must show your Arc membership sticker)</li>
 <li>- $80 for non-Arc</li>
 <li>- <strong>$10 deposit</strong> to secure your spot</li>
 <li><strong>Includes free camp t-shirt</strong></li>
 <li><span style='color:red'>Payment must be made in full (and cleared if by DD) by <b>14th March</b>.</strong></li>
+<li><strong><a href='/camp'>Click here for more information about camp.</a></strong></li>
 </ul>
-<br/>
 <br/>
    <form action="/signup/" method="post">
       <table>
          {{ form.as_table }}
       </table>
-      <p><input type="submit" value="Submit" /></p>
+      <div class='submit_button'>
+         <input type="submit" value="Submit Application" />
+      </div>
    </form>
+</div>
 {% endblock %}
 
