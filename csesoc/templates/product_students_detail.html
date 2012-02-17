@@ -1,5 +1,31 @@
 {% extends "1-column.html" %}
 {% block titlecontent %}{{ title }}{% endblock %}
+{% block extraheadercontent %}
+<script type="text/javascript">
+$(document).ready(function(){
+$(".cash").hide();
+$(".dd").hide();
+$(".paypal").hide();
+
+});
+function togglecash(){
+$(".cash").toggle('fast');
+$(".dd").hide();
+$(".paypal").hide();
+}
+function toggledd(){
+$(".dd").toggle('fast');
+$(".cash").hide();
+$(".paypal").hide();
+}
+function togglepaypal(){
+$(".paypal").toggle('fast');
+$(".dd").hide();
+$(".cash").hide();
+}
+
+</script>
+{% endblock %}
 {% block middlecontent %}
 <div class='invoice'>
 <h1>{{ product.title }}</h1>
@@ -9,18 +35,21 @@
         {% if product.discount > 0 %}
         <tr><td class='lhs'>Discount</td><td class='price'>{{discount}}</td></tr>
         {% endif %}
-
-        <tr><td><h3>Direct Debit Price:</h3></td><td><h3> {{total_price }}</h3></td>
-    <tr><td>Account Name:</strong></td><td>CSE SOCIETY</td></tr>
-    <tr><td>BSB:</strong></td><td>062 303</td></tr>
-    <tr><td>Account Number:</strong></td><td>1048 5828</td></tr>
-    <tr><td>Payment Description:</strong></td><td><strong>{{dd_description}}</strong></td></tr>
+    <tr><td colspan="2"><h4>Choose payment method:</h4></td></tr>
+    <tr><td><h3><a href='javascript:togglecash();'>Cash</a> or <a href='javascript:toggledd();'>Direct Deposit</a></h3></td><td><h3> {{total_price }}</h3></td></tr>
+    <tr class='cash'><td colspan='2'>Please pay cash in person at the Socs Office, Basement Level, Building K17, UNSW.</td></tr>
+        <tr class='dd'><td>Account Name:</strong></td><td>CSE SOCIETY</td></tr>
+        <tr class='dd'><td>BSB:</strong></td><td>062 303</td></tr>
+        <tr class='dd'><td>Account Number:</strong></td><td>1048 5828</td></tr>
+        <tr class='dd'><td>Payment Description:</strong></td><td><strong>{{dd_description}}</strong></td></tr>
+    <tr class='dd'><td colspan="2">
+            <span style='color:red;'><em>Please ensure your CSE username (<strong>{{user.username}}</strong>) is present in the payment description.</em></span></em></td></tr>
     <tr><td>
-            <h3>Paypal/Credit Card Price:</h3></td><td><h3> {{paypal_price }}</h3></td></tr>
-    <tr><td colspan="2">
+            <h3><a href='javascript:togglepaypal();'>Paypal/Credit Card</a></h3></td><td><h3> {{paypal_price }}</h3></td></tr>
+    <tr class='paypal'><td colspan="2">
             <em>Note: Paying by credit card or PayPal incurs a 2.5% fee, as shown above.<br/><span style='color:red;'>Please ensure your CSE username is <strong>{{user.username}}</strong> before you continue.</span></em></td></tr>
 
-    <tr><td colspan="2" style='text-align:center;'>
+    <tr class='paypal'><td colspan="2" style='text-align:center;'>
 {{ form }}
 </td></tr>
 </table>
