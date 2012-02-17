@@ -288,6 +288,9 @@ div.invoice {
     width: 600px;
     margin: 0px auto;
 }
+div.invoice.small {
+    width: 500px;
+}
 div.invoice h2{
     width:500px;
     font-size:14px;
@@ -305,13 +308,17 @@ div.invoice h4 {
     font-weight:bold;
 }
 div.invoice table{
-    padding: 10px;
+    padding: 0px;
+    margin: 0px;
     width:100%;
     border:0px;
     font-size:14px;
 }
 div.invoice td.price {
     width:150px;
+}
+div.invoice.small td.price {
+    width:100px;
 }
 
 /*========================*/
