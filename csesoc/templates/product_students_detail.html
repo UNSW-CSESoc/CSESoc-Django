@@ -37,7 +37,7 @@ $(".cash").hide();
         {% endif %}
     <tr><td colspan="2"><h4>Choose payment method:</h4></td></tr>
     <tr><td><h3><a href='javascript:togglecash();'>Cash</a> or <a href='javascript:toggledd();'>Direct Deposit</a></h3></td><td><h3> {{total_price }}</h3></td></tr>
-    <tr class='cash'><td colspan='2'>Please pay cash in person at the Socs Office, Basement Level, Building K17, UNSW.</td></tr>
+    <tr class='cash'><td colspan='2'>Please pay cash in person to a CSESoc Executive, at the Socs Office, Basement Level, Building K17, UNSW.</td></tr>
         <tr class='dd'><td>Account Name:</strong></td><td>CSE SOCIETY</td></tr>
         <tr class='dd'><td>BSB:</strong></td><td>062 303</td></tr>
         <tr class='dd'><td>Account Number:</strong></td><td>1048 5828</td></tr>
@@ -45,7 +45,7 @@ $(".cash").hide();
     <tr class='dd'><td colspan="2">
             <span style='color:red;'><em>Please ensure your CSE username (<strong>{{user.username}}</strong>) is present in the payment description.</em></span></em></td></tr>
     <tr><td>
-            <h3><a href='javascript:togglepaypal();'>Paypal/Credit Card</a></h3></td><td><h3> {{paypal_price }}</h3></td></tr>
+            <h3><a href='javascript:togglepaypal();'>Paypal or Credit Card</a></h3></td><td><h3> {{paypal_price }}</h3></td></tr>
     <tr class='paypal'><td colspan="2">
             <em>Note: Paying by credit card or PayPal incurs a 2.5% fee, as shown above.<br/><span style='color:red;'>Please ensure your CSE username is <strong>{{user.username}}</strong> before you continue.</span></em></td></tr>
 
