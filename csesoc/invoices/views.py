@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from csesoc.paypal.standard.forms import PayPalPaymentsForm
 from csesoc.invoices.models import *
+from django.contrib.auth.views import redirect_to_login
 
 def invoice_thanks(request, slug):
     product = get_object_or_404(Invoice, slug=slug)
@@ -28,7 +29,7 @@ def invoice_detail(request, slug, hash):
         if request.user.is_authenticated():
             item_name = '%s (%s)'%(product.title, request.user.username)
         else:
-            redirect_to_login(request.path)
+            return redirect_to_login(request.path)
     else:
         item_name = '%s: %s'%(str(product.slug),product.title)
 
