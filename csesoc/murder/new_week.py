@@ -19,7 +19,7 @@ setup_environ(settings)
 from csesoc.murder.models import *
 
 # These change per session
-gameName = '2010 Session 1'
+gameName = '2012 Session 1'
 
 # start_day <= today <= last_day
 currentGames = Game.objects.filter(start_day__lte=date.today()).filter(last_day__gte=date.today())
