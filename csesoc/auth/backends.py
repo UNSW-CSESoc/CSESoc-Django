@@ -76,14 +76,8 @@ def cse_login(request, next=None):
    else:
       return HttpResponseRedirect(next)
 
-def admin_wrapper(request):
-   #Authenticate user if not already done
-   from django.conf import settings
-   if "CSE" in settings.AUTHENTICATION_BACKENDS[0]:
-      if not request.user.is_authenticated():
-         return cse_login(request, request.path)
-   
-   #If authenticated, then resolve url to get view and call it
-   admin_url_resolver = get_resolver(admin_urls)
-   func, args, kwargs = admin_url_resolver.resolve(request.path)
-   return func(request, *args, **kwargs)
+class CSEAdminSite(admin.sites.AdminSite):
+   def login(self, request, extra_context=None):
+     return cse_login(request, request.get_full_path())
+#override admin.site also so people can use admin.site.register
+site = admin.site = CSEAdminSite()
