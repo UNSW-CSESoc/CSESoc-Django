@@ -12,6 +12,7 @@ from csesoc.scheduler.views import join, results
 from csesoc.sponsors.views import sponsors
 from csesoc.music.views import music_submit_song, music_vote
 from csesoc.invoices.views import invoice_detail, invoice_thanks
+from csesoc.auth import backends
 
 admin.autodiscover()
 
@@ -19,7 +20,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     # admin site
-    (r'^admin/', 'csesoc.auth.backends.admin_wrapper'),
+    (r'^admin/', include(backends.site.urls)),
 
     # login redirect
     (r'accounts/login/$', 'csesoc.auth.backends.cse_login'),
